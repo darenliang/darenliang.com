@@ -23,7 +23,7 @@ paginate = 5
 
   [[params.social]]
     name = "github"
-    url  = "https://github.com/"
+    url  = "https://github.com/darenliang"
 
 [languages]
   [languages.en]
