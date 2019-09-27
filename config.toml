@@ -1,0 +1,57 @@
+baseURL = "/"
+languageCode = "en-us"
+theme = "hello-friend"
+paginate = 5
+
+[params]
+  # dir name of your blog content (default is `content/posts`)
+  contentTypeName = "posts"
+  # "light" or "dark"
+  defaultTheme = "light"
+  # if you set this to 0, only submenu trigger will be visible
+  showMenuItems = 3
+  # Show reading time in minutes for posts
+  showReadingTime = false
+
+[languages]
+  [languages.en]
+    title = "dliang"
+    subtitle = ""
+    keywords = ""
+    copyright = "© <script type=\"text/javascript\">document.write(new Date().getFullYear());</script> Daren Liang"
+    menuMore = "Show more"
+    writtenBy = "Written by"
+    readMore = "Read more"
+    readOtherPosts = "Read other posts"
+    newerPosts = "Newer posts"
+    olderPosts = "Older posts"
+    minuteReadingTime = "min read"
+    dateFormatSingle = "2006-01-02"
+    dateFormatList = "2006-01-02"
+
+    [languages.en.params.logo]
+      logoText = "dliang"
+      logoHomeLink = "/"
+    # or
+    #
+    # path = "/img/your-example-logo.svg"
+    # alt = "Daren Liang"
+
+    [languages.en.menu]
+      [[languages.en.menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/about"
+        weight = 1
+
+      [[languages.en.menu.main]]
+        identifier = "projects"
+        name = "Projects"
+        url = "/projects"
+        weight = 2
+
+      [[languages.en.menu.main]]
+        identifier = "github"
+        name = "GitHub"
+        url = "https://github.com/darenliang"
+        weight = 3
