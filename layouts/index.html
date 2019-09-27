@@ -1,0 +1,16 @@
+{{ define "main" }}
+<div class="homepage-content">
+   <main aria-role="main">
+      <div>
+         <div class="homepage-text">
+            {{.Content}}
+         </div>
+         {{- with .Site.Params.social }}
+         <div>
+            {{ partial "social-icons.html" . }}
+         </div>
+         {{- end }}
+      </div>
+   </main>
+</div>
+{{ end }}

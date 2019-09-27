@@ -3,20 +3,33 @@ languageCode = "en-us"
 theme = "hello-friend"
 paginate = 5
 
+[permalinks]
+  posts = "/:year/:month/:day/:title/"
+
 [params]
   # dir name of your blog content (default is `content/posts`)
   contentTypeName = "posts"
   # "light" or "dark"
   defaultTheme = "light"
   # if you set this to 0, only submenu trigger will be visible
-  showMenuItems = 3
+  showMenuItems = 4
   # Show reading time in minutes for posts
   showReadingTime = false
+  author = "Daren Liang"
+
+  [[params.social]]
+    name = "email"
+    url  = "mailto:darenliang@outlook.com"
+
+  [[params.social]]
+    name = "github"
+    url  = "https://github.com/"
 
 [languages]
   [languages.en]
     title = "dliang"
     subtitle = ""
+    description = "Daren Liang's Personal Website"
     keywords = ""
     copyright = "© <script type=\"text/javascript\">document.write(new Date().getFullYear());</script> Daren Liang"
     menuMore = "Show more"
@@ -39,19 +52,25 @@ paginate = 5
 
     [languages.en.menu]
       [[languages.en.menu.main]]
+        identifier = "blog"
+        name = "Blog"
+        url = "/posts"
+        weight = 1
+
+      [[languages.en.menu.main]]
         identifier = "about"
         name = "About"
         url = "/about"
-        weight = 1
+        weight = 2
 
       [[languages.en.menu.main]]
         identifier = "projects"
         name = "Projects"
         url = "/projects"
-        weight = 2
+        weight = 3
 
       [[languages.en.menu.main]]
         identifier = "github"
         name = "GitHub"
         url = "https://github.com/darenliang"
-        weight = 3
+        weight = 4
