@@ -53,7 +53,6 @@ public class Loops {
         countToN(10);
     }
 }
-
 ```
 
 Try it yourself, you'll love or hate it!
