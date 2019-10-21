@@ -12,6 +12,10 @@ title: "Projects"
 
 <a class="github-button" href="https://github.com/darenliang/gomatheval" data-size="large" aria-label="Visit darenliang/gomatheval on GitHub">gomatheval</a>
 
+### RESTful Pokemon API
+
+<a class="github-button" href="https://github.com/darenliang/pokemonapi" data-size="large" aria-label="Visit darenliang/pokemonapi on GitHub">pokemonapi</a>
+
 ### Tictactoe Engine in Rust
 
 <a class="github-button" href="https://github.com/darenliang/tictactoe_rust" data-size="large" aria-label="Visit darenliang/tictactoe_rust on GitHub">tictactoe_rust</a>
