@@ -2,6 +2,7 @@
 title = "A Simple Pokemon API"
 date = "2019-10-20"
 author = "Daren Liang"
+cover = "img/pokemon.png"
 description = "It's easy to create RESTful APIs with Go"
 +++
 
