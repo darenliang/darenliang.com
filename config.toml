@@ -12,7 +12,7 @@ paginate = 5
   # "light" or "dark"
   defaultTheme = "light"
   # if you set this to 0, only submenu trigger will be visible
-  showMenuItems = 3
+  showMenuItems = 4
   # Show reading time in minutes for posts
   showReadingTime = false
   author = "Daren Liang"
@@ -62,6 +62,12 @@ paginate = 5
         name = "About"
         url = "/about"
         weight = 2
+
+      [[languages.en.menu.main]]
+        identifier = "projects"
+        name = "Projects"
+        url = "/projects"
+        weight = 3
 
       [[languages.en.menu.main]]
         identifier = "resume"
