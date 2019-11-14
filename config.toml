@@ -66,5 +66,5 @@ paginate = 5
       [[languages.en.menu.main]]
         identifier = "resume"
         name = "Resume"
-        url = "https://github.com/darenliang/resume/blob/master/resume.pdf"
+        url = "/doc/resume.pdf"
         weight = 3
