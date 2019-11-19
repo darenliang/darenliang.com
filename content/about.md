@@ -6,7 +6,7 @@ title = "About"
 
 Hi there!
 
-My name is Daren Liang. I am currently an undergraduate student at the University of Toronto.
+My name is Daren Liang. I am currently an undergraduate computer science student at the University of Toronto.
 
 I enjoy working on small programming projects on my free time.
 
