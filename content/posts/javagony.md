@@ -10,7 +10,7 @@ description = "Makes Java even more painful to write."
 First coined by [flawr](https://chat.stackexchange.com/users/122082/flawr), Javagony is Java with a few statements made not available.
 
 Here are the statements that are not available:
-```
+```Java
 for (){}
 if (){} //including else and else if
 while (){}
