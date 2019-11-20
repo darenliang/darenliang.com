@@ -35,7 +35,7 @@ paginate = 5
     subtitle = ""
     description = "Daren Liang's Personal Website"
     keywords = ""
-    copyright = "© <script type=\"text/javascript\">document.write(new Date().getFullYear());</script> Daren Liang"
+    copyright = ""
     menuMore = "Show more"
     writtenBy = "Written by"
     readMore = "Read more"

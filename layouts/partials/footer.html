@@ -1,0 +1,15 @@
+<footer class="footer">
+  <div class="footer__inner" style="justify-content: center;">
+    {{ if $.Site.Copyright }}
+      <div class="copyright copyright--user">{{ $.Site.Copyright | safeHTML }}</div>
+    {{else}}
+      <div class="copyright">
+        <span>© {{ now.Year }} Daren Liang</span>
+      </div>
+    {{end}}
+  </div>
+</footer>
+
+<script src="{{ "assets/main.js" | absURL }}"></script>
+<script src="{{ "assets/prism.js" | absURL }}"></script>
+{{- partial "extended_footer.html" . }}
