@@ -11,3 +11,7 @@ My name is Daren Liang. I am currently an undergraduate computer science student
 I enjoy working on small programming projects on my free time.
 
 You can find me on GitHub [@darenliang](https://github.com/darenliang "darenliang's GitHub").
+
+### Places I've been
+
+{{< map >}}
