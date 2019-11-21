@@ -3,43 +3,50 @@
 <script src="https://www.amcharts.com/lib/3/themes/dark.js" type="text/javascript"></script>
 <div id="mapdiv" style="height: 30em;"></div>
 <script type="text/javascript">
-var map = AmCharts.makeChart("mapdiv",{
-type: "map",
-theme: "dark",
-projection: "mercator",
-panEventsEnabled : true,
-backgroundColor : "#fff",
-backgroundAlpha : 1,
-zoomControl: {
-zoomControlEnabled : true
-},
-dataProvider : {
-map : "worldHigh",
-getAreasFromMap : true,
-areas :
-[
-	{
-		"id": "CA",
-		"showAsSelected": true
-	},
-	{
-		"id": "US",
-		"showAsSelected": true
-	},
-	{
-		"id": "CN",
-		"showAsSelected": true
-	}
-]
-},
-areasSettings : {
-autoZoom : true,
-color : "#292a2d",
-colorSolid : "#fe5186",
-selectedColor : "#fe5186",
-outlineColor : "#666666",
-rollOverColor : "#ff94b5",
-rollOverOutlineColor : "#000000"
-}
-});
+    setTimeout(function(){
+    	var baseMap = {
+        type: "map",
+        theme: "dark",
+        projection: "miller",
+        panEventsEnabled : true,
+        backgroundColor : "#fff",
+        backgroundAlpha : 1,
+        zoomControl: {
+        zoomControlEnabled : true
+        },
+        dataProvider : {
+        map : "worldHigh",
+        getAreasFromMap : true,
+        areas : [
+        	{
+        		"id": "CA",
+        		"showAsSelected": true
+        	},
+        	{
+        		"id": "US",
+        		"showAsSelected": true
+        	},
+        	{
+        		"id": "CN",
+        		"showAsSelected": true
+        	}
+        ]
+        },
+        areasSettings : {
+        autoZoom : true,
+        color : "#292a2d",
+        colorSolid : "#fe5186",
+        selectedColor : "#fe5186",
+        outlineColor : "#666666",
+        rollOverColor : "#ff94b5",
+        rollOverOutlineColor : "#000000"
+        }};
+    
+        if (document.body.classList.contains('dark-theme')){
+        	baseMap.backgroundColor = "#292a2d";
+        	baseMap.areasSettings.color = "#fff";
+        }
+    
+        var map = AmCharts.makeChart("mapdiv",baseMap);
+    }, 100);
 </script>
