@@ -3,7 +3,7 @@
 <script src="https://www.amcharts.com/lib/3/themes/dark.js" type="text/javascript"></script>
 <div id="mapdiv" style="height: 30em;"></div>
 <script type="text/javascript">
-    setTimeout(function(){
+	function loadMap(){
     	var baseMap = {
         type: "map",
         theme: "dark",
@@ -48,5 +48,20 @@
         }
     
         var map = AmCharts.makeChart("mapdiv",baseMap);
-    }, 100);
+    };
+
+    window.onload = loadMap();
+    
+    var e = document.body;
+
+	var observer = new MutationObserver(function (event) {
+  		loadMap();
+	});
+
+	observer.observe(e, {
+  		attributes: true, 
+  		attributeFilter: ['class'],
+  		childList: false, 
+  		characterData: false
+	});
 </script>
