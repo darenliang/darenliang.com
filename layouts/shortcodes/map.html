@@ -6,13 +6,11 @@
 	function loadMap(){
     	var baseMap = {
         type: "map",
-        theme: "dark",
         projection: "miller",
         panEventsEnabled : true,
-        backgroundColor : "#fff",
-        backgroundAlpha : 1,
+        backgroundAlpha : 0,
         zoomControl: {
-        zoomControlEnabled : false
+        zoomControlEnabled : true
         },
         dataProvider : {
         map : "worldHigh",
@@ -37,14 +35,16 @@
         color : "#292a2d",
         colorSolid : "#fe5186",
         selectedColor : "#fe5186",
-        outlineColor : "#666666",
+        outlineColor : "#fff",
         rollOverColor : "#ff94b5",
-        rollOverOutlineColor : "#000000"
+        rollOverOutlineColor : "#fff"
         }};
     
         if (document.body.classList.contains('dark-theme')){
-        	baseMap.backgroundColor = "#292a2d";
         	baseMap.areasSettings.color = "#fff";
+            baseMap.areasSettings.outlineColor = "#292a2d";
+            baseMap.areasSettings.rollOverOutlineColor = "#292a2d";
+
         }
     
         var map = AmCharts.makeChart("mapdiv",baseMap);
