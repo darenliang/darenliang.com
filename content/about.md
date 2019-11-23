@@ -2,7 +2,7 @@
 title = "About"
 +++
 
-{{< image src="/img/hamster.png" alt="Invisible Hamster" position="left" style="border-radius: 8px;" >}}
+{{< image src="/img/hamster.png" alt="Invisible Hamster" title="One Cute Hamster" position="left" style="border-radius: 8px;" >}}
 
 Hi there!
 
