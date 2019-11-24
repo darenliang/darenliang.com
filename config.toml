@@ -75,6 +75,6 @@ paginate = 5
 
       [[languages.en.menu.main]]
         identifier = "resume"
-        name = "Résume"
+        name = "Resume"
         url = "/doc/resume.pdf"
         weight = 3
