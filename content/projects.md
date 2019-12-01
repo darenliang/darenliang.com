@@ -27,3 +27,7 @@ title: "Projects"
 ### MyAnimeList Web Scraper API
 
 <a class="github-button" href="https://github.com/darenliang/mal-api" data-size="large" aria-label="Visit darenliang/mal-api on GitHub">mal-api</a>
+
+### Decentralized Text Chat Web App
+
+<a class="github-button" href="https://github.com/darenliang/decentralized-chat" data-size="large" aria-label="Visit darenliang/decentralized-chat on GitHub">decentralized-chat</a>
