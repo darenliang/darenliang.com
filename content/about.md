@@ -1,5 +1,5 @@
 +++
-title = "About"
+title = "About Me"
 +++
 
 {{< image src="/img/hamster.png" alt="Invisible Hamster" title="One Cute Hamster" position="left" style="border-radius: 8px;" >}}
