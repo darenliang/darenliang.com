@@ -2,6 +2,7 @@
 title = "Algorithms in Javagony"
 date = "2019-10-08"
 author = "Daren Liang"
+cover = "img/java.jpg"
 description = "Makes Java even more painful to write."
 +++
 
