@@ -77,4 +77,4 @@ paginate = 5
         identifier = "resume"
         name = "Resume"
         url = "/doc/resume.pdf"
-        weight = 3
+        weight = 4
