@@ -5,7 +5,3 @@ HUGO_VERSION = "0.57.0"
   from = "/*"
   to = "/oops.html"
   status = 404
-
-[[redirects]]
-  from = "/resume"
-  to = "/doc/resume.pdf"
