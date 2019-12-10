@@ -3,5 +3,5 @@ HUGO_VERSION = "0.57.0"
 
 [[redirects]]
   from = "/*"
-  to = "/404"
+  to = "/oops.html"
   status = 404
