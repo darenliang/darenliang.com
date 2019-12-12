@@ -10,20 +10,22 @@ body {
     color: white;
 }
 
-.panel {
-    padding: 75px;
-}
-
 .footer {
     --light-color-secondary: white;
     --dark-color-secondary: white;
 }
 
 .panel {
-    min-height: calc(100vh - 120px);
+    min-height: 100vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    padding-left: 75px;
+    padding-right: 75px;
+}
+
+.panel-first {
+    min-height: calc(100vh - 160px);
 }
 
 /* colours */
