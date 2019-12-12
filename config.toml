@@ -25,10 +25,6 @@ paginate = 5
     name = "github"
     url  = "https://github.com/darenliang"
 
-  [[params.social]]
-    name = "linkedin"
-    url  = "https://www.linkedin.com/in/darenliang"
-
 [languages]
   [languages.en]
     title = "darenliang"
