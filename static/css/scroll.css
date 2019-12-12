@@ -10,6 +10,10 @@ body {
     color: white;
 }
 
+.panel {
+    padding: 75px;
+}
+
 .footer {
     --light-color-secondary: white;
     --dark-color-secondary: white;
