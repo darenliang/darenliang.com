@@ -5,3 +5,12 @@ HUGO_VERSION = "0.57.0"
   from = "/*"
   to = "/oops.html"
   status = 404
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
