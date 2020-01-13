@@ -39,8 +39,8 @@ paginate = 5
     newerPosts = "Newer posts"
     olderPosts = "Older posts"
     minuteReadingTime = "min read"
-    dateFormatSingle = "01-02-2006"
-    dateFormatList = "01-02-2006"
+    dateFormatSingle = "Jan 02, 2006"
+    dateFormatList = "Jan 02, 2006"
 
     [languages.en.params.logo]
       logoText = "darenliang"
