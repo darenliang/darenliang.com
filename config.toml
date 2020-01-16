@@ -29,7 +29,7 @@ paginate = 5
   [languages.en]
     title = "darenliang"
     subtitle = ""
-    description = "Daren Liang's Personal Website"
+    description = "Daren Liang's Website"
     keywords = ""
     copyright = ""
     menuMore = "Show more"
