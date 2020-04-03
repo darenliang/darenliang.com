@@ -1,3 +1,1 @@
 # Daren Liang
-
-Developer
