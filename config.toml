@@ -3,6 +3,9 @@ languageCode = "en-us"
 theme = "hello-friend"
 paginate = 5
 
+[markup.goldmark.renderer]
+  unsafe= true
+
 [permalinks]
   posts = "/:year/:month/:day/:title/"
 
