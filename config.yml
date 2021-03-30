@@ -13,7 +13,7 @@ enableEmoji: true
 
 minify:
   disableXML: true
-  minifyOutput: true
+  minifyOutput: false
 
 outputs:
   home:
