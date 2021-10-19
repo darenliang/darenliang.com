@@ -16,6 +16,7 @@ GitHub [@darenliang](https://github.com/darenliang "darenliang's GitHub").
 
 Here is my public key:
 
+```
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 
 mQINBGFu19IBEADWNvGzty/wDXXY7QfZacInW/ufe+8a61lZu84HF8uymkPr+SIR
@@ -67,3 +68,4 @@ qrJKZpbr+fl5i8BzrO4KG5SjzR+03P0rYCU2UuDUKQjgvOEFg/I2B0PiuR/vigw0
 R4vDKM7wSmHW4q0RD4o3VIr/aktZt1JNpkd/Nuqi0TDsmMze1CC+Kfgo8OSObA==
 =Zra5
 -----END PGP PUBLIC KEY BLOCK-----
+```
