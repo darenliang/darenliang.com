@@ -1,5 +1,9 @@
 theme = "smol"
 title = "Daren Liang"
+enableEmoji = true
+
+[outputs]
+	home = [ "HTML", "RSS" ]
 
 [params]
     subtitle = ""
@@ -39,3 +43,11 @@ title = "Daren Liang"
 		name = "Email"
         url = "mailto:daren@darenliang.com"
         weight = 2
+
+	[[menu.footer]]
+		name = "RSS"
+        url = "index.xml"
+        weight = 3
+
+[markup.goldmark.renderer]
+	unsafe = true
