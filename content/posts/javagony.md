@@ -15,10 +15,10 @@ Here are the statements that are not available:
 
 ```Java
 for (){}
-if (){} //including else and else if
+if (){} else if (){} else {}
 while (){}
-do {} while ();
-switch(){}
+do {} while ()
+switch (){}
 ?:
 ```
 
