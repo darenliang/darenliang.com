@@ -1,7 +1,9 @@
 baseURL = "/"
 theme = "smol"
 title = "Daren Liang"
+description = "Daren Liang's personal website"
 enableEmoji = true
+enableRobotsTXT = true
 
 [outputs]
 	home = [ "HTML", "RSS" ]
