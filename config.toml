@@ -1,7 +1,6 @@
 baseURL = "/"
 theme = "smol"
 title = "Daren Liang"
-description = "Daren Liang's personal website"
 enableEmoji = true
 enableRobotsTXT = true
 
@@ -9,6 +8,8 @@ enableRobotsTXT = true
 	home = [ "HTML", "RSS" ]
 
 [params]
+	author = "Daren Liang"
+	description = "Daren Liang's personal website"
 	subtitle = ""
 	enableCounter = true
 	counterKey = "darenliang"
