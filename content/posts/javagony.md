@@ -1,8 +1,7 @@
 ---
 title: "Algorithms in Javagony"
 date: "2019-10-08"
-author: "Daren Liang"
-description: "Makes Java even more painful to write."
+showthedate: true
 ---
 
 <script async defer src="https://buttons.github.io/buttons.js"></script>

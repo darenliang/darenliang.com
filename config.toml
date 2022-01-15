@@ -8,35 +8,36 @@ enableEmoji = true
 
 [params]
     subtitle = ""
-    dateFmt = "02.01.2006"
+    dateFmt = "2006-01-02"
+    showDatesOnPosts = true
 
 [menu]
 	[[menu.main]]
 		identifier = "posts"
 		name = "Posts"
-		url = "/posts/"
+		url = "/posts"
 		weight = 1
 
 	[[menu.main]]
 		identifier = "about"
 		name = "About"
-		url = "/about/"
+		url = "/about"
 		weight = 2
 
 	[[menu.main]]
 		identifier = "projects"
 		name = "Projects"
-		url = "/projects/"
+		url = "/projects"
 		weight = 3
 
 	[[menu.main]]
 		identifier = "resume"
 		name = "Resume"
-		url = "/resume/"
+		url = "/doc/resume.pdf"
 		weight = 4
 
 	[[menu.footer]]
-		name = "Github"
+		name = "GitHub"
         url = "https://github.com/darenliang"
         weight = 1
 
@@ -46,9 +47,14 @@ enableEmoji = true
         weight = 2
 
 	[[menu.footer]]
+		name = "PGP"
+        url = "/pgp"
+        weight = 3
+
+	[[menu.footer]]
 		name = "RSS"
         url = "index.xml"
-        weight = 3
+        weight = 4
 
 [markup.goldmark.renderer]
 	unsafe = true
