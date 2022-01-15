@@ -7,7 +7,10 @@ enableEmoji = true
 	home = [ "HTML", "RSS" ]
 
 [params]
-    subtitle = ""
+	subtitle = ""
+	enableCounter = true
+	counterKey = "darenliang"
+    noJS = "Welcome to the anti-JS club!"
     dateFmt = "2006-01-02"
     showDatesOnPosts = true
 
