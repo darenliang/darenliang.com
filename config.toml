@@ -59,7 +59,7 @@ enableRobotsTXT = true
 
 	[[menu.footer]]
 		name = "RSS"
-        url = "index.xml"
+        url = "/index.xml"
         weight = 4
 
 [markup.goldmark.renderer]
