@@ -25,7 +25,7 @@ switch (){}
 These statements can be substituted for try catch statements and recursion.
 
 Although Javagony is not the least bit fun to write, it makes you think about
-clever tricks that utilize many Java's obscure features.
+clever tricks that utilize many of Java's obscure features.
 
 Here is an example of counting to n in Javagony:
 
