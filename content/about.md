@@ -3,7 +3,7 @@ title: "About Me"
 showthedate: false
 ---
 
-![Hamster](/img/yotsuba.png)
+![Yotsuba](/img/yotsuba.png)
 
 Hi there!
 
