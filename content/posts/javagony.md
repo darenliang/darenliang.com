@@ -60,6 +60,10 @@ public class Loops {
 }
 ```
 
+Please note that there are multiple and equally creative ways to implement algorithms! The sky's the limit!
+
+The above example isn't easily digestible, so I've created a GitHub repo that implements a handful of examples and goes through the process of implementing conditionals.
+
 Try it yourself, you'll love or hate it!
 
 <a class="github-button" href="https://github.com/darenliang/JavagonyAlgorithms" data-size="large" aria-label="Visit JavagonyAlgorithms on GitHub">
