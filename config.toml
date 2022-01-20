@@ -43,24 +43,19 @@ enableRobotsTXT = true
 		weight = 4
 
 	[[menu.footer]]
-		name = "GitHub"
-        url = "https://github.com/darenliang"
-        weight = 1
-
-	[[menu.footer]]
 		name = "Email"
         url = "mailto:daren@darenliang.com"
-        weight = 2
+        weight = 1
 
 	[[menu.footer]]
 		name = "PGP"
         url = "/pgp"
-        weight = 3
+        weight = 2
 
 	[[menu.footer]]
 		name = "RSS"
         url = "/index.xml"
-        weight = 4
+        weight = 3
 
 [markup.goldmark.renderer]
 	unsafe = true
