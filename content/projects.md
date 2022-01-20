@@ -45,7 +45,3 @@ title: "A few projects I've worked on"
 <h1 style="text-align: center">gomatheval</h1>
 <h3 style="text-align: center">Simple math expression evaluator in Go</h3>
 <div style="text-align: center"><a class="github-button" href="https://github.com/darenliang/gomatheval" data-size="large" aria-label="Visit darenliang/gomatheval on GitHub">gomatheval</a></div>
-
-<br/>
-<hr/>
-<br/>
