@@ -507,9 +507,6 @@ I hope this gave you a somewhat brief introduction to the world of secret sharin
 With the rise of the Internet, secret sharing schemes are becoming increasingly prevalent and are used in all sorts of
 applications such as blockchain and cloud computing.
 
-One interesting project using secret sharing schemes is [RenVM](https://renproject.io/renvm). Using Shamir's Secret
-Sharing, RenVM is able to distribute shares of a private key storing more than 1 billion USD worth of Bitcoin.
-
 If you find any issues with this article, please let me know at [daren@darenliang.com](mailto:daren@darenliang.com).
 
 ## 8. Credits
