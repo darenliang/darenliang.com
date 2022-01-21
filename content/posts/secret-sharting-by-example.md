@@ -239,6 +239,7 @@ Can picking any two points recover the y-intercept in the 3 shares case?
     \[
         4^2(2)+4(-10)+12=4
     \]
+    Here is an interactive visualization of some possible solutions,
     <div id="plot3" style="text-align: center;"></div>
     <div style="text-align: center;">
       <label>
