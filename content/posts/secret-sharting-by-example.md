@@ -512,6 +512,15 @@ Sharing, RenVM is able to distribute shares of a private key storing more than 1
 
 If you find any issues with this article, please let me know at [daren@darenliang.com](mailto:daren@darenliang.com).
 
+## 8. Credits
+
+This article is made possible by the following great resources and JS libraries:
+
+* Art of the Problem's [Secret Sharing Explained Visually](https://www.youtube.com/watch?v=iFY5SyY3IMQ)
+* Wikipedia's [Shamir's Secret Sharing](https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing) article
+* [MathJax](https://www.mathjax.org/) for math notation
+* Mauricio Poppe's [Function Plot](https://mauriciopoppe.github.io/function-plot/) for graph plots
+
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script src="https://unpkg.com/function-plot/dist/function-plot.js"></script>
