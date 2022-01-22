@@ -5,8 +5,10 @@ showthedate: true
 ---
 
 <noscript>
-  A note to those who disable JavaScript: this article requires loading and executing JavaScript to load equations,
-  graphs, and interactive examples.
+  <p>
+    A note to those who disable JavaScript: this article requires loading and executing JavaScript to load equations,
+    graphs, and interactive examples.
+  </p>
 </noscript>
 
 ## 1. The Scenario
