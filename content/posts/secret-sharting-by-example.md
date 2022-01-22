@@ -182,7 +182,7 @@ You will note that this type of secret sharing scheme has two significant advant
   arbitrary number).
 * Shares can be lost and the original secret can still be recovered.
 
-However, you'll note that having allowing two shares to recover the original secret might not be enough. Remember,
+However, you'll note that allowing two shares to recover the original secret might not be considered secure. Remember,
 Bernard's share was leaked to the public and Edward's share was lost. If someone happened to find Edward's share, they
 could recover the original secret. We'll need to think of a way to secure the original secret through +3 shares.
 
@@ -199,6 +199,19 @@ Let's consider the following quadratic function:
 </p>
 
 <div id="plot2" style="text-align: center;"></div>
+
+We could for example create shares in the following configuration:
+
+<ul>
+    <li>You get \( (1, 1) \)</li>
+    <li>Albert gets \( (2, 0) \)</li>
+    <li>Bernard gets \( (3, 1) \)</li>
+    <li>Cheryl gets \( (4, 4) \)</li>
+    <li>Denise gets \( (5, 9) \)</li>
+    <li>Edward gets \( (6, 16) \)</li>
+</ul>
+
+Using any three shares, the y-intercept of the quadratic can be recovered.
 
 ### Question! (I promise it's the only question I'll ask you)
 
@@ -282,8 +295,8 @@ polynomials.
 
 ## 6. A Full Shamir's Secret Sharing Implementation in JavaScript
 
-We've talked about how previous secret sharing schemes have specific disadvantages, and we'be also talked about the
-basis of how Shamir's Secret Sharing works. But what does an actual implementation of Shamir's Secret Sharing looks
+We've talked about how previous secret sharing schemes have specific disadvantages, and we've also talked about the
+basis of how Shamir's Secret Sharing works. But what does an actual implementation of Shamir's Secret Sharing look
 like?
 
 Note that actual implementation of Shamir's Secret Sharing use polynomials over
@@ -291,12 +304,12 @@ a [finite field](https://en.wikipedia.org/wiki/Finite_field) and are not represe
 mathematical formulation of scheme, here is a [good overview](https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing).
 
 The following code is ported from
-Wikipedia's [Shamir's Secret Sharing Python Implementation](https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing).
+Wikipedia's [Shamir's Secret Sharing Python Implementation](https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing#Python_example).
 
 **Note that this implementation is not to be used in production! I am not responsible for any liabilities caused by
 following code.**
 
-```js
+```js {linenos=table}
 /**
  * The following JavaScript implementation of Shamir's Secret Sharing is
  * released into the Public Domain under the terms of CC0 and OWFa:
@@ -422,7 +435,7 @@ const extendedGCD = (a, b) => {
 /**
  * Compute num / den modulo prime p
  * To explain what this means, the return value will be such that
- * the following is true: den * _divmod(num, den, p) % p == num
+ * the following is true: den * divMod(num, den, p) % p == num
  */
 const divMod = (num, den, p) => {
     const inv = extendedGCD(den, p)[0];
@@ -499,15 +512,22 @@ console.log(shares);
 /**
  * Recover the secret with the first two shares missing.
  */
+shares.splice(0, 2);
 console.log("Recovered Secret:");
-console.log(recoverSecret(shares.splice(0, 2)));
+console.log(recoverSecret(shares));
 ```
 
 ## 7. Now What?
 
-We are done! :tada:
+Whew! We are done! :tada:
 
 I hope this gave you a somewhat brief introduction to the world of secret sharing schemes.
+
+We haven't covered all the secret sharing schemes out there! However, Shamir's is widely considered one of the best schemes.
+Here are a few alternative secret sharing schemes:
+
+* Blakley's Secret Sharing ([arxiv.org](https://arxiv.org/abs/1901.02802))
+* Secret sharing using the Chinese remainder theorem ([wikipedia.org](https://en.m.wikipedia.org/wiki/Secret_sharing_using_the_Chinese_remainder_theorem))
 
 With the rise of the Internet, secret sharing schemes are becoming increasingly prevalent and are used in all sorts of
 applications such as blockchain and cloud computing.
