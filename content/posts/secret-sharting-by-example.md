@@ -463,7 +463,7 @@ const lagrangeInterpolate = (x, xs, ys, p) => {
         return secret % p;
     }
 
-    // Some secret is sometimes are huge negative number.
+    // Sometimes the secret is sometimes a huge negative number.
     // We need to multiples of p to ensure that our result is
     // positive when we take modulus p.
     return (secret + ((-1n * secret / p + 1n) * p)) % p;
