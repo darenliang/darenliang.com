@@ -282,8 +282,8 @@ polynomials.
 
 ## 6. A Full Shamir's Secret Sharing Implementation in JavaScript
 
-We've talked about how previous secret sharing schemes have specific disadvantages, and we'be also talked about the
-basis of how Shamir's Secret Sharing works. But what does an actual implementation of Shamir's Secret Sharing looks
+We've talked about how previous secret sharing schemes have specific disadvantages, and we've also talked about the
+basis of how Shamir's Secret Sharing works. But what does an actual implementation of Shamir's Secret Sharing look
 like?
 
 Note that actual implementation of Shamir's Secret Sharing use polynomials over
@@ -291,7 +291,7 @@ a [finite field](https://en.wikipedia.org/wiki/Finite_field) and are not represe
 mathematical formulation of scheme, here is a [good overview](https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing).
 
 The following code is ported from
-Wikipedia's [Shamir's Secret Sharing Python Implementation](https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing).
+Wikipedia's Shamir's Secret Sharing Python Implementation.
 
 **Note that this implementation is not to be used in production! I am not responsible for any liabilities caused by
 following code.**
@@ -509,7 +509,7 @@ Whew! We are done! :tada:
 
 I hope this gave you a somewhat brief introduction to the world of secret sharing schemes.
 
-We've haven't covered all the secret sharing schemes out there! However, Shamir's is widely considered one of the best schemes.
+We've haven't covered all the secret sharing schemes out there! However, Shamir's is widely considered one of the best secret sharing schemes.
 Here are a few alternative secret sharing schemes:
 
 * Blakley's Secret Sharing ([arxiv.org](https://arxiv.org/abs/1901.02802))
