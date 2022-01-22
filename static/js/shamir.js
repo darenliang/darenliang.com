@@ -80,7 +80,7 @@ const updateGraph = input => {
     const a = input.target.value;
     const b = -6 * a + 2;
     const c = 8 * a - 4;
-    sliderLabel.innerHTML = `a = ${round(a)}<br>b = ${round(b)}<br>c (y-intercept) = ${round(c)}`;
+    sliderLabel.innerHTML = `${round(a)} x^2 ${b < 0 ? "- " + -round(b) : "+ " + round(b)} x ${c < 0 ? "- " + -round(c) : "+ " + round(c)}`;
     plot3Options.data[0].fn = `(${a})x^2+(${b})x+(${c})`;
     functionPlot(plot3Options);
 };
