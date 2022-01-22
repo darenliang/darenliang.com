@@ -259,9 +259,9 @@ Can picking any two points recover the y-intercept in the 3 shares case?
     Here is an interactive visualization of some possible solutions,
     <div id="plot3" style="text-align: center;"></div>
     <div style="text-align: center;">
+      <span id="sliderLabel">a = 1<br>b = -4<br>c (y-intercept) = 4</span><br><br>
       <label>
-        <span id="sliderLabel">a = 1<br>b = -4<br>c = 4</span><br>
-        <input type="range" step="0.01" min="-10" max="10" value="1" class="slider" id="slider">
+        \( a \) slider <input type="range" step="0.01" min="-10" max="10" value="1" class="slider" id="slider">
       </label>
     </div>
 </details>
