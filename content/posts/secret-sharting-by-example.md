@@ -523,7 +523,7 @@ Whew! We are done! :tada:
 
 I hope this gave you a somewhat brief introduction to the world of secret sharing schemes.
 
-We haven't covered all the secret sharing schemes out there! However, Shamir's is widely considered one of the best schemes.
+We've haven't covered all the secret sharing schemes out there! However, Shamir's is widely considered one of the best secret sharing schemes.
 Here are a few alternative secret sharing schemes:
 
 * Blakley's Secret Sharing ([arxiv.org](https://arxiv.org/abs/1901.02802))
