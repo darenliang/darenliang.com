@@ -4,8 +4,10 @@ date: "2022-01-20"
 showthedate: true
 ---
 
-A note to those who disable JavaScript: this article requires loading and executing JavaScript to load equations,
-graphs, and interactive examples.
+<noscript>
+  A note to those who disable JavaScript: this article requires loading and executing JavaScript to load equations,
+  graphs, and interactive examples.
+</noscript>
 
 ## 1. The Scenario
 
