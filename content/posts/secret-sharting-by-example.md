@@ -182,7 +182,7 @@ You will note that this type of secret sharing scheme has two significant advant
   arbitrary number).
 * Shares can be lost and the original secret can still be recovered.
 
-However, you'll note that having allowing two shares to recover the original secret might not be enough. Remember,
+However, you'll note that allowing two shares to recover the original secret might not be considered secure. Remember,
 Bernard's share was leaked to the public and Edward's share was lost. If someone happened to find Edward's share, they
 could recover the original secret. We'll need to think of a way to secure the original secret through +3 shares.
 
@@ -505,9 +505,15 @@ console.log(recoverSecret(shares.splice(0, 2)));
 
 ## 7. Now What?
 
-We are done! :tada:
+Whew! We are done! :tada:
 
 I hope this gave you a somewhat brief introduction to the world of secret sharing schemes.
+
+We've haven't covered all the secret sharing schemes out there! However, Shamir's is widely considered one of the best schemes.
+Here are a few alternative secret sharing schemes:
+
+* Blakley's Secret Sharing ([arxiv.org](https://arxiv.org/abs/1901.02802))
+* Secret sharing using the Chinese remainder theorem ([wikipedia.org](https://en.m.wikipedia.org/wiki/Secret_sharing_using_the_Chinese_remainder_theorem))
 
 With the rise of the Internet, secret sharing schemes are becoming increasingly prevalent and are used in all sorts of
 applications such as blockchain and cloud computing.
