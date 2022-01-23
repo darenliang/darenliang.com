@@ -88,7 +88,7 @@ input, textarea, button {
 </div>
 <div style="margin: 10px 0">
     <label>Recover (one secret share per line):<br>
-        <textarea id="output1" style="height: 150px; width: 400px;"></textarea>
+        <textarea id="output1" style="height: 150px; max-width: 100%;"></textarea>
     </label>
     <br>
     <button onclick="recoverSecret1()">Recover Secret</button>
