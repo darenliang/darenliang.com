@@ -49,8 +49,38 @@ To recover the secret, you'll need to spell out the launch code in order of incr
     This is not ideal.
 </p>
 
-### Interactive Example
+<style>
+input, textarea, button {
+  margin: 3px 0;
+  font: 14px/1.5 monospace;
+}
 
+@media (prefers-color-scheme: dark) {
+  input, textarea, button {
+    border: 1px solid white;
+    background-color: black;
+    color: white;
+  }
+
+  .boxed {
+    padding: 0 10px;
+    border: 1px solid white ;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  input, textarea, button {
+    border: 1px solid black;
+  }
+
+  .boxed {
+    border: 1px solid black ;
+  }
+}
+</style>
+
+<div class="boxed">
+<h3 id="interactive-example">Interactive Example</h3>
 <div style="margin: 10px 0">
     <label>Secret (digits only): <input type="text" id="input1" value="857392"></label>
     <button onclick="generateShares1()">Generate Shares</button>
@@ -61,6 +91,7 @@ To recover the secret, you'll need to spell out the launch code in order of incr
     </label>
     <br>
     <button onclick="recoverSecret1()">Recover Secret</button>
+</div>
 </div>
 
 ## 3. A Somewhat Successful Attempt
@@ -127,8 +158,8 @@ properties.
 However, there's another catch. Edward is also not very careful about his secret share and ends up losing it! Without
 Edward's secret share, recovering the secret code is just as hard as brute-forcing it. Somehow, this doesn't seem ideal.
 
-### Interactive Example
-
+<div class="boxed">
+<h3 id="interactive-example">Interactive Example</h3>
 <div style="margin: 10px 0">
     <label>Secret (digits only): <input type="text" id="input2" value="857392"></label>
     <br>
@@ -142,6 +173,7 @@ Edward's secret share, recovering the secret code is just as hard as brute-forci
     </label>
     <br>
     <button onclick="recoverSecret2()">Recover Secret</button>
+</div>
 </div>
 
 ## 4. A Clever Geometric Example
@@ -273,8 +305,8 @@ polynomials.
 
 <p>The 2 shares case is known as a \( (2, n) \) scheme and the 3 shares case is known as a \( (3, n) \) scheme.</p>
 
-### Interactive Example (using the code below)
-
+<div class="boxed">
+<h3 id="interactive-example">Interactive Example (using the code below)</h3>
 <div style="margin: 10px 0">
     <label>Secret (digits only): <input type="text" id="input3" value="857392"></label>
     <br>
@@ -291,6 +323,7 @@ polynomials.
     </label>
     <br>
     <button onclick="recoverSecret3()">Recover Secret</button>
+</div>
 </div>
 
 ## 6. A Full Shamir's Secret Sharing Implementation in JavaScript
