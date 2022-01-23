@@ -74,6 +74,7 @@ input, textarea, button {
   }
 
   .boxed {
+    padding: 0 10px;
     border: 1px solid black ;
   }
 }
