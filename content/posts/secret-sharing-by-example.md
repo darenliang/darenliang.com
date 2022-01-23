@@ -29,7 +29,7 @@ code is to share the code in such a way that you and your friends must come toge
     Let's suppose our hypothetical launch code is \( 857392 \) for simplicity's sake.
 </p>
 
-You might want to give each of your, say, five friends each a letter and a number.
+You might want to give each of your five friends each a concatenated digit and number.
 
 <ul>
     <li>You get \( 81 \)</li>
