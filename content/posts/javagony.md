@@ -13,7 +13,7 @@ Javagony is Java with a few statements made not available.
 
 Here are the statements that are not available:
 
-```Java
+```java
 for (){}
 if (){} else if (){} else {}
 while (){}
@@ -29,7 +29,7 @@ clever tricks that utilize many of Java's obscure features.
 
 Here is an example of counting to n in Javagony:
 
-```Java {linenos=table}
+```java
 public class Loops {
     private static final int[] ints = {1, 0};
     private static int temp;

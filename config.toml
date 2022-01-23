@@ -5,57 +5,61 @@ enableEmoji = true
 enableRobotsTXT = true
 
 [outputs]
-	home = [ "HTML", "RSS" ]
+home = ["HTML", "RSS"]
 
 [params]
-	author = "Daren Liang"
-	description = "Daren Liang's personal website"
-	subtitle = ""
-	enableCounter = true
-	counterKey = "darenliang"
-    noJS = "Welcome to the anti-JS club!"
-    dateFmt = "2006-01-02"
-    showDatesOnPosts = true
-
+author = "Daren Liang"
+description = "Daren Liang's personal website"
+subtitle = ""
+enableCounter = true
+counterKey = "darenliang"
+noJS = "Welcome to the anti-JS club!"
+dateFmt = "2006-01-02"
+showDatesOnPosts = true
 [menu]
-	[[menu.main]]
-		identifier = "posts"
-		name = "Posts"
-		url = "/posts"
-		weight = 1
+[[menu.main]]
+identifier = "posts"
+name = "Posts"
+url = "/posts"
+weight = 1
 
-	[[menu.main]]
-		identifier = "about"
-		name = "About"
-		url = "/about"
-		weight = 2
+[[menu.main]]
+identifier = "about"
+name = "About"
+url = "/about"
+weight = 2
 
-	[[menu.main]]
-		identifier = "projects"
-		name = "Projects"
-		url = "/projects"
-		weight = 3
+[[menu.main]]
+identifier = "projects"
+name = "Projects"
+url = "/projects"
+weight = 3
 
-	[[menu.main]]
-		identifier = "resume"
-		name = "Resume"
-		url = "/doc/resume.pdf"
-		weight = 4
+[[menu.main]]
+identifier = "resume"
+name = "Resume"
+url = "/doc/resume.pdf"
+weight = 4
 
-	[[menu.footer]]
-		name = "Email"
-        url = "mailto:daren@darenliang.com"
-        weight = 1
+[[menu.footer]]
+name = "Email"
+url = "mailto:daren@darenliang.com"
+weight = 1
 
-	[[menu.footer]]
-		name = "PGP"
-        url = "/pgp"
-        weight = 2
+[[menu.footer]]
+name = "PGP"
+url = "/pgp"
+weight = 2
 
-	[[menu.footer]]
-		name = "RSS"
-        url = "/index.xml"
-        weight = 3
+[[menu.footer]]
+name = "RSS"
+url = "/index.xml"
+weight = 3
 
 [markup.goldmark.renderer]
-	unsafe = true
+unsafe = true
+
+[markup.highlight]
+codeFences = true
+guessSyntax = false
+style = "dracula"
