@@ -81,7 +81,7 @@ input, textarea, button {
 </style>
 
 <div class="boxed">
-<h3 id="interactive-example">Interactive Example</h3>
+<h3 id="interactive-example-1">Interactive Example</h3>
 <div style="margin: 10px 0">
     <label>Secret (digits only): <input type="text" id="input1" value="857392"></label>
     <button onclick="generateShares1()">Generate Shares</button>
@@ -160,7 +160,7 @@ However, there's another catch. Edward is also not very careful about his secret
 Edward's secret share, recovering the secret code is just as hard as brute-forcing it. Somehow, this doesn't seem ideal.
 
 <div class="boxed">
-<h3 id="interactive-example">Interactive Example</h3>
+<h3 id="interactive-example-2">Interactive Example</h3>
 <div style="margin: 10px 0">
     <label>Secret (digits only): <input type="text" id="input2" value="857392"></label>
     <br>
@@ -246,7 +246,9 @@ We could for example create shares in the following configuration:
 
 Using any three shares, the y-intercept of the quadratic can be recovered.
 
-### Question! (I promise it's the only question I'll ask you)
+
+<div class="boxed">
+<h3 id="question">Question! (I promise it's the only question I'll ask you)</h3>
 
 Can picking any two points recover the y-intercept in the 3 shares case?
 
@@ -298,6 +300,8 @@ Can picking any two points recover the y-intercept in the 3 shares case?
       </label>
     </div>
 </details>
+<br>
+</div>
 
 ## 5. Introducing Shamir's Secret Sharing
 
@@ -307,7 +311,7 @@ polynomials.
 <p>The 2 shares case is known as a \( (2, n) \) scheme and the 3 shares case is known as a \( (3, n) \) scheme.</p>
 
 <div class="boxed">
-<h3 id="interactive-example">Interactive Example (using the code below)</h3>
+<h3 id="interactive-example-3">Interactive Example (using the code below)</h3>
 <div style="margin: 10px 0">
     <label>Secret (digits only): <input type="text" id="input3" value="857392"></label>
     <br>
