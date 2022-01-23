@@ -88,7 +88,7 @@ input, textarea, button {
 </div>
 <div style="margin: 10px 0">
     <label>Recover (one secret share per line):<br>
-        <textarea id="output1" style="height: 150px; width: 100%;"></textarea>
+        <textarea id="output1" style="height: 150px; width: 99%; resize: vertical;"></textarea>
     </label>
     <br>
     <button onclick="recoverSecret1()">Recover Secret</button>
@@ -170,7 +170,7 @@ Edward's secret share, recovering the secret code is just as hard as brute-forci
 </div>
 <div style="margin: 10px 0">
     <label>Recover (one secret share per line with random secret on the first line):<br>
-        <textarea id="output2" style="height: 150px; width: 100%;"></textarea>
+        <textarea id="output2" style="height: 150px; width: 99%; resize: vertical;"></textarea>
     </label>
     <br>
     <button onclick="recoverSecret2()">Recover Secret</button>
@@ -324,7 +324,7 @@ polynomials.
 
 <div style="margin: 10px 0">
     <label>Recover (one secret share per line):<br>
-        <textarea id="output3" style="height: 150px; width: 100%;"></textarea>
+        <textarea id="output3" style="height: 150px; width: 99%; resize: vertical;"></textarea>
     </label>
     <br>
     <button onclick="recoverSecret3()">Recover Secret</button>
