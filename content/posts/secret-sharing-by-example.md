@@ -151,9 +151,10 @@ properties.
 </p>
 
 <p>
-    When we compare this method of generating secret shares to our first attempt. We can see that in the case that a secret
-    share is exposed, an attacker is still required to brute force all \( 10^6 \) combinations since a random secret share 
-    doesn't narrow down the brute force search area in any meaningful way.
+    When we compare this method (known as a <a href="https://en.wikipedia.org/wiki/One-time_pad">one-time pad</a> or OTP) of generating secret shares to our first attempt.
+    We can see that in the case that a secret share is exposed, an attacker is still required to brute force all 
+    \( 10^6 \) combinations since a random secret share doesn't narrow down the brute force search area in any 
+    meaningful way.
 </p>
 
 However, there's another catch. Edward is also not very careful about his secret share and ends up losing it! Without
@@ -186,7 +187,7 @@ represent shares as points on a graph.
 
 ### The 2 Shares Case
 
-<p>Let's find an arbitrary line that results in a <a href="https://en.wikipedia.org/wiki/Y-intercept">y-intercept</a> of \( 4 \).</p>
+<p>Let's find an arbitrary line that results in a y-intercept of \( 4 \).</p>
 
 <p>
     \[
