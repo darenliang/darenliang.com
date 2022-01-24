@@ -29,7 +29,7 @@ clever tricks that utilize many of Java's obscure features.
 
 Here is an example of counting to n in Javagony:
 
-```java
+```java {linenos=table}
 public class Loops {
     private static final int[] ints = {1, 0};
     private static int temp;
