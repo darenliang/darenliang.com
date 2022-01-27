@@ -100,8 +100,8 @@ const simulate1 = _ => {
         }
     }
 
-    result1.innerHTML = `Probability of going broke: ${Math.round(10000 * brokeCount / samples1) / 100}%`;
-    error1.innerHTML = `Error: ${Math.round(10000 * (brokeCount / samples1 - 1 / 9)) / 100}%`;
+    result1.innerHTML = `Probability of going broke: ${(100 * brokeCount / samples1).toFixed(4)}%`;
+    error1.innerHTML = `Error: ${(100 * (brokeCount / samples1 - 1 / 9)).toFixed(4)}%`;
 };
 
 /**
@@ -160,7 +160,7 @@ const simulate2Iteration = _ => {
     const length = simulationData.length;
     filterInPlace(simulationData, val => val !== 0);
     brokeCount += length - simulationData.length;
-    result2.innerHTML = `Probability of going broke: ${Math.round(10000 * brokeCount / totalCount) / 100}%`;
-    error2.innerHTML = `Error: ${Math.round(10000 * (brokeCount / totalCount - 1 / 9)) / 100}%`;
+    result2.innerHTML = `Probability of going broke: ${(100 * brokeCount / totalCount).toFixed(4)}%`;
+    error2.innerHTML = `Error: ${(100 * (brokeCount / totalCount - 1 / 9)).toFixed(4)}%`;
     stats2.innerHTML = `Current number of samples: ${totalCount}`;
 };
