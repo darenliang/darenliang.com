@@ -197,4 +197,4 @@ We can conclude that the exact odds of going broke is \( \frac{1}{9} \). Looks l
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script src="https://unpkg.com/function-plot/dist/function-plot.js"></script>
-<script src="/js/gamblers.js?v=1.0.0"></script>
+<script src="/js/gamblers.js?v=1.0.1"></script>

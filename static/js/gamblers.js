@@ -18,6 +18,7 @@ const plot = {
     data: [],
     disableZoom: true
 };
+functionPlot(plot);
 
 const redrawPlot = _ => {
     plot.data = [];
