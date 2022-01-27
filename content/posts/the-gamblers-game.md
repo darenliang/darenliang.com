@@ -72,14 +72,15 @@ we can estimate the probability to a degree of accuracy.
 <div class="boxed">
 <h3 id="interactive-example-1">Interactive Example</h3>
 <div style="margin: 10px 0">
-    <label>Max number of plays: <input type="text" id="plays" value="50"></label>
+    <label>Max number of plays: <input type="text" id="plays1" value="50"></label>
     <br>
-    <label>Number of samples: <input type="text" id="samples" value="100000"></label>
+    <label>Number of samples: <input type="text" id="samples1" value="100000"></label>
     <br>
     <button onclick="simulate1()">Simulate</button>
 </div>
 <div style="margin: 10px 0">
-<p id="result"><br></p>
+<p id="result1"><br></p>
+<p id="error1"><br></p>
 </div>
 </div>
 
@@ -96,11 +97,12 @@ indefinitely.
 <div class="boxed">
 <h3 id="interactive-example-2">Interactive Example using Dovetailing</h3>
 <div style="margin: 10px 0">
-    <button id="simulate2Button" onclick="simulate2()">Start Simulation</button>
+    <button id="button2" onclick="simulate2()">Start Simulation</button>
 </div>
 <div style="margin: 10px 0">
 <p id="result2"><br></p>
-<p id="result2Stats"><br></p>
+<p id="error2"><br></p>
+<p id="stats2"><br></p>
 </div>
 </div>
 
@@ -197,4 +199,4 @@ We can conclude that the exact odds of going broke is \( \frac{1}{9} \). Looks l
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script src="https://unpkg.com/function-plot/dist/function-plot.js"></script>
-<script src="/js/gamblers.js?v=1.0.1"></script>
+<script src="/js/gamblers.js?v=1.0.2"></script>

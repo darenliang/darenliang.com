@@ -60,32 +60,33 @@ const redrawPlot = _ => {
 };
 redrawPlot();
 
-const plays = parseInt(document.getElementById("plays").value);
-const samples = parseInt(document.getElementById("samples").value);
-const result = document.getElementById("result");
+const plays1 = parseInt(document.getElementById("plays1").value);
+const samples1 = parseInt(document.getElementById("samples1").value);
+const result1 = document.getElementById("result1");
+const accuracy1 = document.getElementById("accuracy1");
 
 const simulate1 = _ => {
-    if (isNaN(plays) || isNaN(samples)) {
+    if (isNaN(plays1) || isNaN(samples1)) {
         alert("Inputs should be numbers.");
         return;
     }
 
-    if (plays <= 0 || samples <= 0) {
+    if (plays1 <= 0 || samples1 <= 0) {
         alert("Inputs should be positive.");
         return;
     }
 
     let brokeCount = 0;
-    for (let i = 0; i < samples; i++) {
+    for (let i = 0; i < samples1; i++) {
         let dollars = 2;
-        for (let j = 0; j < plays; j++) {
+        for (let j = 0; j < plays1; j++) {
             // Broke
             if (dollars === 0) {
                 brokeCount++;
                 break;
             }
             // Cannot go broke
-            if (dollars > plays - j) {
+            if (dollars > plays1 - j) {
                 break;
             }
             switch (Math.floor(Math.random() * 4)) {
@@ -99,7 +100,8 @@ const simulate1 = _ => {
         }
     }
 
-    result.innerHTML = `Probability of going broke: ${Math.round(10000 * brokeCount / samples) / 100}%`;
+    result1.innerHTML = `Probability of going broke: ${Math.round(10000 * brokeCount / samples1) / 100}%`;
+    accuracy1.innerHTML = `Error: ${Math.round(10000 * (brokeCount / samples1 - 1 / 9)) / 100}%`;
 };
 
 /**
@@ -124,25 +126,27 @@ let brokeCount = 0;
 let totalCount = 0;
 let simulationInterval;
 const simulationData = [];
-const button = document.getElementById("simulate2Button");
-const simulationResult = document.getElementById("result2");
-const simulationStats = document.getElementById("result2Stats");
+const simulationSpeed = 1000;
+const button2 = document.getElementById("button2");
+const result2 = document.getElementById("result2");
+const error2 = document.getElementById("error2");
+const stats2 = document.getElementById("stats2");
 
 const simulate2 = _ => {
     if (running) {
-        button.innerHTML = "Start Simulation";
+        button2.innerHTML = "Start Simulation";
         clearInterval(simulationInterval);
         running = false;
     } else {
-        button.innerHTML = "Stop Simulation";
-        simulationInterval = setInterval(simulate2Interation, 0);
+        button2.innerHTML = "Stop Simulation";
+        simulationInterval = setInterval(simulate2Iteration, 0);
         running = true;
     }
 };
 
-const simulate2Interation = _ => {
-    totalCount++;
-    simulationData.push(2);
+const simulate2Iteration = _ => {
+    totalCount += simulationSpeed;
+    simulationData.push(...Array(simulationSpeed).fill(2));
     simulationData.forEach((_, i) => {
         switch (Math.floor(Math.random() * 4)) {
             case 0:
@@ -156,6 +160,7 @@ const simulate2Interation = _ => {
     const length = simulationData.length;
     filterInPlace(simulationData, val => val !== 0);
     brokeCount += length - simulationData.length;
-    simulationResult.innerHTML = `Probability of going broke: ${Math.round(10000 * brokeCount / totalCount) / 100}%`;
-    simulationStats.innerHTML = `Current number of samples: ${totalCount}`;
+    result2.innerHTML = `Probability of going broke: ${Math.round(10000 * brokeCount / totalCount) / 100}%`;
+    error2.innerHTML = `Error: ${Math.round(10000 * (brokeCount / totalCount - 1 / 9)) / 100}%`;
+    stats2.innerHTML = `Current number of samples: ${totalCount}`;
 };
