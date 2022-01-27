@@ -20,7 +20,7 @@ Surprisingly, this is not the case!
 <style>
 input, textarea, button {
   margin: 3px 0;
-  font: 14px/1.5 monospace;
+  font-family: 'Noto Sans Mono', monospace;
 }
 
 @media (prefers-color-scheme: dark) {

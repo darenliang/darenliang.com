@@ -45,7 +45,7 @@ To recover the secret, you'll need to spell out the launch code in order of incr
 <style>
 input, textarea, button {
   margin: 3px 0;
-  font: 14px/1.5 monospace;
+  font-family: 'Noto Sans Mono', monospace;
 }
 
 @media (prefers-color-scheme: dark) {
