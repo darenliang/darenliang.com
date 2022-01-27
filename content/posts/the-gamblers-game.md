@@ -50,7 +50,7 @@ input, textarea, button {
 
 <div id="plot" style="text-align: center;"></div>
 <div style="text-align: center;">
-  <button onclick="redrawPlot()">Retry Simulation</button>
+  <button onclick="redrawPlot()">Refresh</button>
 </div>
 
 This is a very tricky problem! I wasn't able to solve the problem at the time without this hint given in the app.
@@ -64,7 +64,7 @@ and then, having gotten there, at some point reach a wealth of \( $0 \).
 
 Let's look at two ways in which we can solve the problem. Starting with the "dumb" method of simulating the gambler's outcomes through code.
 
-### "Solve" using Simulations
+## "Solve" using Simulations
 
 We can attempt to simulate plays similar to the graph above. Given the max number of plays and the number of samples,
 we can estimate the probability to a degree of accuracy.
@@ -87,8 +87,6 @@ To increase the accuracy of our estimate we have to increase the max number of p
 we must restart the simulation when we change our parameters. Fortunately, we have a better approach that automagically 
 increases the accuracy by increasing the max number of plays and the number of samples the longer the script runs.
 
-#### Using Dovetailing
-
 Running an arbitrarily large number of samples, all potentially running infinitely long, can cause issues.
 A technique we can use is called "[dovetailing](https://en.wikipedia.org/wiki/Dovetailing_(computer_science))" which involves running the first step of the first sample, and then
 running the second step of the first sample and the first step of the second sample, and then running the third step
@@ -96,7 +94,7 @@ of the first sample, the second step of the second sample and the first step of 
 indefinitely.
 
 <div class="boxed">
-<h3 id="interactive-example-2">Interactive Example</h3>
+<h3 id="interactive-example-2">Interactive Example using Dovetailing</h3>
 <div style="margin: 10px 0">
     <button id="simulate2Button" onclick="simulate2()">Start Simulation</button>
 </div>
@@ -106,7 +104,7 @@ indefinitely.
 </div>
 </div>
 
-### Solve using Algebra
+## Solve using Algebra
 
 <p>
 Let \( p \left( n \right) \) be the probability of going broke starting with \( n \) dollars.
