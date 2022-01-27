@@ -63,7 +63,7 @@ redrawPlot();
 const plays1 = parseInt(document.getElementById("plays1").value);
 const samples1 = parseInt(document.getElementById("samples1").value);
 const result1 = document.getElementById("result1");
-const accuracy1 = document.getElementById("accuracy1");
+const error1 = document.getElementById("error1");
 
 const simulate1 = _ => {
     if (isNaN(plays1) || isNaN(samples1)) {
@@ -101,7 +101,7 @@ const simulate1 = _ => {
     }
 
     result1.innerHTML = `Probability of going broke: ${Math.round(10000 * brokeCount / samples1) / 100}%`;
-    accuracy1.innerHTML = `Error: ${Math.round(10000 * (brokeCount / samples1 - 1 / 9)) / 100}%`;
+    error1.innerHTML = `Error: ${Math.round(10000 * (brokeCount / samples1 - 1 / 9)) / 100}%`;
 };
 
 /**
