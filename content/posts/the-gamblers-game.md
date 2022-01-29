@@ -5,7 +5,7 @@ showthedate: true
 ---
 
 Here's an interesting probability question that I've found in
-atorch's [Probability Math Puzzles](https://github.com/atorch/probability_puzzles) app back in high school.
+Adrian Torchiana's [Probability Math Puzzles](https://github.com/atorch/probability_puzzles) app (highly recommended!) back in high school.
 
 > You find $2 in your pocket and decide to go gambling. Fortunately, the game you're playing has very favorable odds: each time you play, you gain $1 with probability 3/4 and lose $1 with probability 1/4.
 
