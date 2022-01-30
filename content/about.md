@@ -13,4 +13,7 @@ student at the University of Toronto.
 I enjoy working on blog posts and small programming projects on my free time.
 
 You can find me on
-GitHub [@darenliang](https://github.com/darenliang "darenliang's GitHub").
+GitHub [github.com/darenliang](https://github.com/darenliang "darenliang's GitHub").
+
+In case of an apocalypse, mirrors to select repos can be found here
+GitLab-CE [git.beats.moe/darenliang](https://git.beats.moe/darenliang "darenliang's self-hosted git repositories").
