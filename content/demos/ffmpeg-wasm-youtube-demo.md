@@ -1,0 +1,55 @@
+---
+title: "FFmpeg.wasm YouTube Downloader Demo"
+date: "2022-01-31"
+showthedate: true
+---
+
+This is a simple browser-based app (using [ffmpeg.wasm](https://github.com/ffmpegwasm/ffmpeg.wasm) and [node-ytdl-core](https://github.com/fent/node-ytdl-core)) that allows you to download YouTube videos without the need to use [youtube-dl](https://youtube-dl.org/).
+
+To use this demo, you must disable CORS in your browser.
+
+The easiest way is to install a web extension such as CORS Unblock.
+
+* Chrome: https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino?hl=en
+* Firefox: https://addons.mozilla.org/en-CA/firefox/addon/cors-unblock/
+
+There are two options in this demo:
+
+* Get Video: gets the best mp4 video+audio file available
+* Get Best Video: merges the best video and audio files into a single mp4 file
+
+To check the progress you can open up DevTools and look at the console output.
+
+Although I'll highly likely publish the source code in the near future, please contact me at daren@darenliang.com if you want to inquire about it.
+
+<style>
+input, textarea, button {
+  margin: 3px 0;
+  font-family: 'Noto Sans Mono', monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  input, textarea, button {
+    border: 1px solid white;
+    background-color: black;
+    color: white;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  input, textarea, button {
+    border: 1px solid black;
+  }
+}
+</style>
+
+<div class="boxed">
+    <label>YouTube Video URL: <input type="text" id="url"></label>
+    <button onclick="getVideo()">Get Video</button>
+    <button onclick="getBestVideo()">Get Best Video</button>
+</div>
+
+<video id="player" height="400px" controls></video>
+
+<script src="/js/ffmpeg-wasm-demo-controller.js?v=1.0.0"></script>
+<script src="/js/ffmpeg-wasm-demo.js?v=1.0.0"></script>

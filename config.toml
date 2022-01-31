@@ -32,16 +32,22 @@ url = "/about"
 weight = 2
 
 [[menu.main]]
+identifier = "demos"
+name = "Demos"
+url = "/demos"
+weight = 3
+
+[[menu.main]]
 identifier = "projects"
 name = "Projects"
 url = "/projects"
-weight = 3
+weight = 4
 
 [[menu.main]]
 identifier = "resume"
 name = "Resume"
 url = "/doc/resume.pdf"
-weight = 4
+weight = 5
 
 [[menu.footer]]
 name = "Email"
