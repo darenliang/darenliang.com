@@ -1,5 +1,5 @@
 let running = false;
-const url = document.getElementById("url");
+const urlInput = document.getElementById("url");
 const video = document.getElementById("player");
 
 const getVideo = async _ => {
@@ -9,7 +9,7 @@ const getVideo = async _ => {
     }
     running = true;
     try {
-        const buffer = await script.getVideoBuffer(url.value);
+        const buffer = await script.getVideoBuffer(urlInput.value);
         video.src = URL.createObjectURL(new Blob([buffer], {type: "video/mp4"}));
     } catch {
         alert("Failed to process video.");
@@ -24,7 +24,7 @@ const getBestVideo = async _ => {
     }
     running = true;
     try {
-        const buffer = await script.getBestVideoBuffer(url.value);
+        const buffer = await script.getBestVideoBuffer(urlInput.value);
         video.src = URL.createObjectURL(new Blob([buffer], {type: "video/mp4"}));
     } catch {
         alert("Failed to process video.");
