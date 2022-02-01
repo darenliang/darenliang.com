@@ -16,8 +16,8 @@ The easiest way is to install a web extension such as CORS Unblock.
 
 There are two options in this demo:
 
-* Get Video: gets the best mp4 video+audio file available
-* Get Best Video: merges the best video and audio files into a single mp4 file
+* Get video: gets the best mp4 video+audio file available
+* Get best video: encode the best possible mp4 file
 
 To check the progress you can open up DevTools and look at the console output.
 
@@ -49,11 +49,10 @@ input, textarea, button {
     <label>YouTube video URL: <input type="text" id="url" style="width: 100%"></label>
     <br>
     <button onclick="getVideo()">Get video</button>
-    <button onclick="getBestVideo('mp4')">Get best mp4 video</button>
-    <button onclick="getBestVideo('webm')">Get best webm video</button>
+    <button onclick="getBestVideo()">Get best video</button>
 </div>
 
 <video id="player" width="100%" controls></video>
 
-<script src="/js/ffmpeg-wasm-demo-controller.js?v=1.0.2"></script>
-<script src="/js/ffmpeg-wasm-demo.js?v=1.0.2"></script>
+<script src="/js/ffmpeg-wasm-demo-controller.js?v=1.0.3"></script>
+<script src="/js/ffmpeg-wasm-demo.js?v=1.0.3"></script>
