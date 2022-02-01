@@ -1,7 +1,6 @@
 ---
 title: "FFmpeg.wasm YouTube Downloader Demo"
-date: "2022-01-31"
-showthedate: true
+showthedate: false
 ---
 
 This is a simple browser-based app (using [ffmpeg.wasm](https://github.com/ffmpegwasm/ffmpeg.wasm) and [node-ytdl-core](https://github.com/fent/node-ytdl-core)) that allows you to download YouTube videos without the need to use [youtube-dl](https://youtube-dl.org/).
