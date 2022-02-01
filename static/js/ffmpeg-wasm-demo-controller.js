@@ -12,22 +12,22 @@ const getVideo = async _ => {
         const buffer = await script.getVideoBuffer(urlInput.value);
         video.src = URL.createObjectURL(new Blob([buffer], {type: "video/mp4"}));
     } catch {
-        alert("Failed to process video.");
+        alert("Failed to process video, please check the console output.");
     }
     running = false;
 };
 
-const getBestVideo = async _ => {
+const getBestVideo = async (type) => {
     if (running) {
         alert("Currently processing a video...");
         return;
     }
     running = true;
     try {
-        const buffer = await script.getBestVideoBuffer(urlInput.value);
-        video.src = URL.createObjectURL(new Blob([buffer], {type: "video/mp4"}));
+        const buffer = await script.getEncodedVideoBuffer(urlInput.value, type);
+        video.src = URL.createObjectURL(new Blob([buffer], {type: `video/${type}`}));
     } catch {
-        alert("Failed to process video.");
+        alert("Failed to process video, please check the console output.");
     }
     running = false;
 };
