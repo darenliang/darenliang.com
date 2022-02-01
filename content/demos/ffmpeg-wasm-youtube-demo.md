@@ -51,7 +51,7 @@ input, textarea, button {
     <br>
     <button onclick="getVideo()">Get video</button>
     <button onclick="getBestVideo()">Get best video</button>
-    <button onclick="getAudio()">Get best video</button>
+    <button onclick="getAudio()">Get best audio</button>
 </div>
 
 <video id="player" width="100%" controls></video>
