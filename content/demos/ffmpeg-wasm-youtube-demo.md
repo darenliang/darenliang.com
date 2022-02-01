@@ -18,6 +18,7 @@ There are two options in this demo:
 
 * Get video: gets the best mp4 video+audio file available
 * Get best video: encode the best possible mp4 file
+* Get audio: encode the best possible mp3 file
 
 To check the progress you can open up DevTools and look at the console output.
 
@@ -50,9 +51,10 @@ input, textarea, button {
     <br>
     <button onclick="getVideo()">Get video</button>
     <button onclick="getBestVideo()">Get best video</button>
+    <button onclick="getAudio()">Get best video</button>
 </div>
 
 <video id="player" width="100%" controls></video>
 
-<script src="/js/ffmpeg-wasm-demo-controller.js?v=1.0.3"></script>
-<script src="/js/ffmpeg-wasm-demo.js?v=1.0.3"></script>
+<script src="/js/ffmpeg-wasm-demo-controller.js?v=1.0.4"></script>
+<script src="/js/ffmpeg-wasm-demo.js?v=1.0.4"></script>
