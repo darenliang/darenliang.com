@@ -7,12 +7,12 @@ This is a simple browser-based app (using [ffmpeg.wasm](https://github.com/ffmpe
 and [node-ytdl-core](https://github.com/fent/node-ytdl-core)) that allows you to download YouTube videos without the
 need to use [youtube-dl](https://youtube-dl.org/).
 
-To use this demo, you must disable CORS in your browser.
+To use this demo, you **must disable CORS** in your browser.
 
 The easiest way is to install a web extension such as CORS Unblock.
 
-* Chrome: https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino?hl=en
-* Firefox: https://addons.mozilla.org/en-CA/firefox/addon/cors-unblock/
+* Chrome: [CORS Unblock](https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino?hl=en)
+* Firefox: I don't think there is a way to disable CORS at the moment. Here is a [Hacker News post](https://news.ycombinator.com/item?id=18595258) relating to the issue.
 
 There are two options in this demo:
 
