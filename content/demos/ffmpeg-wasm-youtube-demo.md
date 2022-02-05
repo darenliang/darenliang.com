@@ -57,4 +57,4 @@ input, textarea, button {
 <video id="player" width="100%" controls></video>
 
 <script src="/js/ffmpeg-wasm-demo-controller.js?v=1.0.4"></script>
-<script src="/js/ffmpeg-wasm-demo.js?v=1.0.6"></script>
+<script src="/js/ffmpeg-wasm-demo.js?v=1.0.7"></script>
