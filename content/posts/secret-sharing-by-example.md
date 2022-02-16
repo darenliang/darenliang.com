@@ -42,37 +42,6 @@ To recover the secret, you'll need to spell out the launch code in order of incr
     This is not ideal.
 </p>
 
-<style>
-input, textarea, button {
-  margin: 3px 0;
-  font-family: 'Noto Sans Mono', monospace;
-}
-
-@media (prefers-color-scheme: dark) {
-  input, textarea, button {
-    border: 1px solid white;
-    background-color: black;
-    color: white;
-  }
-
-  .boxed {
-    padding: 0 10px;
-    border: 1px solid white ;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  input, textarea, button {
-    border: 1px solid black;
-  }
-
-  .boxed {
-    padding: 0 10px;
-    border: 1px solid black ;
-  }
-}
-</style>
-
 <div class="boxed">
 <h3 id="interactive-example-1">Interactive Example</h3>
 <div style="margin: 10px 0">

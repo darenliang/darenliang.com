@@ -12,7 +12,8 @@ To use this demo, you **must disable CORS** in your browser.
 The easiest way is to install a web extension such as CORS Unblock.
 
 * Chrome: [CORS Unblock](https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino?hl=en)
-* Firefox: I don't think there is a way to disable CORS at the moment. Here is a [Hacker News post](https://news.ycombinator.com/item?id=18595258) relating to the issue.
+* Firefox: I don't think there is a way to disable CORS at the moment. Here is
+  a [Hacker News post](https://news.ycombinator.com/item?id=18595258) relating to the issue.
 
 There are two options in this demo:
 
@@ -24,27 +25,6 @@ To check the progress you can open up DevTools and look at the console output.
 
 Although I'll highly likely publish the source code in the near future, please contact me at daren@darenliang.com if you
 want to inquire about it.
-
-<style>
-input, textarea, button {
-  margin: 3px 0;
-  font-family: 'Noto Sans Mono', monospace;
-}
-
-@media (prefers-color-scheme: dark) {
-  input, textarea, button {
-    border: 1px solid white;
-    background-color: black;
-    color: white;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  input, textarea, button {
-    border: 1px solid black;
-  }
-}
-</style>
 
 <div class="boxed">
     <label>YouTube video URL: <input type="text" id="url" style="width: 100%"></label>

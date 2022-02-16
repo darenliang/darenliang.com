@@ -17,37 +17,6 @@ At first glance, it seems like everyone will eventually go broke given that peop
 
 Surprisingly, this is not the case!
 
-<style>
-input, textarea, button {
-  margin: 3px 0;
-  font-family: 'Noto Sans Mono', monospace;
-}
-
-@media (prefers-color-scheme: dark) {
-  input, textarea, button {
-    border: 1px solid white;
-    background-color: black;
-    color: white;
-  }
-
-  .boxed {
-    padding: 0 10px;
-    border: 1px solid white ;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  input, textarea, button {
-    border: 1px solid black;
-  }
-
-  .boxed {
-    padding: 0 10px;
-    border: 1px solid black ;
-  }
-}
-</style>
-
 <div id="plot" style="text-align: center;"></div>
 <div style="text-align: center;">
   <button onclick="redrawPlot()">Refresh</button>
