@@ -26,3 +26,7 @@ input, textarea, button {
         border: 1px solid black;
     }
 }
+
+div.highlight table pre {
+    padding: 0;
+}
