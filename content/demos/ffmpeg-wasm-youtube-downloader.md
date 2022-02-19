@@ -1,5 +1,5 @@
 ---
-title: "FFmpeg.wasm YouTube Downloader Demo"
+title: "FFmpeg.wasm YouTube Downloader"
 showthedate: false
 ---
 
@@ -26,7 +26,7 @@ To check the progress you can open up DevTools and look at the console output.
 Although I'll highly likely publish the source code in the near future, please contact me at daren@darenliang.com if you
 want to inquire about it.
 
-<div class="boxed">
+<div>
     <label>YouTube video URL: <input type="text" id="url" style="width: 100%"></label>
     <br>
     <button onclick="getVideo()">Get video</button>
