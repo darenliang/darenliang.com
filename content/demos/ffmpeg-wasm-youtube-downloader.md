@@ -36,5 +36,5 @@ want to inquire about it.
 
 <video id="player" width="100%" controls></video>
 
-<script src="/js/ffmpeg-wasm-demo-controller.js?v=1.0.4"></script>
-<script src="/js/ffmpeg-wasm-demo.js?v=1.0.7"></script>
+{{< script "/js/ffmpeg-wasm-demo-controller.js" >}}
+{{< script "/js/ffmpeg-wasm-demo.js" >}}

@@ -4,8 +4,9 @@ date: "2022-01-26"
 showthedate: true
 ---
 
-Here's an interesting probability question that I've found in
-Adrian Torchiana's [Probability Math Puzzles](https://github.com/atorch/probability_puzzles) app (highly recommended!) back in high school.
+Here's an interesting probability question that I've found in Adrian
+Torchiana's [Probability Math Puzzles](https://github.com/atorch/probability_puzzles) app (highly recommended!) back in
+high school.
 
 > You find $2 in your pocket and decide to go gambling. Fortunately, the game you're playing has very favorable odds: each time you play, you gain $1 with probability 3/4 and lose $1 with probability 1/4.
 
@@ -31,12 +32,13 @@ The answer you're looking for is just the square of the probability: to go broke
 and then, having gotten there, at some point reach a wealth of \( $0 \).
 </details>
 
-Let's look at two ways in which we can solve the problem. Starting with the "dumb" method of simulating the gambler's outcomes through code.
+Let's look at two ways in which we can solve the problem. Starting with the "dumb" method of simulating the gambler's
+outcomes through code.
 
 ## "Solve" using Simulations
 
-We can attempt to simulate plays similar to the graph above. Given the max number of plays and the number of samples,
-we can estimate the probability to a degree of accuracy.
+We can attempt to simulate plays similar to the graph above. Given the max number of plays and the number of samples, we
+can estimate the probability to a degree of accuracy.
 
 <div class="boxed">
 <h3 id="interactive-example-1">Interactive Example</h3>
@@ -53,15 +55,15 @@ we can estimate the probability to a degree of accuracy.
 </div>
 </div>
 
-To increase the accuracy of our estimate we have to increase the max number of plays and the number of samples, however, 
-we must restart the simulation when we change our parameters. Fortunately, we have a better approach that automagically 
+To increase the accuracy of our estimate we have to increase the max number of plays and the number of samples, however,
+we must restart the simulation when we change our parameters. Fortunately, we have a better approach that automagically
 increases the accuracy by increasing the max number of plays and the number of samples the longer the script runs.
 
-Running an arbitrarily large number of samples, all potentially running infinitely long, can cause issues.
-A technique we can use is called "[dovetailing](https://en.wikipedia.org/wiki/Dovetailing_(computer_science))" which involves running the first step of the first sample, and then
-running the second step of the first sample and the first step of the second sample, and then running the third step
-of the first sample, the second step of the second sample and the first step of the third sample. This pattern continues
-indefinitely.
+Running an arbitrarily large number of samples, all potentially running infinitely long, can cause issues. A technique
+we can use is called "[dovetailing](https://en.wikipedia.org/wiki/Dovetailing_(computer_science))" which involves
+running the first step of the first sample, and then running the second step of the first sample and the first step of
+the second sample, and then running the third step of the first sample, the second step of the second sample and the
+first step of the third sample. This pattern continues indefinitely.
 
 <div class="boxed">
 <h3 id="interactive-example-2">Interactive Example using Dovetailing</h3>
@@ -168,4 +170,4 @@ We can conclude that the exact odds of going broke is \( \frac{1}{9} \). Looks l
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script src="https://unpkg.com/function-plot/dist/function-plot.js"></script>
-<script src="/js/gamblers.js?v=1.0.4"></script>
+{{< script "/js/gamblers.js" >}}

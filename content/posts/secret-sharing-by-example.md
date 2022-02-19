@@ -297,15 +297,15 @@ polynomials.
 ## 6. A Full Shamir's Secret Sharing Implementation in JavaScript
 
 We've talked about how previous secret sharing schemes have specific disadvantages, and we've also talked about the
-basis of how Shamir's Secret Sharing works. But what does an actual implementation of Shamir's Secret Sharing look
-like?
+basis of how Shamir's Secret Sharing works. But what does an actual implementation of Shamir's Secret Sharing look like?
 
 Note that actual implementation of Shamir's Secret Sharing use polynomials over
 a [finite field](https://en.wikipedia.org/wiki/Finite_field) and are not representable on a 2D plane. For the
 mathematical formulation of scheme, here is a [good overview](https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing).
 
 The following code is ported from
-Wikipedia's [Shamir's Secret Sharing Python Implementation](https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing#Python_example).
+Wikipedia's [Shamir's Secret Sharing Python Implementation](https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing#Python_example)
+.
 
 **Note that this implementation is not to be used in production! I am not responsible for any liabilities caused by
 following code.**
@@ -524,11 +524,12 @@ Whew! We are done! :tada:
 
 I hope this gave you a somewhat brief introduction to the world of secret sharing schemes.
 
-We haven't covered all the secret sharing schemes out there! However, Shamir's is widely considered one of the best secret sharing schemes.
-Here are a few alternative secret sharing schemes:
+We haven't covered all the secret sharing schemes out there! However, Shamir's is widely considered one of the best
+secret sharing schemes. Here are a few alternative secret sharing schemes:
 
 * Blakley's Secret Sharing ([arxiv.org](https://arxiv.org/abs/1901.02802))
-* Secret sharing using the Chinese remainder theorem ([wikipedia.org](https://en.m.wikipedia.org/wiki/Secret_sharing_using_the_Chinese_remainder_theorem))
+* Secret sharing using the Chinese remainder
+  theorem ([wikipedia.org](https://en.m.wikipedia.org/wiki/Secret_sharing_using_the_Chinese_remainder_theorem))
 
 With the rise of the Internet, secret sharing schemes are becoming increasingly prevalent and are used in all sorts of
 applications such as blockchain and cloud computing.
@@ -547,4 +548,4 @@ This article is made possible by the following great resources and JS libraries:
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script src="https://unpkg.com/function-plot/dist/function-plot.js"></script>
-<script src="/js/shamir.js?v=1.0.0"></script>
+{{< script "/js/shamir.js" >}}
