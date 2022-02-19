@@ -10,30 +10,28 @@ let startTime;
 
 const input = document.getElementById("input");
 const latency = document.getElementById("latency");
+const copy = document.getElementById("copy");
 
 const image = document.getElementById("image");
-image.onloadstart = _ => {
-    startTime = performance.now();
-};
 image.onload = _ => {
     latency.innerText = `Loaded image in: ${performance.now() - startTime} ms`;
 };
 
 const commandMap = new Map([
-    ["cl_crosshairthickness", null],
-    ["cl_crosshairgap", null],
-    ["cl_crosshairgap", null],
-    ["cl_crosshairsize", null],
-    ["cl_crosshair_drawoutline", null],
-    ["cl_crosshair_outlinethickness", null],
-    ["cl_crosshairdot", null],
-    ["cl_crosshaircolor", null],
-    ["cl_crosshaircolor_r", null],
-    ["cl_crosshaircolor_g", null],
-    ["cl_crosshaircolor_b", null],
-    ["cl_crosshairusealpha", null],
-    ["cl_crosshairalpha", null],
-    ["cl_crosshair_t", null],
+    ["cl_crosshairthickness", undefined],
+    ["cl_crosshairgap", undefined],
+    ["cl_crosshairgap", undefined],
+    ["cl_crosshairsize", undefined],
+    ["cl_crosshair_drawoutline", undefined],
+    ["cl_crosshair_outlinethickness", undefined],
+    ["cl_crosshairdot", undefined],
+    ["cl_crosshaircolor", undefined],
+    ["cl_crosshaircolor_r", undefined],
+    ["cl_crosshaircolor_g", undefined],
+    ["cl_crosshaircolor_b", undefined],
+    ["cl_crosshairusealpha", undefined],
+    ["cl_crosshairalpha", undefined],
+    ["cl_crosshair_t", undefined],
 ]);
 
 const generateURL = _ => {
@@ -79,28 +77,28 @@ const updateCommandSet = _ => {
     return updated;
 };
 
-/**
- * https://stackoverflow.com/a/64929732
- */
-const getBase64FromUrl = async (url) => {
-    const start = performance.now();
-    const data = await fetch(url);
-    latencyValue = performance.now() - start;
-    const blob = await data.blob();
-    return new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(blob);
-        reader.onloadend = () => {
-            const base64data = reader.result;
-            resolve(base64data);
-        };
-    });
-};
-
 const updatePreview = _ => {
     if (!updateCommandSet()) {
         return;
     }
+    startTime = performance.now();
     console.log("Updating crosshair...");
     image.src = generateURL();
+};
+updatePreview();
+
+let currentCopyTimeout = null;
+const copyLink = _ => {
+    navigator.clipboard.writeText(image.src)
+        .then(_ => {
+            copy.innerText = "Copied";
+
+            if (currentCopyTimeout !== null) {
+                return;
+            }
+            currentCopyTimeout = setTimeout(_ => {
+                copy.innerHTML = "Copy";
+                currentCopyTimeout = null;
+            }, 2000);
+        });
 };

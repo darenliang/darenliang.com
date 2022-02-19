@@ -8,8 +8,8 @@ images.
 
 To learn more about how this demo: [Generating Images with Serverless](/posts/generating-images-with-serverless/)
 
-<div style="display: flex;">
-<div style="width: 70px; height: 70px;"><img id="image"></div>
+<div style="display: flex; gap: 10px;">
+<div style="width: 70px; height: 70px; text-align: center;"><img id="image"><button id="copy" onclick="copyLink()">Copy</button></div>
 <textarea id="input" style="height: 150px; width: 99%; resize: vertical; flex-grow: 1;" placeholder="Enter your crosshair commands here&#10;&#10;Example: cl_crosshairsize 2.5; cl_crosshairgap -3; cl_crosshairdot 0; cl_crosshair_drawoutline 0; cl_crosshaircolor 1; cl_crosshairthickness 1.5;  " oninput="updatePreview()"></textarea>
 </div>
 <p id="latency">Loaded image in: - ms</p>
@@ -17,4 +17,4 @@ To learn more about how this demo: [Generating Images with Serverless](/posts/ge
 Note: you can sometimes get super low image loading values, this is caused by fetching the image previously saved in
 cache.
 
-<script src="/js/csgo-crosshair-demo.js?v=1.0.0"></script>
+<script src="/js/csgo-crosshair-demo.js?v=1.0.1"></script>
