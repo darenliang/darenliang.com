@@ -22,14 +22,14 @@ called [node-canvas](https://github.com/Automattic/node-canvas).
 
 However, using node-canvas has a number of problems.
 
-Cloudflare Workers limits scripts to [1 MB](https://developers.cloudflare.com/workers/platform/limits#script-size).
+Workers limits scripts to [1 MB](https://developers.cloudflare.com/workers/platform/limits#script-size).
 Node-canvas uses [Cairo](https://www.cairographics.org/) as a native dependency. Suppose it was possible to compile
 Cairo into a WASM module it would very likely exceed 1 MB.
 
 There is another library called [node-pureimage](https://github.com/joshmarinacci/node-pureimage) which is a pure JS
 implementation of the Canvas API.
 
-Cloudflare Workers also limits the CPU runtime of functions
+Free Workers limits the CPU runtime of functions
 to [10 ms](https://developers.cloudflare.com/workers/platform/limits#cpu-runtime)
 for their free plan. Having the function run under the 10 ms CPU runtime limit proved to be difficult due to the
 complexity of generating images on the fly. Node-pureimage uses a library
@@ -59,7 +59,7 @@ By passing the crosshair command settings as query parameters, we have all the i
 
 https://crosshair.darenliang.workers.dev/?cl_crosshaircolor=0&cl_crosshairsize=2.5&cl_crosshairgap=-3
 
-Here are some example crosshairs from the best CS:GO players as of writing, served directly from Cloudflare Workers.
+Here are some example crosshairs from the best CS:GO players as of writing, served from the serverless function.
 
 ![s1mple's crosshair image](https://crosshair.darenliang.workers.dev/?cl_crosshairalpha=255&cl_crosshaircolor=4&cl_crosshairdot=1&cl_crosshairgap=-2&cl_crosshairsize=1&cl_crosshairstyle=5&cl_crosshairusealpha=1&cl_crosshairthickness=0&cl_crosshair_drawoutline=0&cl_crosshair_sniper_width=1&cl_crosshaircolor_r=1&cl_crosshaircolor_g=0&cl_crosshaircolor_b=255)
 
@@ -78,7 +78,7 @@ Here are some example crosshairs from the best CS:GO players as of writing, serv
 Generating images with serverless functions might've been a bad idea, especially on a free plan! However, the experience
 of working around the imposed limits was actually pretty fun.
 
-Cloudflare Workers does offer a paid Unbound Usage Model which allows for functions to run up to 30 seconds which is an
+Workers does offer a paid Unbound Usage Model which allows for functions to run up to 30 seconds which is an
 ample amount of time. All in all, Cloudflare Workers is a great platform to get started with serverless; it has a low-latency key-value database, has more favourable 
 pricing compared to the big three cloud providers (AWS, GCP, and Azure) and can run JavaScript code with minimal delay in large 
 part due to not needing to run code within individual containers.
@@ -87,7 +87,7 @@ Here is an interactive demo of you want to try it out for
 yourself: [CS:GO Crosshair Preview](/demos/csgo-crosshair-preview/)
 
 <details>
-<summary>Source code for the Cloudflare Worker function for anyone who is curious</summary>
+<summary>Source code for anyone who is curious</summary>
 
 ```js {linenos=table}
 /**
