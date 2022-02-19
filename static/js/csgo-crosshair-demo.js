@@ -14,7 +14,7 @@ const copy = document.getElementById("copy");
 
 const image = document.getElementById("image");
 image.onload = _ => {
-    latency.innerText = `Loaded image in: ${performance.now() - startTime} ms`;
+    latency.innerText = `Loaded image in: ${Math.round(performance.now() - startTime)} ms`;
 };
 
 const commandMap = new Map([
