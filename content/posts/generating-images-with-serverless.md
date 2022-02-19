@@ -79,9 +79,9 @@ Generating images with serverless functions might've been a bad idea, especially
 of working around the imposed limits was actually pretty fun.
 
 Cloudflare Workers does offer a paid Unbound Usage Model which allows for functions to run up to 30 seconds which is an
-ample amount of time. All in all, Cloudflare Workers is a great platform to get started with serverless It has more favourable 
+ample amount of time. All in all, Cloudflare Workers is a great platform to get started with serverless; it has a low-latency key-value database, has more favourable 
 pricing compared to the big three cloud providers (AWS, GCP, and Azure) and can run JavaScript code with minimal delay in large 
-part due to [not needing to run code within individual containers](https://blog.cloudflare.com/cloud-computing-without-containers/).
+part due to not needing to run code within individual containers.
 
 Here is an interactive demo of you want to try it out for
 yourself: [CS:GO Crosshair Preview](/demos/csgo-crosshair-preview/)
