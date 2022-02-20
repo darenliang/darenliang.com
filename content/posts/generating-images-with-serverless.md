@@ -60,6 +60,14 @@ https://crosshair.darenliang.workers.dev/?cl_crosshaircolor=0&cl_crosshairsize=2
 
 Here are some example crosshairs from the best CS:GO players as of writing, served from the serverless function.
 
+<style>
+@media (prefers-color-scheme: light) {
+    img {
+        background-color: black;
+    }
+}
+</style>
+
 ![s1mple's crosshair image](https://crosshair.darenliang.workers.dev/?cl_crosshairalpha=255&cl_crosshaircolor=4&cl_crosshairdot=1&cl_crosshairgap=-2&cl_crosshairsize=1&cl_crosshairstyle=5&cl_crosshairusealpha=1&cl_crosshairthickness=0&cl_crosshair_drawoutline=0&cl_crosshair_sniper_width=1&cl_crosshaircolor_r=1&cl_crosshaircolor_g=0&cl_crosshaircolor_b=255)
 
 <p align="center" style="font-size: small">s1mple's crosshair</p>
