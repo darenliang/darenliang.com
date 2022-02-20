@@ -1,0 +1,24 @@
+{
+  "name": "ytdl-ffmpeg-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "run": "node --experimental-wasm-threads --experimental-wasm-bulk-memory main.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "browserify": "browserify main.js --standalone script > bundle.js",
+    "terser": "terser --compress --mangle --output ytdl-ffmpeg-demo.js -- bundle.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^17.0.0",
+    "terser": "^5.10.0"
+  },
+  "dependencies": {
+    "@ffmpeg/core": "^0.10.0",
+    "@ffmpeg/ffmpeg": "^0.10.1",
+    "ytdl-core": "^4.10.1"
+  }
+}

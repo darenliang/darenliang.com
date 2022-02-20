@@ -1,5 +1,6 @@
 ---
 title: "FFmpeg.wasm YouTube Downloader"
+date: "0002-01-01"
 showthedate: false
 ---
 
@@ -32,9 +33,12 @@ want to inquire about it.
     <button onclick="getVideo()">Get video</button>
     <button onclick="getBestVideo()">Get best video</button>
     <button onclick="getAudio()">Get best audio</button>
+    <br>
 </div>
 
 <video id="player" width="100%" controls></video>
 
-{{< script "/js/ffmpeg-wasm-demo-controller.js" >}}
-{{< script "/js/ffmpeg-wasm-demo.js" >}}
+<textarea id="log" style="height: 150px; width: 99%; resize: vertical; font-size: 9px;" readonly></textarea>
+
+{{< script "/js/ytdl-ffmpeg-demo-controller.js" >}}
+{{< script "/js/ytdl-ffmpeg-demo.js" >}}
