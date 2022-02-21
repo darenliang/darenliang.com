@@ -157,7 +157,7 @@ represent shares as points on a graph.
     \]
 </p>
 
-<div id="plot1" style="text-align: center;"></div>
+<div id="plot1" style="text-align: center; height: 400px;"></div>
 
 <p>Taking any two points where \( x \neq 0 \), gives us the ability to recover the line hence finding the y-intercept.</p>
 
@@ -194,7 +194,7 @@ Let's consider the following quadratic function:
     \]
 </p>
 
-<div id="plot2" style="text-align: center;"></div>
+<div id="plot2" style="text-align: center; height: 400px;"></div>
 
 We could for example create shares in the following configuration:
 
@@ -255,7 +255,7 @@ Can picking any two points recover the y-intercept in the 3 shares case?
         4^2(2)+4(-10)+12=4
     \]
     Here is an interactive visualization of some possible solutions,
-    <div id="plot3" style="text-align: center;"></div>
+    <div id="plot3" style="text-align: center; height: 400px;"></div>
     <div style="text-align: center;">
       <span id="sliderLabel">1 x^2 - 4 x + 4</span><br>
       <label>

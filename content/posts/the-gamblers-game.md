@@ -18,7 +18,7 @@ At first glance, it seems like everyone will eventually go broke given that peop
 
 Surprisingly, this is not the case!
 
-<div id="plot" style="text-align: center;"></div>
+<div id="plot" style="text-align: center; height: 500px;"></div>
 <div style="text-align: center;">
   <button onclick="redrawPlot()">Refresh</button>
 </div>
