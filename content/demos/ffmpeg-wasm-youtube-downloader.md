@@ -8,9 +8,10 @@ This is a simple browser-based app (using [ffmpeg.wasm](https://github.com/ffmpe
 and [node-ytdl-core](https://github.com/fent/node-ytdl-core)) that allows you to download YouTube videos without the
 need to use [youtube-dl](https://youtube-dl.org/).
 
-To use this demo, you **must disable CORS** in your browser.
+To use this demo, you **must disable CORS** in your browser. I might implement a backend to proxy YouTube requests in 
+the future, but currently the only way to get the demo working is to have CORS disabled.
 
-The easiest way is to install a web extension such as CORS Unblock.
+The easiest way to disable CORS is to install a web extension such as CORS Unblock.
 
 * Chrome: [CORS Unblock](https://chrome.google.com/webstore/detail/cors-unblock/lfhmikememgdcahcdlaciloancbhjino?hl=en)
 * Firefox: I don't think there is a way to disable CORS at the moment. Here is
@@ -22,10 +23,7 @@ There are two options in this demo:
 * Get best video: encode the best possible mp4 file
 * Get audio: encode the best possible mp3 file
 
-To check the progress you can open up DevTools and look at the console output.
-
-Although I'll highly likely publish the source code in the near future, please contact me at daren@darenliang.com if you
-want to inquire about it.
+The source code can be found [here](https://github.com/darenliang/darenliang.com/tree/master/misc/ytdl-ffmpeg-demo).
 
 <div>
     <label>YouTube video URL: <input type="text" id="url" style="width: 100%"></label>
