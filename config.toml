@@ -16,7 +16,7 @@ counterKey = "darenliang"
 noJS = "Welcome to the anti-JS club!"
 dateFmt = "2006-01-02"
 showDatesOnPosts = true
-customCss = ["css/custom.css"]
+customCss = []
 
 [menu]
 [[menu.main]]
