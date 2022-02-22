@@ -18,7 +18,7 @@ const ytdlOptions = {
             const originURL = parsed.protocol + "//" + parsed.hostname + parsed.path;
             parsed.host = "proxy.darenliang.workers.dev";
             parsed.hostname = "proxy.darenliang.workers.dev";
-            parsed.path = "/?url=" + originURL;
+            parsed.path = "/?url=" + encodeURIComponent(originURL);
             parsed.protocol = "https:";
             return parsed;
         }
