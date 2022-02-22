@@ -8,15 +8,15 @@ const ffmpeg = createFFmpeg({log: true});
 })();
 
 const proxy = url => {
-    return "https://proxy.darenliang.workers.dev/?url=" + encodeURIComponent(url);
+    return "https://proxy.darenliang.com/?url=" + encodeURIComponent(url);
 };
 
 const ytdlOptions = {
     requestOptions: {
         transform: (parsed) => {
             const originURL = parsed.protocol + "//" + parsed.hostname + parsed.path;
-            parsed.host = "proxy.darenliang.workers.dev";
-            parsed.hostname = "proxy.darenliang.workers.dev";
+            parsed.host = "proxy.darenliang.com";
+            parsed.hostname = "proxy.darenliang.com";
             parsed.path = "/?url=" + encodeURIComponent(originURL);
             parsed.protocol = "https:";
             return parsed;

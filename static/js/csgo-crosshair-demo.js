@@ -1,5 +1,5 @@
 (() => {
-    const ENDPOINT = "https://crosshair.darenliang.workers.dev/";
+    const ENDPOINT = "https://crosshair.darenliang.com/";
 
     const input = document.getElementById("input");
     const latency = document.getElementById("latency");

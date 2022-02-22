@@ -56,7 +56,7 @@ Using pngjs was enough to keep the function from timing out and made generating 
 
 By passing the crosshair command settings as query parameters, we have all the information we need to draw a crosshair.
 
-https://crosshair.darenliang.workers.dev/?cl_crosshaircolor=0&cl_crosshairsize=2.5&cl_crosshairgap=-3
+https://crosshair.darenliang.com/?cl_crosshaircolor=0&cl_crosshairsize=2.5&cl_crosshairgap=-3
 
 Here are some example crosshairs from the best CS:GO players as of writing, served from the serverless function.
 
@@ -68,15 +68,15 @@ Here are some example crosshairs from the best CS:GO players as of writing, serv
 }
 </style>
 
-![s1mple's crosshair image](https://crosshair.darenliang.workers.dev/?cl_crosshairalpha=255&cl_crosshaircolor=4&cl_crosshairdot=1&cl_crosshairgap=-2&cl_crosshairsize=1&cl_crosshairstyle=5&cl_crosshairusealpha=1&cl_crosshairthickness=0&cl_crosshair_drawoutline=0&cl_crosshair_sniper_width=1&cl_crosshaircolor_r=1&cl_crosshaircolor_g=0&cl_crosshaircolor_b=255)
+![s1mple's crosshair image](https://crosshair.darenliang.com/?cl_crosshairalpha=255&cl_crosshaircolor=4&cl_crosshairdot=1&cl_crosshairgap=-2&cl_crosshairsize=1&cl_crosshairstyle=5&cl_crosshairusealpha=1&cl_crosshairthickness=0&cl_crosshair_drawoutline=0&cl_crosshair_sniper_width=1&cl_crosshaircolor_r=1&cl_crosshaircolor_g=0&cl_crosshaircolor_b=255)
 
 <p align="center" style="font-size: small">s1mple's crosshair</p>
 
-![ZywOo's crosshair image](https://crosshair.darenliang.workers.dev/?cl_crosshair_drawoutline=0&cl_crosshair_sniper_width=1&cl_crosshairalpha=200&cl_crosshaircolor=4&cl_crosshaircolor_b=50&cl_crosshaircolor_g=250&cl_crosshaircolor_r=50&cl_crosshairdot=0&cl_crosshairgap=-2&cl_crosshairsize=2&cl_crosshairstyle=4&cl_crosshairthickness=1)
+![ZywOo's crosshair image](https://crosshair.darenliang.com/?cl_crosshair_drawoutline=0&cl_crosshair_sniper_width=1&cl_crosshairalpha=200&cl_crosshaircolor=4&cl_crosshaircolor_b=50&cl_crosshaircolor_g=250&cl_crosshaircolor_r=50&cl_crosshairdot=0&cl_crosshairgap=-2&cl_crosshairsize=2&cl_crosshairstyle=4&cl_crosshairthickness=1)
 
 <p align="center" style="font-size: small">ZywOo's crosshair</p>
 
-![NiKo's crosshair image](https://crosshair.darenliang.workers.dev/?cl_crosshairalpha=255&cl_crosshaircolor=5&cl_crosshairdot=0&cl_crosshairgap=-4&cl_crosshairsize=1&cl_crosshairstyle=4&cl_crosshairthickness=1&cl_crosshair_drawoutline=0&cl_crosshair_sniper_width=1&cl_crosshaircolor_r=255&cl_crosshaircolor_g=255&cl_crosshaircolor_b=255)
+![NiKo's crosshair image](https://crosshair.darenliang.com/?cl_crosshairalpha=255&cl_crosshaircolor=5&cl_crosshairdot=0&cl_crosshairgap=-4&cl_crosshairsize=1&cl_crosshairstyle=4&cl_crosshairthickness=1&cl_crosshair_drawoutline=0&cl_crosshair_sniper_width=1&cl_crosshaircolor_r=255&cl_crosshaircolor_g=255&cl_crosshaircolor_b=255)
 
 <p align="center" style="font-size: small">NiKo's crosshair</p>
 
