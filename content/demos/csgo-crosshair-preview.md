@@ -18,4 +18,4 @@ To learn more about how this demo: [Generating Images with Serverless](/posts/ge
 Note: you can sometimes get super low image loading values, this is caused by fetching the image previously saved in
 cache.
 
-{{< script "/js/csgo-crosshair-demo.js" >}}
+{{< script "/js/csgo-crosshair-demo.min.js" >}}

@@ -2,7 +2,7 @@
 title: "A few projects I've worked on"
 ---
 
-<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script async src="https://buttons.github.io/buttons.js"></script>
 
 <p align="center"><img alt="MikuBot" style="border-radius: 8px;" src="/img/MikuBotIconSmall.png" /></p>
 <h1 style="text-align: center">MikuBot</h1>

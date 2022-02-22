@@ -38,5 +38,5 @@ The source code can be found [here](https://github.com/darenliang/darenliang.com
 
 <textarea id="log" style="height: 150px; width: 99%; resize: vertical; font-size: 9px;" readonly></textarea>
 
-{{< script "/js/ytdl-ffmpeg-demo-controller.js" >}}
-{{< script "/js/ytdl-ffmpeg-demo.js" >}}
+{{< script "/js/ytdl-ffmpeg-demo-controller.min.js" >}}
+{{< script "/js/ytdl-ffmpeg-demo.min.js" >}}

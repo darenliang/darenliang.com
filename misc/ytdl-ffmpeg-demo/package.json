@@ -6,8 +6,8 @@
   "scripts": {
     "run": "node --experimental-wasm-threads --experimental-wasm-bulk-memory main.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "browserify": "browserify main.js --standalone script > bundle.js",
-    "terser": "terser --compress --mangle --output ytdl-ffmpeg-demo.js -- bundle.js"
+    "browserify": "browserify main.js --standalone script > ytdl-ffmpeg-demo.js",
+    "terser": "terser --compress --mangle --output ytdl-ffmpeg-demo.min.js -- ytdl-ffmpeg-demo.js"
   },
   "keywords": [],
   "author": "",

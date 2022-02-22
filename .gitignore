@@ -5,6 +5,5 @@ public/
 **/node_modules/
 
 # ytdl-ffmpeg-demo
-misc/ytdl-ffmpeg-demo/ffmpeg-wasm-demo.js
-misc/ytdl-ffmpeg-demo/bundle.js
-misc/ytdl-ffmpeg-demo/bundle.min.js
+misc/ytdl-ffmpeg-demo/ytdl-ffmpeg-demo.js
+misc/ytdl-ffmpeg-demo/ytdl-ffmpeg-demo.min.js

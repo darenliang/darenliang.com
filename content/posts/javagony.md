@@ -4,7 +4,7 @@ date: "2019-10-08"
 showthedate: true
 ---
 
-<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script async src="https://buttons.github.io/buttons.js"></script>
 
 ### The Javagony
 
