@@ -7,14 +7,14 @@
     "run": "node --experimental-wasm-threads --experimental-wasm-bulk-memory main.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "browserify": "browserify main.js --standalone script > ytdl-ffmpeg-demo.js",
-    "terser": "terser --compress --mangle --output ytdl-ffmpeg-demo.min.js -- ytdl-ffmpeg-demo.js"
+    "minimize": "google-closure-compiler ytdl-ffmpeg-demo.js --js_output_file ytdl-ffmpeg-demo.min.js"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
     "browserify": "^17.0.0",
-    "terser": "^5.10.0"
+    "google-closure-compiler": "^20220202.0.0"
   },
   "dependencies": {
     "@ffmpeg/core": "^0.10.0",

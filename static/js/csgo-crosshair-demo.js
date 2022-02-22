@@ -1,104 +1,102 @@
-/**
- * This is some really messy and janky code
- * Please don't look :(
- */
+(() => {
+    const ENDPOINT = "https://crosshair.darenliang.workers.dev/";
 
+    const input = document.getElementById("input");
+    const latency = document.getElementById("latency");
+    const copy = document.getElementById("copy");
 
-const ENDPOINT = "https://crosshair.darenliang.workers.dev/";
+    let startTime;
+    const image = document.getElementById("image");
+    image.onload = () => {
+        latency.innerText = `Loaded image in: ${Math.round(performance.now() - startTime)} ms`;
+    };
 
-let startTime;
+    const commandMap = new Map([
+        ["cl_crosshairthickness", undefined],
+        ["cl_crosshairgap", undefined],
+        ["cl_crosshairgap", undefined],
+        ["cl_crosshairsize", undefined],
+        ["cl_crosshair_drawoutline", undefined],
+        ["cl_crosshair_outlinethickness", undefined],
+        ["cl_crosshairdot", undefined],
+        ["cl_crosshaircolor", undefined],
+        ["cl_crosshaircolor_r", undefined],
+        ["cl_crosshaircolor_g", undefined],
+        ["cl_crosshaircolor_b", undefined],
+        ["cl_crosshairusealpha", undefined],
+        ["cl_crosshairalpha", undefined],
+        ["cl_crosshair_t", undefined],
+    ]);
 
-const input = document.getElementById("input");
-const latency = document.getElementById("latency");
-const copy = document.getElementById("copy");
-
-const image = document.getElementById("image");
-image.onload = _ => {
-    latency.innerText = `Loaded image in: ${Math.round(performance.now() - startTime)} ms`;
-};
-
-const commandMap = new Map([
-    ["cl_crosshairthickness", undefined],
-    ["cl_crosshairgap", undefined],
-    ["cl_crosshairgap", undefined],
-    ["cl_crosshairsize", undefined],
-    ["cl_crosshair_drawoutline", undefined],
-    ["cl_crosshair_outlinethickness", undefined],
-    ["cl_crosshairdot", undefined],
-    ["cl_crosshaircolor", undefined],
-    ["cl_crosshaircolor_r", undefined],
-    ["cl_crosshaircolor_g", undefined],
-    ["cl_crosshaircolor_b", undefined],
-    ["cl_crosshairusealpha", undefined],
-    ["cl_crosshairalpha", undefined],
-    ["cl_crosshair_t", undefined],
-]);
-
-const generateURL = _ => {
-    const url = [];
-    for (const [key, value] of commandMap) {
-        if (value === null) {
-            continue;
+    const generateURL = () => {
+        const url = [];
+        for (const [key, value] of commandMap) {
+            if (value === null) {
+                continue;
+            }
+            url.push(`${key}=${value}`);
         }
-        url.push(`${key}=${value}`);
-    }
-    return `${ENDPOINT}?${url.join("&")}`;
-};
+        return `${ENDPOINT}?${url.join("&")}`;
+    };
 
-const updateCommandSet = _ => {
-    let updated = false;
-    const activeSet = new Set();
-    const params = input.value.split(";");
-    for (const param of params) {
-        let kv = param.trim().split(" ");
-        if (kv.length !== 2) {
-            continue;
-        }
-        if (!commandMap.has(kv[0])) {
-            continue;
-        }
-        if (commandMap.get(kv[0]) === kv[1]) {
+    const updateCommandSet = () => {
+        let updated = false;
+        const activeSet = new Set();
+        const params = input.value.split(";");
+        for (const param of params) {
+            let kv = param.trim().split(" ");
+            if (kv.length !== 2) {
+                continue;
+            }
+            if (!commandMap.has(kv[0])) {
+                continue;
+            }
+            if (commandMap.get(kv[0]) === kv[1]) {
+                activeSet.add(kv[0]);
+                continue;
+            }
+            commandMap.set(kv[0], kv[1]);
             activeSet.add(kv[0]);
-            continue;
-        }
-        commandMap.set(kv[0], kv[1]);
-        activeSet.add(kv[0]);
-        updated = true;
-    }
-    for (const key of commandMap.keys()) {
-        if (activeSet.has(key)) {
-            continue;
-        }
-        if (commandMap.get(key) !== null) {
             updated = true;
         }
-        commandMap.set(key, null);
-    }
-    return updated;
-};
-
-const updatePreview = _ => {
-    if (!updateCommandSet()) {
-        return;
-    }
-    startTime = performance.now();
-    console.log("Updating crosshair...");
-    image.src = generateURL();
-};
-updatePreview();
-
-let currentCopyTimeout = null;
-const copyLink = _ => {
-    navigator.clipboard.writeText(image.src)
-        .then(_ => {
-            copy.innerText = "Copied";
-
-            if (currentCopyTimeout !== null) {
-                return;
+        for (const key of commandMap.keys()) {
+            if (activeSet.has(key)) {
+                continue;
             }
-            currentCopyTimeout = setTimeout(_ => {
-                copy.innerHTML = "Copy";
-                currentCopyTimeout = null;
-            }, 2000);
-        });
-};
+            if (commandMap.get(key) !== null) {
+                updated = true;
+            }
+            commandMap.set(key, null);
+        }
+        return updated;
+    };
+
+    const updatePreview = () => {
+        if (!updateCommandSet()) {
+            return;
+        }
+        startTime = performance.now();
+        console.log("Updating crosshair...");
+        image.src = generateURL();
+    };
+    updatePreview();
+
+    let currentCopyTimeout = null;
+    const copyLink = () => {
+        navigator.clipboard.writeText(image.src)
+            .then(() => {
+                copy.innerText = "Copied";
+
+                if (currentCopyTimeout !== null) {
+                    return;
+                }
+                currentCopyTimeout = setTimeout(() => {
+                    copy.innerHTML = "Copy";
+                    currentCopyTimeout = null;
+                }, 2000);
+            });
+    };
+
+    window["copyLink"] = copyLink;
+    window["updatePreview"] = updatePreview;
+})();
