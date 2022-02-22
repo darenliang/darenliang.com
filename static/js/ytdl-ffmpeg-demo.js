@@ -8,6 +8,23 @@ const ffmpeg = createFFmpeg({log: true});
     await ffmpeg.load();
 })();
 
+const proxy = url => {
+    return "https://proxy.darenliang.workers.dev/?url=" + encodeURIComponent(url);
+};
+
+const ytdlOptions = {
+    requestOptions: {
+        transform: (parsed) => {
+            const originURL = parsed.protocol + "//" + parsed.hostname + parsed.path;
+            parsed.host = "proxy.darenliang.workers.dev";
+            parsed.hostname = "proxy.darenliang.workers.dev";
+            parsed.path = "/?url=" + originURL;
+            parsed.protocol = "https:";
+            return parsed;
+        }
+    }
+};
+
 const getEncodedAudioBuffer = async url => {
     console.log("[info] unlinking old audio data");
     try {
@@ -16,13 +33,13 @@ const getEncodedAudioBuffer = async url => {
     }
 
     console.log("[info] getting audio info");
-    const info = await ytdl.getInfo(url);
+    const info = await ytdl.getInfo(url, ytdlOptions);
 
     console.log("[info] getting audio formats");
     const audioInfo = ytdl.chooseFormat(info.formats, {quality: "highestaudio", filter: "audioonly"});
 
     console.log("[info] fetching audio data");
-    const audioData = await fetchFile(audioInfo.url);
+    const audioData = await fetchFile(proxy(audioInfo.url));
 
     console.log("[info] writing audio data");
     const audioFilename = `audio.${audioInfo.container}`;
@@ -40,7 +57,7 @@ const getEncodedAudioBuffer = async url => {
 
 const getVideoBuffer = async url => {
     console.log("[info] getting video info");
-    const info = await ytdl.getInfo(url);
+    const info = await ytdl.getInfo(url, ytdlOptions);
 
     console.log("[info] getting video formats");
     const videoInfo = ytdl.chooseFormat(info.formats, {
@@ -49,7 +66,7 @@ const getVideoBuffer = async url => {
     });
 
     console.log("[info] fetching final video data");
-    const audioData = await fetchFile(videoInfo.url);
+    const audioData = await fetchFile(proxy(videoInfo.url));
 
     console.log("[info] sending final video data");
     return audioData.buffer;
@@ -63,7 +80,7 @@ const getEncodedVideoBuffer = async url => {
     }
 
     console.log("[info] getting video info");
-    const info = await ytdl.getInfo(url);
+    const info = await ytdl.getInfo(url, ytdlOptions);
 
     console.log("[info] getting video formats");
     const videoInfo = ytdl.chooseFormat(info.formats, {quality: "highestvideo"});
@@ -72,7 +89,7 @@ const getEncodedVideoBuffer = async url => {
     const audioInfo = ytdl.chooseFormat(info.formats, {quality: "highestaudio", filter: "audioonly"});
 
     console.log("[info] fetching video and audio data");
-    const [videoData, audioData] = await Promise.all([fetchFile(videoInfo.url), fetchFile(audioInfo.url)]);
+    const [videoData, audioData] = await Promise.all([fetchFile(proxy(videoInfo.url)), fetchFile(proxy(audioInfo.url))]);
 
     console.log("[info] writing video and audio data");
     const videoFilename = `video.${videoInfo.container}`;
