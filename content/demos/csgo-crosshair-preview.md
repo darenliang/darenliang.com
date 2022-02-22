@@ -10,7 +10,7 @@ images.
 To learn more about how this demo: [Generating Images with Serverless](/posts/generating-images-with-serverless/)
 
 <div style="display: flex; gap: 10px;">
-<div style="width: 80px; text-align: center;"><img id="image"><button id="copy" onclick="copyLink()">Copy</button></div>
+<div style="width: 80px; text-align: center;"><img width="64px" height="64px" id="image"><button id="copy" onclick="copyLink()">Copy</button></div>
 <textarea id="input" style="height: 150px; width: 99%; resize: vertical; flex-grow: 1;" placeholder="Enter your crosshair commands here&#10;&#10;Example: cl_crosshairsize 2.5; cl_crosshairgap -3; cl_crosshairdot 0; cl_crosshair_drawoutline 0; cl_crosshaircolor 1; cl_crosshairthickness 1.5;  " oninput="updatePreview()"></textarea>
 </div>
 <p id="latency">Loaded image in: - ms</p>
