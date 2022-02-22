@@ -19,7 +19,7 @@
 
     const handleError = e => {
         if (e instanceof TypeError) {
-            console.log("[error] Network error, please refresh the page and try again later.");
+            console.log("[error] YouTube proxy is currently having issues, please try again later.");
             return;
         }
         console.log("[error] Failed to process files, please check the console output.");
