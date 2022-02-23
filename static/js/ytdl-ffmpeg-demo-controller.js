@@ -15,8 +15,8 @@
             alert("YouTube proxy is currently having issues, please try again later.");
             return;
         }
-        console.log("[error] Failed to process files, please check the console output or DevTools.");
-        alert("Failed to process files, please check the console output or DevTools.");
+        console.log("[error] An error has occurred, please check the console output or DevTools.");
+        alert("An error has occurred, please check the console output or DevTools.");
     };
 
     (() => {
@@ -39,7 +39,14 @@
         }
         formatsRunning = true;
 
-        const info = await script.getInfo(urlInput.value);
+        let info;
+        try {
+            info = await script.getInfo(urlInput.value);
+        } catch (e) {
+            handleError(e);
+            formatsRunning = false;
+            return;
+        }
         const formats = info.formats;
 
         videoList = [];
