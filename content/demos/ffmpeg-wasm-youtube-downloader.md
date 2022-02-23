@@ -30,10 +30,8 @@ input[type="radio"]{
 <button onclick="getFastVideo()">Get fast video</button>
 <button onclick="getBestVideo()">Get best video</button>
 <button onclick="getBestAudio()">Get best audio</button>
-<br>
 <form id="formats" action="javascript:void(0);"></form>
-<br>
-<video id="player" width="100%" controls></video>
+<div id="output" style="width: 100%"></div>
 <br>
 <textarea id="log" style="height: 200px; width: 99%; resize: vertical; font-size: 9px;" readonly></textarea>
 

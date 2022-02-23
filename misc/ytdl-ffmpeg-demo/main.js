@@ -25,8 +25,8 @@ const proxy = url => {
 
 const ytdlOptions = {
     requestOptions: {
-        maxRetries: 10,
-        backoff: {inc: 3000, max: 3000},
+        maxRetries: 5,
+        backoff: {inc: 2000, max: 2000},
         transform: (parsed) => {
             const originURL = parsed.protocol + "//" + parsed.hostname + parsed.path;
             parsed.host = "proxy.darenliang.com";

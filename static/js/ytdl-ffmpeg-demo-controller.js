@@ -5,8 +5,8 @@
     let audioList = [];
 
     const urlInput = document.getElementById("url");
+    const output = document.getElementById("output");
     const formatsForm = document.getElementById("formats");
-    const video = document.getElementById("player");
     const log = document.getElementById("log");
 
     const handleError = e => {
@@ -87,15 +87,21 @@
             if (videoValue) {
                 if (audioValue) {
                     const buffer = await script.getVideoBuffer(videoList[parseInt(videoValue)], audioList[parseInt(audioValue)]);
-                    video.src = URL.createObjectURL(new Blob([buffer], {type: "video/mp4"}));
+                    output.innerHTML = "<br><video id=\"player\" width=\"100%\" controls></video><br>";
+                    const player = document.getElementById("player");
+                    player.src = URL.createObjectURL(new Blob([buffer], {type: "video/mp4"}));
                 } else {
                     const buffer = await script.getVideoBuffer(videoList[parseInt(videoValue)]);
-                    video.src = URL.createObjectURL(new Blob([buffer], {type: "video/mp4"}));
+                    output.innerHTML = "<br><video id=\"player\" width=\"100%\" controls></video><br>";
+                    const player = document.getElementById("player");
+                    player.src = URL.createObjectURL(new Blob([buffer], {type: "video/mp4"}));
                 }
             } else {
                 if (audioValue) {
                     const buffer = await script.getAudioBuffer(audioList[parseInt(audioValue)]);
-                    video.src = URL.createObjectURL(new Blob([buffer], {type: "audio/mp3"}));
+                    output.innerHTML = "<br><audio id=\"player\" style=\"width: 100%\" controls></audio><br>";
+                    const player = document.getElementById("player");
+                    player.src = URL.createObjectURL(new Blob([buffer], {type: "audio/mp3"}));
                 } else {
                     alert("No format was selected...");
                 }
@@ -114,7 +120,9 @@
         running = true;
         try {
             const buffer = await script.getFastVideoBuffer(urlInput.value);
-            video.src = URL.createObjectURL(new Blob([buffer], {type: "video/mp4"}));
+            output.innerHTML = "<br><video id=\"player\" width=\"100%\" controls></video><br>";
+            const player = document.getElementById("player");
+            player.src = URL.createObjectURL(new Blob([buffer], {type: "video/mp4"}));
         } catch (e) {
             handleError(e);
         }
@@ -129,7 +137,9 @@
         running = true;
         try {
             const buffer = await script.getBestVideoBuffer(urlInput.value);
-            video.src = URL.createObjectURL(new Blob([buffer], {type: "video/mp4"}));
+            output.innerHTML = "<br><video id=\"player\" width=\"100%\" controls></video><br>";
+            const player = document.getElementById("player");
+            player.src = URL.createObjectURL(new Blob([buffer], {type: "video/mp4"}));
         } catch (e) {
             handleError(e);
         }
@@ -144,7 +154,9 @@
         running = true;
         try {
             const buffer = await script.getBestAudioBuffer(urlInput.value);
-            video.src = URL.createObjectURL(new Blob([buffer], {type: "audio/mp3"}));
+            output.innerHTML = "<br><audio id=\"player\" style=\"width: 100%\" controls></audio><br>";
+            const player = document.getElementById("player");
+            player.src = URL.createObjectURL(new Blob([buffer], {type: "audio/mp3"}));
         } catch (e) {
             handleError(e);
         }
