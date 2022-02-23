@@ -98,13 +98,17 @@ const getVideoBuffer = async (videoInfo, audioInfo = null) => {
 const getFastVideoBuffer = async url => {
     const info = await getInfo(url);
 
-    console.log("[info] choosing format");
+    console.log("[info] choosing formats");
     const videoInfo = ytdl.chooseFormat(info.formats, {
         quality: "highest",
-        filter: "videoandaudio"
+        filter: format => format.container === "mp4"
     });
 
-    return await getVideoBuffer(videoInfo);
+    console.log("[info] fetching data");
+    const videoData = await fetchFile(proxy(videoInfo.url));
+
+    console.log("[info] sending data");
+    return videoData.buffer;
 };
 
 const getBestVideoBuffer = async url => {

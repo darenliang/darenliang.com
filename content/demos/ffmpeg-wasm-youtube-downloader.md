@@ -12,9 +12,9 @@ This demo is confirmed to work on modern Firefox/Chromium-based browsers.
 
 There are four options in this demo:
 
-* Get formats: Manually select to merge formats. If video is selected, the output will be a video. If only audio is selected, the output will be an audio file.
-* Get fast video: Encode a high quality video file with audio.
-* Get best video: Encode the highest quality video file with audio.
+* Get formats: Manually select formats to merge. If video is selected, the output will be a video. If only audio is selected, the output will be an audio file.
+* Get fast video: Get a high quality video file with audio. No encoding is done.
+* Get best video: Encode the highest quality video file with audio. The best video and audio files are merged into a single file.
 * Get best audio: Encode the highest quality audio file.
 
 The source code can be found [here](https://github.com/darenliang/darenliang.com/tree/master/misc/ytdl-ffmpeg-demo).

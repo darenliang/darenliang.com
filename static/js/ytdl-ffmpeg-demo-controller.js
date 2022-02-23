@@ -74,7 +74,7 @@
 
     const getMedia = async () => {
         if (running) {
-            alert("Currently processing a video file...");
+            alert("Currently processing files...");
             return;
         }
         running = true;
@@ -108,7 +108,7 @@
 
     const getFastVideo = async () => {
         if (running) {
-            alert("Currently processing a video file...");
+            alert("Currently processing files...");
             return;
         }
         running = true;
@@ -123,7 +123,7 @@
 
     const getBestVideo = async () => {
         if (running) {
-            alert("Currently processing a video file...");
+            alert("Currently processing files...");
             return;
         }
         running = true;
@@ -138,7 +138,7 @@
 
     const getBestAudio = async () => {
         if (running) {
-            alert("Currently processing an audio file...");
+            alert("Currently processing files...");
             return;
         }
         running = true;
