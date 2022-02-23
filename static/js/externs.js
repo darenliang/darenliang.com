@@ -5,6 +5,9 @@
 
 // ytdl-ffmpeg-demo-controller.js
 const script = {};
+script.getInfo = function(url) {};
+script.getAudioBuffer = function(url) {};
 script.getVideoBuffer = function(url) {};
-script.getEncodedVideoBuffer = function(url) {};
-script.getEncodedAudioBuffer = function(url) {};
+script.getFastVideoBuffer = function(url) {};
+script.getBestVideoBuffer = function(url) {};
+script.getBestAudioBuffer = function(url) {};

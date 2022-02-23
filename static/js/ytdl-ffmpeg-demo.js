@@ -8,6 +8,18 @@ const ffmpeg = createFFmpeg({log: true});
     await ffmpeg.load();
 })();
 
+const cleanMemory = () => {
+    console.log("[info] unlinking old data");
+    try {
+        ffmpeg.FS("unlink", "output.mp3");
+    } catch {
+    }
+    try {
+        ffmpeg.FS("unlink", "output.mp4");
+    } catch {
+    }
+};
+
 const proxy = url => {
     return "https://proxy.darenliang.com/?url=" + encodeURIComponent(url);
 };
@@ -27,93 +39,109 @@ const ytdlOptions = {
     }
 };
 
-const getEncodedAudioBuffer = async url => {
-    console.log("[info] unlinking old audio data");
-    try {
-        ffmpeg.FS("unlink", "output.mp3");
-    } catch {
-    }
+const getInfo = async url => {
+    console.log("[info] getting info");
+    return await ytdl.getInfo(url, ytdlOptions);
+};
 
-    console.log("[info] getting audio info");
-    const info = await ytdl.getInfo(url, ytdlOptions);
+const getAudioBuffer = async audioInfo => {
+    cleanMemory();
 
-    console.log("[info] getting audio formats");
-    const audioInfo = ytdl.chooseFormat(info.formats, {quality: "highestaudio", filter: "audioonly"});
-
-    console.log("[info] fetching audio data");
+    console.log("[info] fetching data");
     const audioData = await fetchFile(proxy(audioInfo.url));
 
-    console.log("[info] writing audio data");
+    console.log("[info] writing data");
     const audioFilename = `audio.${audioInfo.container}`;
     ffmpeg.FS("writeFile", audioFilename, audioData);
 
-    console.log("[info] encoding audio as mp3");
+    console.log("[info] encoding as mp3");
     await ffmpeg.run("-i", audioFilename, "output.mp3");
 
-    console.log("[info] unlink temporary audio file");
+    console.log("[info] unlink temporary file");
     ffmpeg.FS("unlink", audioFilename);
 
-    console.log("[info] sending final audio data");
+    console.log("[info] sending final data");
     return ffmpeg.FS("readFile", "output.mp3").buffer;
 };
 
-const getVideoBuffer = async url => {
-    console.log("[info] getting video info");
-    const info = await ytdl.getInfo(url, ytdlOptions);
+const getVideoBuffer = async (videoInfo, audioInfo = null) => {
+    cleanMemory();
 
-    console.log("[info] getting video formats");
-    const videoInfo = ytdl.chooseFormat(info.formats, {
-        quality: "highest",
-        filter: format => format.container === "mp4"
-    });
-
-    console.log("[info] fetching final video data");
-    const audioData = await fetchFile(proxy(videoInfo.url));
-
-    console.log("[info] sending final video data");
-    return audioData.buffer;
-};
-
-const getEncodedVideoBuffer = async url => {
-    console.log("[info] unlinking old video data");
-    try {
-        ffmpeg.FS("unlink", "output.mp4");
-    } catch {
+    console.log("[info] fetching data");
+    let videoData, audioData, audioFilename;
+    if (audioInfo) {
+        [videoData, audioData] = await Promise.all([fetchFile(proxy(videoInfo.url)), fetchFile(proxy(audioInfo.url))]);
+        audioFilename = `audio.${audioInfo.container}`;
+        ffmpeg.FS("writeFile", audioFilename, audioData);
+    } else {
+        videoData = await fetchFile(proxy(videoInfo.url));
     }
 
-    console.log("[info] getting video info");
-    const info = await ytdl.getInfo(url, ytdlOptions);
-
-    console.log("[info] getting video formats");
-    const videoInfo = ytdl.chooseFormat(info.formats, {quality: "highestvideo"});
-
-    console.log("[info] getting audio formats");
-    const audioInfo = ytdl.chooseFormat(info.formats, {quality: "highestaudio", filter: "audioonly"});
-
-    console.log("[info] fetching video and audio data");
-    const [videoData, audioData] = await Promise.all([fetchFile(proxy(videoInfo.url)), fetchFile(proxy(audioInfo.url))]);
-
-    console.log("[info] writing video and audio data");
+    console.log("[info] writing data");
     const videoFilename = `video.${videoInfo.container}`;
-    const audioFilename = `audio.${audioInfo.container}`;
     ffmpeg.FS("writeFile", videoFilename, videoData);
-    ffmpeg.FS("writeFile", audioFilename, audioData);
 
-    console.log("[info] merging video and audio data");
-    await ffmpeg.run("-i", videoFilename, "-i", audioFilename, "-c:v", "copy", "-c:a", "copy", "-shortest", "output.mp4");
+    console.log("[info] encoding as mp4");
+    if (audioInfo) {
+        await ffmpeg.run("-i", videoFilename, "-i", audioFilename, "-c:v", "copy", "-c:a", "copy", "-shortest", "output.mp4");
+        ffmpeg.FS("unlink", audioFilename);
+    } else {
+        await ffmpeg.run("-i", videoFilename, "output.mp4");
+    }
 
-    console.log("[info] unlink temporary video and audio files");
+    console.log("[info] unlink temporary files");
     ffmpeg.FS("unlink", videoFilename);
-    ffmpeg.FS("unlink", audioFilename);
 
-    console.log("[info] sending final video data");
+    console.log("[info] sending final data");
     return ffmpeg.FS("readFile", "output.mp4").buffer;
 };
 
+const getFastVideoBuffer = async url => {
+    const info = await getInfo(url);
+
+    console.log("[info] choosing format");
+    const videoInfo = ytdl.chooseFormat(info.formats, {
+        quality: "highest",
+        filter: "videoandaudio"
+    });
+
+    return await getVideoBuffer(videoInfo);
+};
+
+const getBestVideoBuffer = async url => {
+    const info = await getInfo(url);
+
+    console.log("[info] choosing formats");
+    const videoInfo = ytdl.chooseFormat(info.formats, {
+        quality: "highestvideo"
+    });
+    const audioInfo = ytdl.chooseFormat(info.formats, {
+        quality: "highestaudio",
+        filter: "audioonly"
+    });
+
+    return await getVideoBuffer(videoInfo, audioInfo);
+};
+
+const getBestAudioBuffer = async url => {
+    const info = await getInfo(url);
+
+    console.log("[info] choosing format");
+    const audioInfo = ytdl.chooseFormat(info.formats, {
+        quality: "highestaudio",
+        filter: "audioonly"
+    });
+
+    return await getAudioBuffer(audioInfo);
+};
+
 module.exports = {
-    getEncodedAudioBuffer: getEncodedAudioBuffer,
+    getInfo: getInfo,
+    getAudioBuffer: getAudioBuffer,
     getVideoBuffer: getVideoBuffer,
-    getEncodedVideoBuffer: getEncodedVideoBuffer,
+    getFastVideoBuffer: getFastVideoBuffer,
+    getBestVideoBuffer: getBestVideoBuffer,
+    getBestAudioBuffer: getBestAudioBuffer
 };
 
 },{"@ffmpeg/ffmpeg":9,"ytdl-core":80}],2:[function(require,module,exports){

@@ -8,26 +8,34 @@ This is a simple browser-based app (using [ffmpeg.wasm](https://github.com/ffmpe
 and [node-ytdl-core](https://github.com/fent/node-ytdl-core)) that allows you to download YouTube videos without the
 need to use [youtube-dl](https://youtube-dl.org/) locally.
 
-There are two options in this demo:
+This demo is confirmed to work on modern Firefox/Chromium-based browsers.
 
-* Get video: gets the best mp4 video+audio file available
-* Get best video: encode the best possible mp4 file
-* Get audio: encode the best possible mp3 file
+There are four options in this demo:
+
+* Get formats: Manually select to merge formats. If video is selected, the output will be a video. If only audio is selected, the output will be an audio file.
+* Get fast video: Encode a high quality video file with audio.
+* Get best video: Encode the highest quality video file with audio.
+* Get best audio: Encode the highest quality audio file.
 
 The source code can be found [here](https://github.com/darenliang/darenliang.com/tree/master/misc/ytdl-ffmpeg-demo).
 
-<div>
-    <label>YouTube video URL: <input type="text" id="url" style="width: 100%"></label>
-    <br>
-    <button onclick="getVideo()">Get video</button>
-    <button onclick="getBestVideo()">Get best video</button>
-    <button onclick="getAudio()">Get best audio</button>
-    <br>
-</div>
-
+<style>
+input[type="radio"]{
+    margin-right: 10px;
+}
+</style>
+<label>YouTube video URL: <input type="text" id="url" style="width: 100%"></label>
+<br>
+<button onclick="getFormats()">Get formats</button>
+<button onclick="getFastVideo()">Get fast video</button>
+<button onclick="getBestVideo()">Get best video</button>
+<button onclick="getBestAudio()">Get best audio</button>
+<br>
+<form id="formats" action="javascript:void(0);"></form>
+<br>
 <video id="player" width="100%" controls></video>
-
-<textarea id="log" style="height: 150px; width: 99%; resize: vertical; font-size: 9px;" readonly></textarea>
+<br>
+<textarea id="log" style="height: 200px; width: 99%; resize: vertical; font-size: 9px;" readonly></textarea>
 
 {{< script "/js/ytdl-ffmpeg-demo-controller.min.js" >}}
 {{< script "/js/ytdl-ffmpeg-demo.min.js" >}}
