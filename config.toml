@@ -49,6 +49,12 @@ name = "Resume"
 url = "/doc/resume.pdf"
 weight = 5
 
+[[menu.main]]
+identifier = "ukraine"
+name = "🇺🇦 Slava Ukraini!"
+url = "https://donate.redcross.ca/page/100227/donate/1"
+weight = 6
+
 [[menu.footer]]
 name = "Email"
 url = "mailto:daren@darenliang.com"
