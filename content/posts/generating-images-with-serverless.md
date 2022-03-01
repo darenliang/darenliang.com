@@ -102,7 +102,19 @@ yourself: [CS:GO Crosshair Preview](/demos/csgo-crosshair-preview/)
  * Import pngjs library
  * https://github.com/lukeapage/pngjs
  */
-const {PNG} = require("pngjs");
+const PNG = require("pngjs").PNG;
+
+/**
+ * Headers used
+ */
+const headers = {
+    "Content-Type": "image/png",
+    "Content-Disposition": "inline; filename=\"crosshair.png\"",
+    "Cache-Control": "s-maxage=31536000",
+    // Used to protect your function from abuse
+    // If you want anyone to use it use "*" instead
+    "Access-Control-Allow-Origin": "https://www.darenliang.com"
+};
 
 /**
  * Dimensions
@@ -170,66 +182,72 @@ function drawRectangle(pixels, coords, color) {
  * @param {number} pad: pad size
  */
 function drawOutline(pixels, coords, pad) {
-    const newCoords = [[coords[0][0] - pad, coords[0][1] - pad], [coords[1][0] + pad, coords[1][1] + pad]];
+    const newCoords = [
+        [
+            coords[0][0] - pad,
+            coords[0][1] - pad
+        ],
+        [
+            coords[1][0] + pad,
+            coords[1][1] + pad
+        ]
+    ];
 
     drawRectangle(pixels, newCoords, [0, 0, 0, 255]);
 }
 
 /**
- * Generate crosshair
+ * Handle request
+ *
+ * @param event: event to handle
+ * @return {Promise<Response>} response
  */
-function generateCrosshair(req) {
-    const url = new URL(req.url);
-    const params = new URLSearchParams(url.search);
+async function handleRequest(event) {
+    const url = new URL(event.request.url);
+    const key = new Request(url.toString(), event.request);
+    const cache = caches.default;
+
+    /**
+     * If response is cached, return cached response
+     */
+    let response = await cache.match(key);
+    if (response) {
+        return response;
+    }
+
+    const {searchParams} = url;
 
     /**
      * Basic
      */
-    const cl_crosshairthickness = parseNum(params.get("cl_crosshairthickness"), 0.5, 5, 0.5, 2);
-    const cl_crosshairgap = parseNum(params.get("cl_crosshairgap"), -5, 5, 0, 1);
-
-    /**
-     * Detect no reticle
-     */
-    let crosshairReticle;
-    {
-        const val = parseFloat(params.get("cl_crosshairgap"));
-        if (!isNaN(val) && Math.abs(val) > 100) {
-            crosshairReticle = 0;
-        } else {
-            crosshairReticle = 1;
-        }
-    }
-
-    /**
-     * Some people use 0-0.5 crosshair sizes
-     */
-    const cl_crosshairsize = parseNum(params.get("cl_crosshairsize"), 0, 10, 5, 2);
+    const cl_crosshairthickness = parseNum(searchParams.get("cl_crosshairthickness"), 0.5, 5, 0.5, 2);
+    const cl_crosshairgap = parseNum(searchParams.get("cl_crosshairgap"), -2, 5, 0, 1);
+    const cl_crosshairsize = parseNum(searchParams.get("cl_crosshairsize"), 1, 10, 5, 1);
 
     /**
      * Outlines
      */
-    const cl_crosshair_drawoutline = parseBool(params.get("cl_crosshair_drawoutline"), 0);
-    const cl_crosshair_outlinethickness = parseNum(params.get("cl_crosshair_outlinethickness"), 1, 3, 1, 1);
+    const cl_crosshair_drawoutline = parseBool(searchParams.get("cl_crosshair_drawoutline"), 0);
+    const cl_crosshair_outlinethickness = parseNum(searchParams.get("cl_crosshair_outlinethickness"), 1, 3, 1, 1);
 
     /**
      * Dot
      */
-    const cl_crosshairdot = parseBool(params.get("cl_crosshairdot"), 0);
+    const cl_crosshairdot = parseBool(searchParams.get("cl_crosshairdot"), 0);
 
     /**
      * Color
      */
-    const cl_crosshaircolor = parseNum(params.get("cl_crosshaircolor"), 0, 5, 1, 1);
-    const cl_crosshaircolor_r = parseNum(params.get("cl_crosshaircolor_r"), 0, 255, 50, 1);
-    const cl_crosshaircolor_g = parseNum(params.get("cl_crosshaircolor_g"), 0, 255, 250, 1);
-    const cl_crosshaircolor_b = parseNum(params.get("cl_crosshaircolor_b"), 0, 255, 50, 1);
+    const cl_crosshaircolor = parseNum(searchParams.get("cl_crosshaircolor"), 0, 5, 1, 1);
+    const cl_crosshaircolor_r = parseNum(searchParams.get("cl_crosshaircolor_r"), 0, 255, 50, 1);
+    const cl_crosshaircolor_g = parseNum(searchParams.get("cl_crosshaircolor_g"), 0, 255, 250, 1);
+    const cl_crosshaircolor_b = parseNum(searchParams.get("cl_crosshaircolor_b"), 0, 255, 50, 1);
 
     /**
      * Alpha
      */
-    const cl_crosshairusealpha = parseBool(params.get("cl_crosshairusealpha"), 1);
-    const cl_crosshairalpha = parseNum(params.get("cl_crosshairalpha"), 0, 255, 200, 1);
+    const cl_crosshairusealpha = parseBool(searchParams.get("cl_crosshairusealpha"), 1);
+    const cl_crosshairalpha = parseNum(searchParams.get("cl_crosshairalpha"), 0, 255, 200, 1);
     const crosshairalpha = cl_crosshairusealpha === 1 ? cl_crosshairalpha : 255;
 
     /**
@@ -278,7 +296,7 @@ function generateCrosshair(req) {
     /**
      * T-shaped
      */
-    const cl_crosshair_t = parseBool(params.get("cl_crosshair_t"), 0);
+    const cl_crosshair_t = parseBool(searchParams.get("cl_crosshair_t"), 0);
 
 
     const dot = [[centerX, centerY], [centerX, centerY]];
@@ -341,27 +359,25 @@ function generateCrosshair(req) {
     /**
      * Color crosshair
      */
-    if (crosshairReticle === 1) {
-        for (const [i, el] of crosshair.entries()) {
-            /**
-             * Check for T crosshair
-             */
-            if (cl_crosshair_t === 1 && i === 0) {
-                continue;
-            }
-
-            /**
-             * Crosshair outline
-             */
-            if (cl_crosshair_drawoutline === 1) {
-                drawOutline(pixels, el, cl_crosshair_outlinethickness);
-            }
-
-            /**
-             * Crosshair part
-             */
-            drawRectangle(pixels, el, crosshaircolor);
+    for (const [i, el] of crosshair.entries()) {
+        /**
+         * Check for T crosshair
+         */
+        if (cl_crosshair_t === 1 && i === 0) {
+            continue;
         }
+
+        /**
+         * Crosshair outline
+         */
+        if (cl_crosshair_drawoutline === 1) {
+            drawOutline(pixels, el, cl_crosshair_outlinethickness);
+        }
+
+        /**
+         * Crosshair part
+         */
+        drawRectangle(pixels, el, crosshaircolor);
     }
 
 
@@ -391,29 +407,20 @@ function generateCrosshair(req) {
     }
 
     /**
-     * Write out buffer
+     * Write out buffer and cache response
      */
-    return PNG.sync.write(png);
+    const buffer = PNG.sync.write(png);
+    response = new Response(buffer, {headers});
+    event.waitUntil(cache.put(key, response.clone()));
+    return response;
 }
 
-/**
- * Add event listener
- */
 addEventListener("fetch", event => {
-    event.respondWith(handleRequest(event.request));
+    switch (event.request.method) {
+        case "GET":
+            return event.respondWith(handleRequest(event));
+    }
 });
-
-/**
- * Handle request
- * @param {Request} req: request object
- */
-async function handleRequest(req) {
-    const res = new Response(generateCrosshair(req));
-    res.headers.append("Content-Type", "image/png");
-    res.headers.append("Content-Disposition", "inline; filename=\"crosshair.png\"");
-    res.headers.append("Cache-Control", "s-maxage=31536000");
-    return res;
-}
 ```
 
 </details>
