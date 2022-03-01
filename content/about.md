@@ -14,5 +14,3 @@ I enjoy working on blog posts and small programming projects on my free time.
 
 You can find me on
 GitHub [@darenliang](https://github.com/darenliang "darenliang's GitHub").
-
-In case of an apocalypse, mirrors to select repos can be found on [git.beats.moe](https://git.beats.moe/darenliang).
