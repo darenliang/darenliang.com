@@ -51,7 +51,7 @@ weight = 5
 
 [[menu.main]]
 identifier = "ukraine"
-name = "🇺🇦 Slava Ukraini!"
+name = "🇺🇦 Slava Ukraini"
 url = "https://donate.redcross.ca/page/100227/donate/1"
 weight = 6
 
