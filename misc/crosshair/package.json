@@ -1,0 +1,20 @@
+{
+  "name": "crosshair",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Daren Liang <daren@darenliang.com>",
+  "license": "MIT",
+  "dependencies": {
+    "memfs": "^3.2.0",
+    "pngjs": "^6.0.0"
+  },
+  "devDependencies": {
+    "closure-webpack-plugin": "^2.5.0",
+    "google-closure-compiler": "^20220202.0.0"
+  }
+}

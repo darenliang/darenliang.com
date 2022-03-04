@@ -1,0 +1,8 @@
+name = "proxy"
+type = "javascript"
+
+account_id = ""
+workers_dev = false
+route = ""
+zone_id = ""
+compatibility_date = "2022-02-22"
