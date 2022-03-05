@@ -12,6 +12,7 @@ author = "Daren Liang"
 description = "Daren Liang's personal website"
 subtitle = ""
 enableCounter = true
+enableTemporal = true
 counterKey = "darenliang"
 noJS = "Welcome to the anti-JS club!"
 dateFmt = "2006-01-02"
@@ -48,12 +49,6 @@ identifier = "resume"
 name = "Resume"
 url = "/doc/resume.pdf"
 weight = 5
-
-[[menu.main]]
-identifier = "ukraine"
-name = "🇺🇦 Slava Ukraini"
-url = "https://donate.redcross.ca/page/100227/donate/1"
-weight = 6
 
 [[menu.footer]]
 name = "Email"
