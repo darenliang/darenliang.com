@@ -12,7 +12,7 @@ supports [0 ms cold starts](https://blog.cloudflare.com/eliminating-cold-starts-
 
 Writing a serverless function for this task didn't seem too difficult, but I've quickly ran into some issues.
 
-### Using node-canvas
+## Using node-canvas
 
 Modern browsers are equipped with the [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) which
 makes it extremely easy to create 2D graphics. Although this API is meant to be used in the browser, Automattic
@@ -35,7 +35,7 @@ complexity of generating images on the fly. Node-pureimage uses a library
 called [pngjs](https://github.com/lukeapage/pngjs) which in itself, is very useful in generating PNGs through a
 low-level interface.
 
-### Using pngjs
+## Using pngjs
 
 Pngjs provides an incredibly simple interface for manipulating individual pixels.
 
@@ -70,17 +70,17 @@ Here are some example crosshairs from the best CS:GO players as of writing, serv
 
 ![s1mple's crosshair image](https://crosshair.darenliang.com/?cl_crosshairalpha=255&cl_crosshaircolor=4&cl_crosshairdot=1&cl_crosshairgap=-2&cl_crosshairsize=1&cl_crosshairstyle=5&cl_crosshairusealpha=1&cl_crosshairthickness=0&cl_crosshair_drawoutline=0&cl_crosshair_sniper_width=1&cl_crosshaircolor_r=1&cl_crosshaircolor_g=0&cl_crosshaircolor_b=255)
 
-<p align="center" style="font-size: small">s1mple's crosshair</p>
+<p align="center">s1mple's crosshair</p>
 
 ![ZywOo's crosshair image](https://crosshair.darenliang.com/?cl_crosshair_drawoutline=0&cl_crosshair_sniper_width=1&cl_crosshairalpha=200&cl_crosshaircolor=4&cl_crosshaircolor_b=50&cl_crosshaircolor_g=250&cl_crosshaircolor_r=50&cl_crosshairdot=0&cl_crosshairgap=-2&cl_crosshairsize=2&cl_crosshairstyle=4&cl_crosshairthickness=1)
 
-<p align="center" style="font-size: small">ZywOo's crosshair</p>
+<p align="center">ZywOo's crosshair</p>
 
 ![NiKo's crosshair image](https://crosshair.darenliang.com/?cl_crosshairalpha=255&cl_crosshaircolor=5&cl_crosshairdot=0&cl_crosshairgap=-4&cl_crosshairsize=1&cl_crosshairstyle=4&cl_crosshairthickness=1&cl_crosshair_drawoutline=0&cl_crosshair_sniper_width=1&cl_crosshaircolor_r=255&cl_crosshaircolor_g=255&cl_crosshaircolor_b=255)
 
-<p align="center" style="font-size: small">NiKo's crosshair</p>
+<p align="center">NiKo's crosshair</p>
 
-### What I've Learned
+## What I've Learned
 
 Generating images with serverless functions might've been a bad idea, especially on a free plan! However, the experience
 of working around the imposed limits was actually pretty fun.
