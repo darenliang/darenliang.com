@@ -116,6 +116,16 @@ async function generateContent(request) {
 
     let content = "";
     content += `<p>${json.location.name}, ${json.location.region}, ${json.location.country}</p>`;
+
+    const time = new Date(json.location.localtime_epoch * 1000);
+    const currentTime = new Date((new Date()).toLocaleString("en-US", {timeZone: json.location.timezone_id}));
+    const minutesAgo = Math.floor((currentTime - time) / 60000);
+    content += `<p>${time.toLocaleTimeString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+        timezone: "UTC"
+    })} (${minutesAgo} minute${minutesAgo !== 1 ? "s" : ""} ago)</p>`;
+
     content += `<p><span title="${titleCase(json.current.weather_descriptions[0])}">${weatherCodeEmoji(json.current.weather_code, isDay(json.current.is_day))}</span> ${titleCase(json.current.weather_descriptions[0])}</p>`;
     content += `<p><span title="Current temperature">${localeTemp(json.current.temperature, json.location.country)}</span></p>`;
     content += "<table class=\"weather-table\">";
