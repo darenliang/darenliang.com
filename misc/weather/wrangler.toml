@@ -2,7 +2,7 @@ name = "weather"
 type = "javascript"
 
 account_id = ""
-workers_dev = true
+workers_dev = false
 route = ""
 zone_id = ""
 compatibility_date = "2022-03-04"

@@ -111,23 +111,25 @@ function weatherCodeEmoji(code, day = true) {
 
 async function generateContent(request) {
     const clientIP = request.headers.get("CF-Connecting-IP");
+    const apiStartTime = Date.now();
     const data = await fetch(`https://weatherstack.com/ws_api.php?ip=${clientIP}`);
+    const apiTime = Date.now() - apiStartTime;
     const json = await data.json();
 
     let content = "";
-    content += `<p>${json.location.name}, ${json.location.region}, ${json.location.country}</p>`;
+    content += `<p>${json.location.name}, ${json.location.region}, ${json.location.country}<br>`;
 
     const time = new Date(json.location.localtime_epoch * 1000);
     const currentTime = new Date((new Date()).toLocaleString("en-US", {timeZone: json.location.timezone_id}));
     const minutesAgo = Math.floor((currentTime - time) / 60000);
-    content += `<p>${time.toLocaleTimeString("en-US", {
+    content += `${time.toLocaleTimeString("en-US", {
         hour: "2-digit",
         minute: "2-digit",
         timezone: "UTC"
     })} (${minutesAgo} minute${minutesAgo !== 1 ? "s" : ""} ago)</p>`;
 
-    content += `<p><span title="${titleCase(json.current.weather_descriptions[0])}">${weatherCodeEmoji(json.current.weather_code, isDay(json.current.is_day))}</span> ${titleCase(json.current.weather_descriptions[0])}</p>`;
-    content += `<p><span title="Current temperature">${localeTemp(json.current.temperature, json.location.country)}</span></p>`;
+    content += `<p><span title="${titleCase(json.current.weather_descriptions[0])}">${weatherCodeEmoji(json.current.weather_code, isDay(json.current.is_day))}</span> ${titleCase(json.current.weather_descriptions[0])}<br>`;
+    content += `<span title="Current temperature">${localeTemp(json.current.temperature, json.location.country)}</span></p>`;
     content += "<table class=\"weather-table\">";
 
     let dayRow = "";
@@ -147,6 +149,10 @@ async function generateContent(request) {
     }
 
     content += `<tr>${dayRow}</tr><tr>${emojiRow}</tr><tr>${maxTempRow}</tr><tr>${avgTempRow}</tr><tr>${minTempRow}</tr></table>`;
+    content += "<details><summary>Connection Details</summary>";
+    content += `<p>Request from: ${request.cf.asOrganization} (AS${request.cf.asn})<br>`;
+    content += `Request handled: ${request.cf.colo}<br>`;
+    content += `API latency: ${apiTime} ms<br>`;
     return content;
 }
 

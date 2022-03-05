@@ -9,6 +9,9 @@ showthedate: false
     table-layout: fixed;
     width: 100%;
 }
+details {
+    padding-top: 1em;
+}
 </style>
 
 <div id="weather"></div>
