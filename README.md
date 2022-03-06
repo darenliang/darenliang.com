@@ -11,22 +11,22 @@ This website uses Hugo and custom [fork](https://github.com/darenliang/smol) of 
 
 # Enable counter statistics via https://counter.darenliang.com
 # counterKey represents the key used to track visit counts
-enableCounter = bool
-counterKey = str
+enableCounter = true # bool
+counterKey = "website name" # str
 
 # Enable temporal banner for various important events
-enableTemporal = bool
+enableTemporal = true # bool
 
 # Custom message for people that disable JavaScript when
 # enableCounter is true
-noJS = str
+noJS = "JS is not enabled" # str
 
 # Show dates on post, good for pages that shouldn't dates
-showDatesOnPosts = bool
+showDatesOnPosts = "2006-01-02" # str
 
 # Add custom CSS
 # This is present in the original smol theme, but is undocumented
-customCss = [string]
+customCss = [] # [str]
 ```
 
 ### Post header format
