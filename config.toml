@@ -17,6 +17,7 @@ enableTemporal = true
 noJS = "Welcome to the anti-JS club!"
 dateFmt = "2006-01-02"
 showDatesOnPosts = true
+mainSections = ["posts"]
 customCss = []
 
 [menu]
