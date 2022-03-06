@@ -6,7 +6,7 @@ showthedate: true
 
 <script async src="https://buttons.github.io/buttons.js"></script>
 
-## The Javagony
+### The Javagony
 
 First coined by [flawr](https://chat.stackexchange.com/users/122082/flawr),
 Javagony is Java with a few statements made not available.

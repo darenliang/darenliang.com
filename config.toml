@@ -27,15 +27,15 @@ url = "/posts"
 weight = 1
 
 [[menu.main]]
-identifier = "about"
-name = "About"
-url = "/about"
-weight = 2
-
-[[menu.main]]
 identifier = "demos"
 name = "Demos"
 url = "/demos"
+weight = 2
+
+[[menu.main]]
+identifier = "about"
+name = "About"
+url = "/about"
 weight = 3
 
 [[menu.main]]
