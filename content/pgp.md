@@ -1,5 +1,7 @@
 ---
 title: "Here is my public key"
+showthedate: false
+nodisqus: true
 ---
 
 ```text

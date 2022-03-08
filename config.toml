@@ -3,6 +3,7 @@ theme = "smol"
 title = "Daren Liang"
 enableEmoji = true
 enableRobotsTXT = true
+disqusShortname = "darenliang"
 
 [outputs]
 home = ["HTML", "RSS"]

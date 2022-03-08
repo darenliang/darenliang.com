@@ -35,6 +35,7 @@ customCss = [] # [str]
 title: str
 date: str
 showthedate: bool
+nodisqus: bool
 ```
 
 ### Script shortcode
