@@ -2,7 +2,7 @@
 title: "FFmpeg Wasm YouTube Downloader"
 date: "0002-01-01"
 showthedate: false
-nodisqus: true
+nocomments: true
 ---
 
 This is a simple browser-based app (using [ffmpeg.wasm](https://github.com/ffmpegwasm/ffmpeg.wasm)
@@ -36,7 +36,7 @@ input[type="radio"]{
 <br>
 <textarea id="log" style="height: 200px; width: 99%; resize: vertical; font-size: 10px;" readonly></textarea>
 
-The Disqus comment section is disabled because [cross-origin isolation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy#certain_features_depend_on_cross-origin_isolation) is enabled and the iframe cannot be loaded.
+The comments section is disabled because [cross-origin isolation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy#certain_features_depend_on_cross-origin_isolation) is enabled and the iframe cannot be loaded.
 
 {{< script "/js/ytdl-ffmpeg-demo-controller.min.js" >}}
 {{< script "/js/ytdl-ffmpeg-demo.min.js" >}}

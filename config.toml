@@ -3,7 +3,6 @@ theme = "smol"
 title = "Daren Liang"
 enableEmoji = true
 enableRobotsTXT = true
-disqusShortname = "darenliang"
 
 [outputs]
 home = ["HTML", "RSS"]
@@ -12,10 +11,9 @@ home = ["HTML", "RSS"]
 author = "Daren Liang"
 description = "Daren Liang's personal website"
 subtitle = ""
-enableCounter = true
 counterKey = "darenliang"
 enableTemporal = true
-enableDisqusCount = true
+utterancesRepo = "darenliang/darenliang.com"
 noJS = "Welcome to the anti-JS club!"
 dateFmt = "2006-01-02"
 showDatesOnPosts = true

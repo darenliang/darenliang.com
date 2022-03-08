@@ -1,7 +1,7 @@
 ---
 title: "About me"
 showthedate: false
-nodisqus: true
+nocomments: true
 ---
 
 ![Yotsuba](/img/yotsuba.png)

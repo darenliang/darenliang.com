@@ -1,7 +1,7 @@
 ---
 title: "A few projects I've worked on"
 showthedate: false
-nodisqus: true
+nocomments: true
 ---
 
 <script async src="https://buttons.github.io/buttons.js"></script>
