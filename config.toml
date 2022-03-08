@@ -13,7 +13,8 @@ description = "Daren Liang's personal website"
 subtitle = ""
 counterKey = "darenliang"
 enableTemporal = true
-utterancesRepo = "darenliang/darenliang.com"
+giscusRepo = "darenliang/darenliang.com"
+giscusRepoId = "MDEwOlJlcG9zaXRvcnkyMTEzNjc4MDI="
 noJS = "Welcome to the anti-JS club!"
 dateFmt = "2006-01-02"
 showDatesOnPosts = true

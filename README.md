@@ -11,13 +11,14 @@ This website uses Hugo and custom [fork](https://github.com/darenliang/smol) of 
 
 # Enable counter statistics via https://counter.darenliang.com
 # counterKey represents the key used to track visit counts
-counterKey = "website name" # str
+counterKey = "darenliang" # str
 
 # Enable temporal banner for various important events
 enableTemporal = true # bool
 
-# Enable utterances
-enableUtterances = true # bool
+# Enable giscus
+giscusRepo = "darenliang/darenliang.com" # str
+giscusRepoId = "MDEwOlJlcG9zaXRvcnkyMTEzNjc4MDI=" # str
 
 # Custom message for people that disable JavaScript when
 # counting is enabled
