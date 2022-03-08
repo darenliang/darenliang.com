@@ -17,6 +17,9 @@ counterKey = "website name" # str
 # Enable temporal banner for various important events
 enableTemporal = true # bool
 
+# Enable Disqus comment count
+enableDisqusCount = true # bool
+
 # Custom message for people that disable JavaScript when
 # enableCounter is true
 noJS = "JS is not enabled" # str

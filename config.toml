@@ -15,6 +15,7 @@ subtitle = ""
 enableCounter = true
 counterKey = "darenliang"
 enableTemporal = true
+enableDisqusCount = true
 noJS = "Welcome to the anti-JS club!"
 dateFmt = "2006-01-02"
 showDatesOnPosts = true
