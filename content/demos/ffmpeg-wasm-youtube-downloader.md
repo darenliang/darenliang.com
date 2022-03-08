@@ -1,5 +1,5 @@
 ---
-title: "FFmpeg.wasm YouTube Downloader"
+title: "FFmpeg Wasm YouTube Downloader"
 date: "0002-01-01"
 showthedate: false
 ---
