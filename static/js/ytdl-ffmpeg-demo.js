@@ -13899,6 +13899,13 @@ const downloadFromInfoCallback = (stream, info, options) => {
     stream.emit('progress', chunk.length, downloaded, contentLength);
   };
 
+  if (options.IPv6Block) {
+    options.requestOptions = Object.assign({}, options.requestOptions, {
+      family: 6,
+      localAddress: utils.getRandomIPv6(options.IPv6Block),
+    });
+  }
+
   // Download the file in chunks, in this case the default is 10MB,
   // anything over this will cause youtube to throttle the download
   const dlChunkSize = options.dlChunkSize || 1024 * 1024 * 10;
@@ -14422,6 +14429,12 @@ const AGE_RESTRICTED_URLS = [
  * @returns {Promise<Object>}
 */
 exports.getBasicInfo = async(id, options) => {
+  if (options.IPv6Block) {
+    options.requestOptions = Object.assign({}, options.requestOptions, {
+      family: 6,
+      localAddress: utils.getRandomIPv6(options.IPv6Block),
+    });
+  }
   const retryOptions = Object.assign({}, miniget.defaultOptions, options.requestOptions);
   options.requestOptions = Object.assign({}, options.requestOptions, {});
   options.requestOptions.headers = Object.assign({},
@@ -14457,7 +14470,9 @@ exports.getBasicInfo = async(id, options) => {
     media,
     likes: extras.getLikes(info),
     dislikes: extras.getDislikes(info),
-    age_restricted: !!(media && media.notice_url && AGE_RESTRICTED_URLS.some(url => media.notice_url.includes(url))),
+    age_restricted: !!(media && AGE_RESTRICTED_URLS.some(url =>
+      Object.values(media).some(v => typeof v === 'string' && v.includes(url)))
+    ),
 
     // Give the standard link to the video.
     video_url: BASE_URL + id,
@@ -15016,16 +15031,16 @@ const validQueryDomains = new Set([
 ]);
 const validPathDomains = /^https?:\/\/(youtu\.be\/|(www\.)?youtube\.com\/(embed|v|shorts)\/)/;
 exports.getURLVideoID = link => {
-  const parsed = new URL(link);
+  const parsed = new URL(link.trim());
   let id = parsed.searchParams.get('v');
-  if (validPathDomains.test(link) && !id) {
+  if (validPathDomains.test(link.trim()) && !id) {
     const paths = parsed.pathname.split('/');
     id = parsed.host === 'youtu.be' ? paths[1] : paths[2];
   } else if (parsed.hostname && !validQueryDomains.has(parsed.hostname)) {
     throw Error('Not a YouTube domain');
   }
   if (!id) {
-    throw Error(`No video id found: ${link}`);
+    throw Error(`No video id found: "${link}"`);
   }
   id = id.substring(0, 11);
   if (!exports.validateID(id)) {
@@ -15049,7 +15064,7 @@ const urlRegex = /^https?:\/\//;
 exports.getVideoID = str => {
   if (exports.validateID(str)) {
     return str;
-  } else if (urlRegex.test(str)) {
+  } else if (urlRegex.test(str.trim())) {
     return exports.getURLVideoID(str);
   } else {
     throw Error(`No video id found: ${str}`);
@@ -15064,7 +15079,7 @@ exports.getVideoID = str => {
  * @return {boolean}
  */
 const idRegex = /^[a-zA-Z0-9-_]{11}$/;
-exports.validateID = id => idRegex.test(id);
+exports.validateID = id => idRegex.test(id.trim());
 
 
 /**
@@ -15268,6 +15283,79 @@ exports.checkForUpdates = () => {
   return null;
 };
 
+
+/**
+ * Gets random IPv6 Address from a block
+ *
+ * @param {string} ip the IPv6 block in CIDR-Notation
+ * @returns {string}
+ */
+exports.getRandomIPv6 = ip => {
+  // Start with a fast Regex-Check
+  if (!isIPv6(ip)) throw Error('Invalid IPv6 format');
+  // Start by splitting and normalizing addr and mask
+  const [rawAddr, rawMask] = ip.split('/');
+  let base10Mask = parseInt(rawMask);
+  if (!base10Mask || base10Mask > 128 || base10Mask < 24) throw Error('Invalid IPv6 subnet');
+  const base10addr = normalizeIP(rawAddr);
+  // Get random addr to pad with
+  // using Math.random since we're not requiring high level of randomness
+  const randomAddr = new Array(8).fill(1).map(() => Math.floor(Math.random() * 0xffff));
+
+  // Merge base10addr with randomAddr
+  const mergedAddr = randomAddr.map((randomItem, idx) => {
+    // Calculate the amount of static bits
+    const staticBits = Math.min(base10Mask, 16);
+    // Adjust the bitmask with the staticBits
+    base10Mask -= staticBits;
+    // Calculate the bitmask
+    // lsb makes the calculation way more complicated
+    const mask = 0xffff - ((2 ** (16 - staticBits)) - 1);
+    // Combine base10addr and random
+    return (base10addr[idx] & mask) + (randomItem & (mask ^ 0xffff));
+  });
+  // Return new addr
+  return mergedAddr.map(x => x.toString('16')).join(':');
+};
+
+
+// eslint-disable-next-line max-len
+const IPV6_REGEX = /^(([0-9a-f]{1,4}:)(:[0-9a-f]{1,4}){1,6}|([0-9a-f]{1,4}:){1,2}(:[0-9a-f]{1,4}){1,5}|([0-9a-f]{1,4}:){1,3}(:[0-9a-f]{1,4}){1,4}|([0-9a-f]{1,4}:){1,4}(:[0-9a-f]{1,4}){1,3}|([0-9a-f]{1,4}:){1,5}(:[0-9a-f]{1,4}){1,2}|([0-9a-f]{1,4}:){1,6}(:[0-9a-f]{1,4})|([0-9a-f]{1,4}:){1,7}(([0-9a-f]{1,4})|:))\/(1[0-1]\d|12[0-8]|\d{1,2})$/;
+/**
+ * Quick check for a valid IPv6
+ * The Regex only accepts a subset of all IPv6 Addresses
+ *
+ * @param {string} ip the IPv6 block in CIDR-Notation to test
+ * @returns {boolean} true if valid
+ */
+const isIPv6 = exports.isIPv6 = ip => IPV6_REGEX.test(ip);
+
+
+/**
+ * Normalise an IP Address
+ *
+ * @param {string} ip the IPv6 Addr
+ * @returns {number[]} the 8 parts of the IPv6 as Integers
+ */
+const normalizeIP = exports.normalizeIP = ip => {
+  // Split by fill position
+  const parts = ip.split('::').map(x => x.split(':'));
+  // Normalize start and end
+  const partStart = parts[0] || [];
+  const partEnd = parts[1] || [];
+  partEnd.reverse();
+  // Placeholder for full ip
+  const fullIP = new Array(8).fill(0);
+  // Fill in start and end parts
+  for (let i = 0; i < Math.min(partStart.length, 8); i++) {
+    fullIP[i] = parseInt(partStart[i], 16) || 0;
+  }
+  for (let i = 0; i < Math.min(partEnd.length, 8); i++) {
+    fullIP[7 - i] = parseInt(partEnd[i], 16) || 0;
+  }
+  return fullIP;
+};
+
 }).call(this)}).call(this,require('_process'))
 },{"../package.json":86,"_process":27,"miniget":26}],86:[function(require,module,exports){
 module.exports={
@@ -15278,7 +15366,7 @@ module.exports={
     "video",
     "download"
   ],
-  "version": "4.10.1",
+  "version": "4.11.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/fent/node-ytdl-core.git"
@@ -15289,7 +15377,9 @@ module.exports={
     "Andrew Kelley (https://github.com/andrewrk)",
     "Mauricio Allende (https://github.com/mallendeo)",
     "Rodrigo Altamirano (https://github.com/raltamirano)",
-    "Jim Buck (https://github.com/JimmyBoh)"
+    "Jim Buck (https://github.com/JimmyBoh)",
+    "Paweł Ruciński (https://github.com/Roki100)",
+    "Alexander Paolini (https://github.com/Million900o)"
   ],
   "main": "./lib/index.js",
   "types": "./typings/index.d.ts",
@@ -15308,7 +15398,7 @@ module.exports={
   },
   "dependencies": {
     "m3u8stream": "^0.8.6",
-    "miniget": "^4.0.0",
+    "miniget": "^4.2.2",
     "sax": "^1.1.3"
   },
   "devDependencies": {
@@ -15325,7 +15415,7 @@ module.exports={
     "typescript": "^3.9.7"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   },
   "license": "MIT"
 }
