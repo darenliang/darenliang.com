@@ -126,7 +126,7 @@ often happen in small chunks.
 ### Closing a file
 
 Each opened file has a dirty bit associated with it which is set to true when the file is modified in memory. Upon
-closing the file, the dirty bit is checked and file data is uploaded. Checksums are used to ensure that there are no
+closing the file, the dirty bit is checked and file data is uploaded. SHA1 checksums are used to ensure that there are no
 unnecessary chunks uploads.
 
 ### Realtime synchronization
