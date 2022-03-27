@@ -19,7 +19,7 @@ the kernel, but when using FUSE, non-privileged programs can be used to create c
 Filesystems don't need to be concrete! You can implement virtual filesystems with little or no limitations.
 
 * Don't want files to write to disk? Implement a "ramdisk" in FUSE.
-* What to use Amazon S3 as if it is a hard drive on your computer?
+* Want to use Amazon S3 as if it is a hard drive on your computer?
   Use [s3fs-fuse](https://github.com/s3fs-fuse/s3fs-fuse).
 * Want to be evil 😈 and store files on Google sheets? Use
   [spreadsheetfs](https://github.com/GunshipPenguin/spreadsheetfs).
