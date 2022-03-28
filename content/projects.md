@@ -24,9 +24,13 @@ nocomments: true
 <hr/>
 <br/>
 
-<h1 style="text-align: center">dscli</h1>
-<h3 style="text-align: center">A command-line tool for storing files on Discord</h3>
-<div style="text-align: center"><a class="github-button" href="https://github.com/darenliang/dscli" data-size="large" aria-label="Visit darenliang/dscli on GitHub">dscli</a></div>
+<video width=100% controls autoplay loop muted>
+    <source src="/media/fuse/demo.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+<h1 style="text-align: center">dsfs</h1>
+<h3 style="text-align: center">An experimental Filesystem in USErspace (FUSE) with Discord attachments</h3>
+<div style="text-align: center"><a class="github-button" href="https://github.com/darenliang/dsfs" data-size="large" aria-label="Visit darenliang/dsfs on GitHub">dsfs</a></div>
 
 <br/>
 <hr/>
