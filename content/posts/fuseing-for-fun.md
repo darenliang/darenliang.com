@@ -11,7 +11,7 @@ are [Filesystems in USErspace (FUSE)](https://en.wikipedia.org/wiki/Filesystem_i
 
 ### What is FUSE?
 
-FUSE to put it simply, allows people to implement filesystems in userspace. Filesystems are traditionally implemented in
+FUSE, to put it simply, allows people to implement filesystems in userspace. Filesystems are traditionally implemented in
 the kernel, but when using FUSE, non-privileged programs can be used to create custom filesystems.
 
 ### Why is it cool?
