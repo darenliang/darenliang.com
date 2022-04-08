@@ -24,6 +24,9 @@ class Rewriter {
 function localeTemp(temp, country) {
     switch (country) {
         case "United States of America":
+        case "Palau":
+        case "Cayman Islands":
+        case "Liberia":
             return `${Math.round(temp * 9 / 5) + 32}°F`;
         default:
             return `${temp}°C`;
