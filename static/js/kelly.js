@@ -28,6 +28,6 @@
             return;
         }
 
-        result.innerHTML = `You have a negative edge and should take the other side of the bet.<br>&nbsp.`;
+        result.innerHTML = `You have a negative edge and should take the other side of the bet.<br>&nbsp`;
     };
 })();
