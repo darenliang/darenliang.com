@@ -5,14 +5,14 @@
 
     window["calculate"] = () => {
         const percentage = parseFloat(percentageInput.value);
-        if (!(0 < percentage && percentage < 1)) {
-            result.innerHTML = "Enter a win percentage between 0 and 1 (non-inclusive).<br>&nbsp";
+        if (!(0 <= percentage && percentage <= 1)) {
+            result.innerHTML = "Enter a win percentage between 0 and 1 (inclusive).<br>&nbsp";
             return;
         }
 
         const proportion = parseFloat(proportionInput.value);
         if (!(0 < proportion)) {
-            result.innerHTML = "Enter a positive win proportion.<br>&nbsp";
+            result.innerHTML = "Enter a non-negative win proportion.<br>&nbsp";
             return;
         }
 
@@ -28,6 +28,6 @@
             return;
         }
 
-        result.innerHTML = `You have a negative edge and should take the other side of the bet.<br>The optimal wager size for the other side of the bet is <b>${-wager.toFixed(4)}</b>.`;
+        result.innerHTML = `You have a negative edge and should take the other side of the bet.<br>&nbsp.`;
     };
 })();
