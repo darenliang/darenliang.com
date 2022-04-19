@@ -180,7 +180,7 @@ You will note that this type of secret sharing scheme has two significant advant
 
 However, you'll note that allowing two shares to recover the original secret might not be considered secure. Remember,
 Bernard's share was leaked to the public and Edward's share was lost. If someone happened to find Edward's share, they
-could recover the original secret. We'll need to think of a way to secure the original secret through +3 shares.
+could recover the original secret. We'll need to think of a way to secure the original secret through \( +3 \) shares.
 
 ### The 3 Shares Case
 
@@ -304,8 +304,8 @@ a [finite field](https://en.wikipedia.org/wiki/Finite_field) and are not represe
 mathematical formulation of scheme, here is a [good overview](https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing).
 
 The following code is ported from
-Wikipedia's [Shamir's Secret Sharing Python Implementation](https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing#Python_example)
-.
+Wikipedia's
+[Shamir's Secret Sharing Python Implementation](https://en.wikipedia.org/wiki/Shamir%27s_Secret_Sharing#Python_example).
 
 **Note that this implementation is not to be used in production! I am not responsible for any liabilities caused by
 following code.**
