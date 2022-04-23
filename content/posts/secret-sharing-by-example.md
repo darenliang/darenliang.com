@@ -178,9 +178,11 @@ You will note that this type of secret sharing scheme has two significant advant
   arbitrary number).
 * Shares can be lost and the original secret can still be recovered.
 
+<p>
 However, you'll note that allowing two shares to recover the original secret might not be considered secure. Remember,
 Bernard's share was leaked to the public and Edward's share was lost. If someone happened to find Edward's share, they
 could recover the original secret. We'll need to think of a way to secure the original secret through \( +3 \) shares.
+</p>
 
 ### The 3 Shares Case
 
