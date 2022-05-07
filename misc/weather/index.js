@@ -153,7 +153,8 @@ async function generateContent(request) {
 
     content += `<tr>${dayRow}</tr><tr>${emojiRow}</tr><tr>${maxTempRow}</tr><tr>${avgTempRow}</tr><tr>${minTempRow}</tr></table>`;
     content += "<details><summary>Connection Details</summary>";
-    content += `<p>Request from: ${request.cf.asOrganization} (AS${request.cf.asn})<br>`;
+    content += `<p>Request IP: ${clientIP}<br>`;
+    content += `Request from: ${request.cf.asOrganization} (AS${request.cf.asn})<br>`;
     content += `Request handled: ${request.cf.colo}<br>`;
     content += `API latency: ${apiTime} ms<br>`;
     return content;
