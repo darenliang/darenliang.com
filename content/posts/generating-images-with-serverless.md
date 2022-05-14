@@ -87,7 +87,7 @@ of working around the imposed limits was actually pretty fun.
 
 Workers does offer a paid Unbound Usage Model which allows for functions to run up to 30 seconds which is an ample
 amount of time. All in all, Cloudflare Workers is a great platform to get started with serverless; it has a low-latency
-key-value database, has more favourable pricing compared to the big three cloud providers (AWS, GCP, and Azure) and can
+key-value database, has more favorable pricing compared to the big three cloud providers (AWS, GCP, and Azure) and can
 run JavaScript code with minimal delay in large part due in running code inside isolates rather than individual
 containers.
 
