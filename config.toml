@@ -12,7 +12,7 @@ author = "Daren Liang"
 description = "Daren Liang's personal website"
 subtitle = ""
 counterKey = "darenliang"
-enableTemporal = true
+enableTemporal = false
 giscusRepo = "darenliang/darenliang.com"
 giscusRepoId = "MDEwOlJlcG9zaXRvcnkyMTEzNjc4MDI="
 noJS = "Welcome to the anti-JS club!"
