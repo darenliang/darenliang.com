@@ -18,6 +18,17 @@ At first glance, it seems like everyone will eventually go broke given that peop
 
 Surprisingly, this is not the case!
 
+<style>
+@media (prefers-color-scheme: dark) {
+    .y.axis-label {
+        stroke: white;
+    }
+    .x.axis-label {
+        stroke: white;
+    }
+}
+</style>
+
 <div id="plot" style="text-align: center; height: 500px;"></div>
 <div style="text-align: center;">
   <button onclick="redrawPlot()">Refresh</button>
