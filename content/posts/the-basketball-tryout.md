@@ -37,7 +37,7 @@ entirely by hand, but you may opt to solve this problem using an equation solver
 <summary>Reveal the Solution</summary>
 <p>As you can see, it looks like \( 0.6 \) is the solution, but why?</p>
 
-For fix probabilities, the [binomial distribution](https://en.wikipedia.org/wiki/Binomial_distribution) is used.
+For fixed probabilities, the [binomial distribution](https://en.wikipedia.org/wiki/Binomial_distribution) is used.
 
 <p>
 \[
