@@ -2,6 +2,7 @@
 title: "The Basketball Tryout"
 date: "2022-05-13"
 showthedate: true
+tags: ["statistics"]
 ---
 
 Here's another interesting probability question that I've found in Adrian

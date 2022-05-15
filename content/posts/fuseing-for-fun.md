@@ -2,6 +2,7 @@
 title: "FUSEing for Fun"
 date: "2022-03-26"
 showthedate: true
+tags: ["programming"]
 ---
 
 <script async src="https://buttons.github.io/buttons.js"></script>

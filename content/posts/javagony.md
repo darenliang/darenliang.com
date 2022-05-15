@@ -2,6 +2,7 @@
 title: "Algorithms in Javagony"
 date: "2019-10-08"
 showthedate: true
+tags: ["programming"]
 ---
 
 <script async src="https://buttons.github.io/buttons.js"></script>

@@ -2,6 +2,7 @@
 title: "Secret Sharing by Example"
 date: "2022-01-20"
 showthedate: true
+tags: ["crytography"]
 ---
 
 ## 1. The Scenario

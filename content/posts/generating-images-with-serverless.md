@@ -2,6 +2,7 @@
 title: "Generating Images with Serverless"
 date: "2022-02-18"
 showthedate: true
+tags: ["programming"]
 ---
 
 One thing I've always wanted to do was write a serverless function that could generate
