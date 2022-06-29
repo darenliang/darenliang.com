@@ -14,7 +14,7 @@
   "license": "MIT",
   "devDependencies": {
     "browserify": "^17.0.0",
-    "google-closure-compiler": "^20220202.0.0"
+    "google-closure-compiler": "^20220601.0.0"
   },
   "dependencies": {
     "@ffmpeg/core": "^0.10.0",
