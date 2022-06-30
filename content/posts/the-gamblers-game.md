@@ -2,7 +2,7 @@
 title: "The Gambler's Game"
 date: "2022-01-26"
 showthedate: true
-tags: ["statistics"]
+tags: ["probability"]
 ---
 
 Here's an interesting probability question that I've found in Adrian
