@@ -12,8 +12,8 @@ are [Filesystems in USErspace (FUSE)](https://en.wikipedia.org/wiki/Filesystem_i
 
 ### What is FUSE?
 
-FUSE, to put it simply, allows people to implement filesystems in userspace. Filesystems are traditionally implemented in
-the kernel, but when using FUSE, non-privileged programs can be used to create custom filesystems.
+FUSE, to put it simply, allows people to implement filesystems in userspace. Filesystems are traditionally implemented
+in the kernel, but when using FUSE, non-privileged programs can be used to create custom filesystems.
 
 ### Why is it cool?
 
@@ -91,6 +91,8 @@ For example, the following json represents a transaction that creates a file wit
 }
 ```
 
+## Implementation details
+
 ### At Startup
 
 All transactions are downloaded from the #tx channel and applied in sequential order in a radix tree structure.
@@ -115,9 +117,14 @@ downloaded first so that certain applications are able to preview the file.
 
 ### Reading a file
 
-Reading the file will incur almost no performance penalty as the file is fully buffered in memory. In the future, this
-would preferably be changed so that the file is streamed with only part of the file buffered, but it may cause large
-amounts of latency.
+A [sparse array implementation](https://github.com/darenliang/dsfs/blob/master/utils.go#L18) is used to determine which
+file chunks are loaded. The implementation is optimized for space efficiency and determines if a contiguous range of
+bytes is loaded or if bytes can be read in O(n log n) time with O(1) space. The read command will hang (up to a
+specified timeout) until bytes can be read.
+
+Reading a file more than once will incur almost no performance penalty as the file is buffered in memory. In the future,
+this would preferably be changed so that the file is streamed with only part of the file buffered, but it may cause
+large amounts of latency.
 
 ### Writing to a file
 
@@ -127,8 +134,8 @@ often happen in small chunks.
 ### Closing a file
 
 Each opened file has a dirty bit associated with it which is set to true when the file is modified in memory. Upon
-closing the file, the dirty bit is checked and file data is uploaded. SHA1 checksums are used to ensure that there are no
-unnecessary chunks uploads.
+closing the file, the dirty bit is checked and file data is uploaded. SHA1 checksums are used to ensure that there are
+no unnecessary chunks uploads.
 
 ### Realtime synchronization
 
