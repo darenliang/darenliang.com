@@ -15,6 +15,6 @@
   },
   "devDependencies": {
     "closure-webpack-plugin": "^2.5.0",
-    "google-closure-compiler": "^20220202.0.0"
+    "google-closure-compiler": "^20220719.0.0"
   }
 }

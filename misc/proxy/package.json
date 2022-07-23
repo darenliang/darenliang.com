@@ -11,6 +11,6 @@
   "author": "Daren Liang <daren@darenliang.com>",
   "license": "MIT",
   "devDependencies": {
-    "prettier": "^1.18.2"
+    "prettier": "^2.7.1"
   }
 }
