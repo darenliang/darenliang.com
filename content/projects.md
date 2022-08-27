@@ -6,6 +6,15 @@ nocomments: true
 
 <script async src="https://buttons.github.io/buttons.js"></script>
 
+<p align="center"><img alt="imglabs.io" style="border-radius: 8px;" src="/img/imglabs.png" /></p>
+<h2 style="text-align: center">imglabs.io</h2>
+<p style="text-align: center">Proxy, cache, and transform images at the network edge</p>
+<div style="text-align:center"><a href="https://www.imglabs.io">Website</a></div>
+
+<br/>
+<hr/>
+<br/>
+
 <p align="center"><img alt="MikuBot" style="border-radius: 8px;" src="/img/MikuBotIconSmall.png" /></p>
 <h2 style="text-align: center">MikuBot</h2>
 <p style="text-align: center">Modular anime Discord bot built for weebs</p>
@@ -41,13 +50,3 @@ nocomments: true
 <h2 style="text-align: center">decentralized-chat</h2>
 <p style="text-align: center">Decentralized chat web app using WebRTC</p>
 <div style="text-align: center"><a class="github-button" href="https://github.com/darenliang/decentralized-chat" data-size="large" aria-label="Visit darenliang/decentralized-chat on GitHub">decentralized-chat</a></div>
-
-<br/>
-<hr/>
-<br/>
-
-<p align="center"><img alt="gomatheval" style="border-radius: 8px;" src="/img/golang_calc.png" /></p>
-
-<h2 style="text-align: center">gomatheval</h2>
-<p style="text-align: center">Simple math expression evaluator in Go</h2>
-<div style="text-align: center"><a class="github-button" href="https://github.com/darenliang/gomatheval" data-size="large" aria-label="Visit darenliang/gomatheval on GitHub">gomatheval</a></div>
