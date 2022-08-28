@@ -39,6 +39,11 @@ Yes! Why not combine the freedom of self-hosted solutions with the ease of cloud
 [imglabs.io](https://imglabs.io) is an image proxy service that utilizes edge computing to decrease latency of serving
 images to users all around the globe.
 
+<div align="center">
+  <img style="display: inline;" src="https://picsum.photos/seed/picsum/300/200"/>
+  <img style="display: inline;" src="https://imglabs.io/?id=750511df-1a3f-43e3-b126-eedf392813b7&url=https://picsum.photos/seed/picsum/300/200&grayscale"/>
+</div>
+
 It is written as a highly optimized serverless function that aims to pass the cost savings to users using the service.
 
 Here are some of the benefits of using imglabs.io:
