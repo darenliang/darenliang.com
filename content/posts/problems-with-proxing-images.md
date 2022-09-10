@@ -40,8 +40,8 @@ Yes! Why not combine the freedom of self-hosted solutions with the ease of cloud
 images to users all around the globe.
 
 <div align="center">
-  <img style="display: inline;" src="https://www.darenliang.com/img/imglabs/example.png"/>
-  <img style="display: inline;" src="https://imglabs.io/?id=750511df-1a3f-43e3-b126-eedf392813b7&url=https://www.darenliang.com/img/imglabs/example.png&grayscale"/>
+  <img style="display: inline;" src="https://www.darenliang.com/img/imglabs/example.jpg"/>
+  <img style="display: inline;" src="https://imglabs.io/?id=750511df-1a3f-43e3-b126-eedf392813b7&url=https://www.darenliang.com/img/imglabs/example.jpg&grayscale"/>
 </div>
 
 It is written as a highly optimized serverless function that aims to pass the cost savings to users using the service.
