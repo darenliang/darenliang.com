@@ -52,16 +52,14 @@ Here are some of the benefits of using imglabs.io:
 * **Concurrency is included**: the image proxy can scale up and down effortlessly through the power of serverless
   computing
 * **Minimal latency**: each function runs physically close to each user in hundreds of locations, dramatically
-  decreasing the latency of proxying
-  images
+  decreasing the latency of proxying images
 * **Global CDN**: images are cached with a global CDN with no extra cost
 * **DDoS protection**: powered by [Cloudflare](https://www.cloudflare.com), imglabs.io and your proxied images are
-  protected by best-in-class DDoS
-  protection
+  protected by best-in-class DDoS protection
 * **Bandwidth included**: whether you are serving images large or small, you'll never be charged for extra bandwidth
   usage
 * **Cheap transformations**: nothing is truly "unlimited", but because millions of transformations and requests only
-  costs a few dollars, its pretty darn cheap
+  costs a few dollars, it's pretty darn cheap
 * **Unlimited source images**: use as many source images as you want, the number of requests is all that is counted for
 
 imglabs.io is now in alpha, and is open to anyone who wants to try out the service! If you have any questions please
