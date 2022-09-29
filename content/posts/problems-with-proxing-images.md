@@ -5,7 +5,7 @@ showthedate: true
 tags: ["programming"]
 ---
 
-Let's face it. Serving images on the web suck. You have to manage endless formats, dimensions, variants, and more. What
+Let's face it. Serving images on the web sucks. You have to manage endless formats, dimensions, variants, and more. What
 are some of the solutions we have at the moment?
 
 * [**imgproxy**](https://imgproxy.net)
