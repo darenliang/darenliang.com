@@ -11,7 +11,6 @@ home = ["HTML", "RSS"]
 author = "Daren Liang"
 description = "Daren Liang's personal website"
 subtitle = ""
-counterKey = "darenliang"
 enableTemporal = false
 giscusRepo = "darenliang/darenliang.com"
 giscusRepoId = "MDEwOlJlcG9zaXRvcnkyMTEzNjc4MDI="

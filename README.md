@@ -8,11 +8,6 @@ This website uses Hugo and custom [fork](https://github.com/darenliang/smol) of 
 
 ```toml
 [params]
-
-# Enable counter statistics via https://counter.darenliang.com
-# counterKey represents the key used to track visit counts
-counterKey = "darenliang" # str
-
 # Enable temporal banner for various important events
 enableTemporal = true # bool
 
