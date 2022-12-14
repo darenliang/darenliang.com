@@ -91,7 +91,7 @@ For example, the following json represents a transaction that creates a file wit
 }
 ```
 
-## Implementation details
+## Implementation overview
 
 ### At Startup
 
@@ -171,10 +171,7 @@ attributes such as access times is unfeasible to implement as the attribute woul
 
 ## Basic Demo
 
-<video width=100% controls>
-    <source src="/media/fuse/demo.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+![Demo](/img/fuse/demo.gif)
 
 ## Source code
 

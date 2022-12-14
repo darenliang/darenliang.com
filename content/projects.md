@@ -33,10 +33,7 @@ nocomments: true
 <hr/>
 <br/>
 
-<video width=100% controls autoplay loop muted>
-    <source src="/media/fuse/demo.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+<p align="center"><img alt="dsfs" style="border-radius: 8px;" src="/img/fuse/demo.gif"></p>
 <h2 style="text-align: center">dsfs</h2>
 <p style="text-align: center">An experimental Filesystem in USErspace (FUSE) with Discord attachments</p>
 <div style="text-align: center"><a class="github-button" href="https://github.com/darenliang/dsfs" data-size="large" aria-label="Visit darenliang/dsfs on GitHub">dsfs</a></div>
