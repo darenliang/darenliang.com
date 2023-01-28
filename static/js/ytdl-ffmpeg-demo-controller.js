@@ -15,7 +15,7 @@
             alert("YouTube proxy is currently having issues, please try again later.");
             return;
         }
-        console.log("[error] An error has occurred, please check the console output or DevTools.");
+        console.log(`[error] ${e}`);
         alert("An error has occurred, please check the console output or DevTools.");
     };
 

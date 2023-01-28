@@ -14651,7 +14651,7 @@ const findJSON = (source, varName, body, left, right, prependJSON) => {
   if (!jsonStr) {
     throw Error(`Could not find ${varName} in ${source}`);
   }
-  return parseJSON(source, varName, utils.cutAfterJSON(`${prependJSON}${jsonStr}`));
+  return parseJSON(source, varName, utils.cutAfterJS(`${prependJSON}${jsonStr}`));
 };
 
 
@@ -14922,7 +14922,7 @@ exports.extractFunctions = body => {
     const ndx = body.indexOf(functionStart);
     if (ndx < 0) return '';
     const subBody = body.slice(ndx + functionStart.length - 1);
-    return `var ${functionName}=${utils.cutAfterJSON(subBody)}`;
+    return `var ${functionName}=${utils.cutAfterJS(subBody)}`;
   };
   const extractDecipher = () => {
     const functionName = utils.between(body, `a.set("alr","yes");c&&(c=`, `(decodeURIC`);
@@ -14931,7 +14931,7 @@ exports.extractFunctions = body => {
       const ndx = body.indexOf(functionStart);
       if (ndx >= 0) {
         const subBody = body.slice(ndx + functionStart.length);
-        let functionBody = `var ${functionStart}${utils.cutAfterJSON(subBody)}`;
+        let functionBody = `var ${functionStart}${utils.cutAfterJS(subBody)}`;
         functionBody = `${extractManipulations(functionBody)};${functionBody};${functionName}(sig);`;
         functions.push(functionBody);
       }
@@ -14945,7 +14945,7 @@ exports.extractFunctions = body => {
       const ndx = body.indexOf(functionStart);
       if (ndx >= 0) {
         const subBody = body.slice(ndx + functionStart.length);
-        const functionBody = `var ${functionStart}${utils.cutAfterJSON(subBody)};${functionName}(ncode);`;
+        const functionBody = `var ${functionStart}${utils.cutAfterJS(subBody)};${functionName}(ncode);`;
         functions.push(functionBody);
       }
     }
@@ -15149,14 +15149,29 @@ exports.parseAbbreviatedNumber = string => {
   return null;
 };
 
+/**
+ * Escape sequences for cutAfterJS
+ * @param {string} start the character string the escape sequence
+ * @param {string} end the character string to stop the escape seequence
+ * @param {undefined|Regex} startPrefix a regex to check against the preceding 10 characters
+ */
+const ESCAPING_SEQUENZES = [
+  // Strings
+  { start: '"', end: '"' },
+  { start: "'", end: "'" },
+  { start: '`', end: '`' },
+  // RegeEx
+  { start: '/', end: '/', startPrefix: /(^|[[{:;,])\s?$/ },
+];
 
 /**
- * Match begin and end braces of input JSON, return only json
+ * Match begin and end braces of input JS, return only JS
  *
  * @param {string} mixedJson
  * @returns {string}
 */
-exports.cutAfterJSON = mixedJson => {
+exports.cutAfterJS = mixedJson => {
+  // Define the general open and closing tag
   let open, close;
   if (mixedJson[0] === '[') {
     open = '[';
@@ -15170,8 +15185,8 @@ exports.cutAfterJSON = mixedJson => {
     throw new Error(`Can't cut unsupported JSON (need to begin with [ or { ) but got: ${mixedJson[0]}`);
   }
 
-  // States if the loop is currently in a string
-  let isString = false;
+  // States if the loop is currently inside an escaped js object
+  let isEscapedObject = null;
 
   // States if the current character is treated as escaped or not
   let isEscaped = false;
@@ -15180,18 +15195,33 @@ exports.cutAfterJSON = mixedJson => {
   let counter = 0;
 
   let i;
+  // Go through all characters from the start
   for (i = 0; i < mixedJson.length; i++) {
-    // Toggle the isString boolean when leaving/entering string
-    if (mixedJson[i] === '"' && !isEscaped) {
-      isString = !isString;
+    // End of current escaped object
+    if (!isEscaped && isEscapedObject !== null && mixedJson[i] === isEscapedObject.end) {
+      isEscapedObject = null;
       continue;
+    // Might be the start of a new escaped object
+    } else if (!isEscaped && isEscapedObject === null) {
+      for (const escaped of ESCAPING_SEQUENZES) {
+        if (mixedJson[i] !== escaped.start) continue;
+        // Test startPrefix against last 10 characters
+        if (!escaped.startPrefix || mixedJson.substring(i - 10, i).match(escaped.startPrefix)) {
+          isEscapedObject = escaped;
+          break;
+        }
+      }
+      // Continue if we found a new escaped object
+      if (isEscapedObject !== null) {
+        continue;
+      }
     }
 
     // Toggle the isEscaped boolean for every backslash
     // Reset for every regular character
     isEscaped = mixedJson[i] === '\\' && !isEscaped;
 
-    if (isString) continue;
+    if (isEscapedObject !== null) continue;
 
     if (mixedJson[i] === open) {
       counter++;
@@ -15202,7 +15232,7 @@ exports.cutAfterJSON = mixedJson => {
     // All brackets have been closed, thus end of JSON is reached
     if (counter === 0) {
       // Return the cut JSON
-      return mixedJson.substr(0, i + 1);
+      return mixedJson.substring(0, i + 1);
     }
   }
 
@@ -15366,7 +15396,7 @@ module.exports={
     "video",
     "download"
   ],
-  "version": "4.11.0",
+  "version": "4.11.2",
   "repository": {
     "type": "git",
     "url": "git://github.com/fent/node-ytdl-core.git"
