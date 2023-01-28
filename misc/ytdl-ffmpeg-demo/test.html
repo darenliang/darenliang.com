@@ -6,10 +6,10 @@
 </head>
 <body>
 <video id="player" width="100%" controls></video>
-<script src="ffmpeg-wasm-demo.js"></script>
+<script src="ytdl-ffmpeg-demo.min.js"></script>
 <script>
     (async () => {
-        const buffer = await script.getEncodedVideoBuffer("https://www.youtube.com/watch?v=KhAcM0Nbtr8");
+        const buffer = await script.getFastVideoBuffer("https://www.youtube.com/watch?v=KhAcM0Nbtr8");
         const video = document.getElementById("player");
         video.src = URL.createObjectURL(new Blob([buffer], {type: "video/mp4"}));
     })();
