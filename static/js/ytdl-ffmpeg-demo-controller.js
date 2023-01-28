@@ -61,7 +61,7 @@
 
         let result = "<p>Video Formats</p>";
         for (const [i, video] of videoList.entries()) {
-            result += `<input type="radio" id="video-${i}" name="video" value="${i}"><label for="video-${i}">${video.qualityLabel} - ${video.fps} fps - ${video.mimeType}${!video.hasAudio ? " - audio only" : ""}</label><br>`;
+            result += `<input type="radio" id="video-${i}" name="video" value="${i}"><label for="video-${i}">${video.qualityLabel} - ${video.fps} fps - ${video.mimeType}${!video.hasAudio ? " - video only" : ""}</label><br>`;
         }
         result += "<p>Audio Formats</p>";
         for (const [i, audio] of audioList.entries()) {
