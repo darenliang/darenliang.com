@@ -137,6 +137,9 @@ Each opened file has a dirty bit associated with it which is set to true when th
 closing the file, the dirty bit is checked and file data is uploaded. SHA1 checksums are used to ensure that there are
 no unnecessary chunks uploads.
 
+To avoid running into Discord ratelimits, transactions are buffered and flushed every 5 seconds. Multiple transactions
+can be packed within one message given that most transactions take up a small fraction of the 8MB file size limit.
+
 ### Realtime synchronization
 
 Syncing between clients occurs when a client sends a transaction in the #tx channel. Another client picks up the
