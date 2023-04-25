@@ -112,7 +112,7 @@ metadata such as size, modification/creation times, etc.
 
 ### Opening a file
 
-A background process will load the file into memory. The first and last pieces (same behavior as BitTorrent) are
+A background process will load the file into a store backed by memory or disk. The first and last pieces (same behavior as BitTorrent) are
 downloaded first so that certain applications are able to preview the file.
 
 ### Reading a file
@@ -121,10 +121,6 @@ A [sparse array implementation](https://github.com/darenliang/dsfs/blob/master/u
 file chunks are loaded. The implementation is optimized for space efficiency and determines if a contiguous range of
 bytes is loaded or if bytes can be read in O(n log n) time with O(1) space. The read command will hang (up to a
 specified timeout) until bytes can be read.
-
-Reading a file more than once will incur almost no performance penalty as the file is buffered in memory. In the future,
-this would preferably be changed so that the file is streamed with only part of the file buffered, but it may cause
-large amounts of latency.
 
 ### Writing to a file
 
@@ -138,7 +134,7 @@ closing the file, the dirty bit is checked and file data is uploaded. SHA1 check
 no unnecessary chunks uploads.
 
 To avoid running into Discord ratelimits, transactions are buffered and flushed every 5 seconds. Multiple transactions
-can be packed within one message given that most transactions take up a small fraction of the 8MB file size limit.
+can be packed within one message given that most transactions take up a small fraction of the ~~8MB~~ [25MB](https://twitter.com/discord/status/1645522780337885184) file size limit.
 
 ### Realtime synchronization
 
@@ -160,6 +156,16 @@ The FUSE libraries required for each platform:
 * Windows: [WinFsp](https://github.com/winfsp/winfsp)
 * macOS: [macFUSE](https://osxfuse.github.io/)
 * Linux: [libfuse](https://github.com/libfuse/libfuse)
+
+### Performance
+
+Read speeds are usually unbounded since reading file chunks is done through Discord's CDN instead of Discord's API.
+
+Discord API ratelimits are dynamic, but if we assume the rate limit is 1 message per second, here are the theoretical write speeds possible with dsfs:
+
+| Free User | Nitro Basic | Nitro   |
+|-----------|-------------|---------|
+| 25MB/s    | 50MB/s      | 500MB/s |
 
 ## Areas of improvement
 
