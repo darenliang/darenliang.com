@@ -131,7 +131,8 @@ async function generateContent(request) {
         timezone: "UTC"
     })} (${minutesAgo} minute${minutesAgo !== 1 ? "s" : ""} ago)</p>`;
 
-    content += `<p><span title="${titleCase(json.current.weather_descriptions[0])}">${weatherCodeEmoji(json.current.weather_code, isDay(json.current.is_day))}</span> ${titleCase(json.current.weather_descriptions[0])}<br>`;
+    content += "<p><b>Current Weather</b><br>";
+    content += `<span title="${titleCase(json.current.weather_descriptions[0])}">${weatherCodeEmoji(json.current.weather_code, isDay(json.current.is_day))}</span> ${titleCase(json.current.weather_descriptions[0])}<br>`;
     content += `<span title="Current temperature">${localeTemp(json.current.temperature, json.location.country)}</span></p>`;
     content += "<table class=\"weather-table\">";
 

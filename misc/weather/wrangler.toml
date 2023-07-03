@@ -1,8 +1,4 @@
 name = "weather"
-type = "javascript"
-
-account_id = ""
+main = "index.js"
 workers_dev = false
-route = ""
-zone_id = ""
 compatibility_date = "2022-03-04"
