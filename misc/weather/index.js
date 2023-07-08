@@ -27,9 +27,33 @@ function localeTemp(temp, country) {
         case "Palau":
         case "Cayman Islands":
         case "Liberia":
-            return `${Math.round(temp * 9 / 5) + 32}°F`;
+            return `${((temp * 9 / 5) + 32).toFixed(0)}°F`;
         default:
             return `${temp}°C`;
+    }
+}
+
+function localeSpeed(speed, country) {
+    switch (country) {
+        case "United States of America":
+        case "Palau":
+        case "Cayman Islands":
+        case "Liberia":
+            return `${(speed / 1.60934).toFixed(0)} mph`;
+        default:
+            return `${speed} km/h`;
+    }
+}
+
+function localePrecipitation(precipitation, country) {
+    switch (country) {
+        case "United States of America":
+        case "Palau":
+        case "Cayman Islands":
+        case "Liberia":
+            return `${(precipitation / 2.54).toFixed(1)} in`;
+        default:
+            return `${precipitation} mm`;
     }
 }
 
@@ -131,11 +155,13 @@ async function generateContent(request) {
         timezone: "UTC"
     })} (${minutesAgo} minute${minutesAgo !== 1 ? "s" : ""} ago)</p>`;
 
-    content += "<p><b>Current Weather</b><br>";
-    content += `<span title="${titleCase(json.current.weather_descriptions[0])}">${weatherCodeEmoji(json.current.weather_code, isDay(json.current.is_day))}</span> ${titleCase(json.current.weather_descriptions[0])}<br>`;
-    content += `<span title="Current temperature">${localeTemp(json.current.temperature, json.location.country)}</span></p>`;
     content += "<table class=\"weather-table\">";
+    content += `<tr><td>Weather</td><td>${weatherCodeEmoji(json.current.weather_code, isDay(json.current.is_day))} ${titleCase(json.current.weather_descriptions[0])}</td><td>Wind</td><td>${json.current.wind_dir} ${localeSpeed(json.current.wind_speed, json.location.country)}</td></tr>`;
+    content += `<tr><td>Temperature</td><td>${localeTemp(json.current.temperature, json.location.country)}</td><td>Humidity</td><td>${json.current.humidity}%</td></tr>`;
+    content += `<tr><td>Feels Like</td><td>${localeTemp(json.current.feelslike, json.location.country)}</td><td>Precipitation</td><td>${localePrecipitation(json.current.precip, json.location.country)}</td></tr>`;
+    content += "</table><br>";
 
+    content += "<table class=\"weather-table\">";
     let dayRow = "";
     let emojiRow = "";
     let maxTempRow = "";
