@@ -156,9 +156,9 @@ async function generateContent(request) {
     })} (${minutesAgo} minute${minutesAgo !== 1 ? "s" : ""} ago)</p>`;
 
     content += "<table class=\"weather-table\">";
-    content += `<tr><td>Weather</td><td>${weatherCodeEmoji(json.current.weather_code, isDay(json.current.is_day))} ${titleCase(json.current.weather_descriptions[0])}</td><td>Wind</td><td>${json.current.wind_dir} ${localeSpeed(json.current.wind_speed, json.location.country)}</td></tr>`;
-    content += `<tr><td>Temperature</td><td>${localeTemp(json.current.temperature, json.location.country)}</td><td>Humidity</td><td>${json.current.humidity}%</td></tr>`;
-    content += `<tr><td>Feels Like</td><td>${localeTemp(json.current.feelslike, json.location.country)}</td><td>Precipitation</td><td>${localePrecipitation(json.current.precip, json.location.country)}</td></tr>`;
+    content += `<tr><td><b>Weather</b></td><td>${weatherCodeEmoji(json.current.weather_code, isDay(json.current.is_day))} ${titleCase(json.current.weather_descriptions[0])}</td><td><b>Wind</b></td><td>${json.current.wind_dir} ${localeSpeed(json.current.wind_speed, json.location.country)}</td></tr>`;
+    content += `<tr><td><b>Temperature</b></td><td>${localeTemp(json.current.temperature, json.location.country)}</td><td><b>Humidity</b></td><td>${json.current.humidity}%</td></tr>`;
+    content += `<tr><td><b>Feels Like</b></td><td>${localeTemp(json.current.feelslike, json.location.country)}</td><td><b>Precipitation</b></td><td>${localePrecipitation(json.current.precip, json.location.country)}</td></tr>`;
     content += "</table><br>";
 
     content += "<table class=\"weather-table\">";
