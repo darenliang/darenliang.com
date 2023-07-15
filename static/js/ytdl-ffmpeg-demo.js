@@ -14939,7 +14939,7 @@ exports.extractFunctions = body => {
   };
   const extractNCode = () => {
     let functionName = utils.between(body, `&&(b=a.get("n"))&&(b=`, `(b)`);
-    if (functionName.includes('[')) functionName = utils.between(body, `${functionName.split('[')[0]}=[`, `]`);
+    if (functionName.includes('[')) functionName = utils.between(body, `var ${functionName.split('[')[0]}=[`, `]`);
     if (functionName && functionName.length) {
       const functionStart = `${functionName}=function(a)`;
       const ndx = body.indexOf(functionStart);
@@ -15161,7 +15161,7 @@ const ESCAPING_SEQUENZES = [
   { start: "'", end: "'" },
   { start: '`', end: '`' },
   // RegeEx
-  { start: '/', end: '/', startPrefix: /(^|[[{:;,])\s?$/ },
+  { start: '/', end: '/', startPrefix: /(^|[[{:;,/])\s?$/ },
 ];
 
 /**
@@ -15396,7 +15396,7 @@ module.exports={
     "video",
     "download"
   ],
-  "version": "4.11.2",
+  "version": "4.11.5",
   "repository": {
     "type": "git",
     "url": "git://github.com/fent/node-ytdl-core.git"
