@@ -6,8 +6,8 @@ nocomments: true
 
 <script async src="https://buttons.github.io/buttons.js"></script>
 
-<p align="center"><img alt="imglabs.io" style="border-radius: 8px;" src="/img/imglabs.png" /></p>
-<h2 style="text-align: center">imglabs.io</h2>
+<p align="center"><img alt="Imglabs.io" style="border-radius: 8px;" src="/img/imglabs.png" /></p>
+<h2 style="text-align: center">Imglabs.io</h2>
 <p style="text-align: center">Proxy, cache, and transform images at the network edge</p>
 <div style="text-align:center"><a href="https://www.imglabs.io">Website</a></div>
 
