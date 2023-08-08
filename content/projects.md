@@ -1,12 +1,17 @@
 ---
-title: "A few projects I've worked on"
+title: "A few projects I've been a part of"
 showthedate: false
 nocomments: true
 ---
 
 <script async src="https://buttons.github.io/buttons.js"></script>
 
-<p align="center"><img alt="Imglabs.io" style="border-radius: 8px;" src="/img/imglabs.png" /></p>
+<p align="center">
+<picture>
+  <source srcset="/img/imglabs/logo_with_wordmark.svg" media="(prefers-color-scheme:dark)">
+  <img alt="Imglabs.io" width="500" src="/img/imglabs/logo_with_wordmark_black.svg" />
+</picture>
+</p>
 <h2 style="text-align: center">Imglabs.io</h2>
 <p style="text-align: center">Proxy, cache, and transform images at the network edge</p>
 <div style="text-align:center"><a href="https://www.imglabs.io">Website</a></div>

@@ -1,6 +1,6 @@
 # www.darenliang.com
 
-This website uses Hugo and custom [fork](https://github.com/darenliang/smol) of colorchestra's [smol](https://github.com/colorchestra/smol) theme.
+This website uses Hugo and a heavily customized [fork](https://github.com/darenliang/smol) of colorchestra's [smol](https://github.com/colorchestra/smol) theme.
 
 ## Documented extensions
 
