@@ -39,7 +39,7 @@ cloud-based solutions?
 
 ### Introducing [Imglabs.io](https://imglabs.io)
 
-> **disclaimer: I'm one of the co-founders of Imglabs.io**
+> **Disclaimer: I'm one of the co-founders of Imglabs.io**
 
 [Imglabs.io](https://imglabs.io) is an image proxy service that utilizes edge
 computing to decrease the latency of serving
@@ -72,7 +72,7 @@ Here are some of the benefits of using Imglabs.io:
   blazingly fast cold starts and efficient resource usage in constrained
   compute environments
 
-* **Global CDN**: images are cached with a global CDN with no extra cost
+* **Global CDN**: images are cached with a global CDN at no extra cost
 
 * **DDoS protection**: powered by [Cloudflare](https://www.cloudflare.com),
   Imglabs.io and your proxied images are protected by best-in-class DDoS
@@ -82,7 +82,7 @@ Here are some of the benefits of using Imglabs.io:
   never be charged for extra bandwidth usage
 
 * **Cost-effective**: nothing is truly "unlimited", but because millions
-  of transformations and requests only costs a few dollars, it's pretty darn
+  of transformations and requests only cost a few dollars, it's pretty darn
   cheap
 
 * **Unlimited source images**: use as many source images as you want, the

@@ -11,13 +11,13 @@ is [Cloudflare Workers](https://workers.cloudflare.com/)
 which utilizes a vast edge network and
 supports [0 ms cold starts](https://blog.cloudflare.com/eliminating-cold-starts-with-cloudflare-workers/).
 
-Writing a serverless function for this task didn't seem too difficult, but I've quickly ran into some issues.
+Writing a serverless function for this task didn't seem too difficult, but I quickly ran into some issues.
 
 ## Using node-canvas
 
 Modern browsers are equipped with the [Canvas API](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) which
 makes it extremely easy to create 2D graphics. Although this API is meant to be used in the browser, Automattic
-(the makers of Wordpress) has an implementation of Canvas for Node.js
+(the maker of WordPress) has an implementation of Canvas for Node.js
 called [node-canvas](https://github.com/Automattic/node-canvas).
 
 However, using node-canvas has a number of problems.

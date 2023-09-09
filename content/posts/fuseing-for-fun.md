@@ -131,7 +131,7 @@ often happen in small chunks.
 
 Each opened file has a dirty bit associated with it which is set to true when the file is modified in memory. Upon
 closing the file, the dirty bit is checked and file data is uploaded. SHA1 checksums are used to ensure that there are
-no unnecessary chunks uploads.
+no unnecessary chunk uploads.
 
 To avoid running into Discord ratelimits, transactions are buffered and flushed every 5 seconds. Multiple transactions
 can be packed within one message given that most transactions take up a small fraction of the ~~8MB~~ [25MB](https://twitter.com/discord/status/1645522780337885184) file size limit.
@@ -139,7 +139,7 @@ can be packed within one message given that most transactions take up a small fr
 ### Realtime synchronization
 
 Syncing between clients occurs when a client sends a transaction in the #tx channel. Another client picks up the
-transaction and applies it on their filesystem. When a file is already opened, SHA1 checksums are used to ensure that
+transaction and applies it to their filesystem. When a file is already opened, SHA1 checksums are used to ensure that
 only modified chunks are downloaded and patched.
 
 ### Automatic snapshots
@@ -176,7 +176,7 @@ When performing many operations at once, you can get ratelimited. This issue can
 pool to artificially increase the ratelimits.
 
 A lot of permissions and attributes are not implemented. In most systems, the size attribute is all that matters. Some
-attributes such as access times is unfeasible to implement as the attribute would be stale most of the time.
+attributes such as access times are unfeasible to implement as the attribute would be stale most of the time.
 
 ## Basic Demo
 
