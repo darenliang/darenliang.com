@@ -1,5 +1,6 @@
 ---
 title: "CS:GO Crosshair Preview"
+description: "Preview your CS:GO crosshair right in your browser"
 date: "0002-01-01"
 showthedate: false
 ---

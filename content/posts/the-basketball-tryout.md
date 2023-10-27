@@ -1,5 +1,6 @@
 ---
 title: "The Basketball Tryout"
+description: "A neat probability problem related to basketball"
 date: "2022-05-13"
 showthedate: true
 tags: ["probability"]

@@ -1,5 +1,6 @@
 ---
 title: "Kelly Criterion"
+description: "Compute the Kelly Criterion right in your browser"
 date: "0001-01-01"
 showthedate: false
 ---

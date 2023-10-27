@@ -1,5 +1,6 @@
 ---
 title: "Generating Images with Serverless"
+description: "Generating images with the Cloudflare Workers Developer Platform"
 date: "2022-02-18"
 showthedate: true
 tags: ["programming"]

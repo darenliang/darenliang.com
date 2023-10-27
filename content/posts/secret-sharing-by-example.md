@@ -1,5 +1,6 @@
 ---
 title: "Secret Sharing by Example"
+description: "Learn secret sharing schemes with interactive demos in the browser"
 date: "2022-01-20"
 showthedate: true
 tags: ["cryptography"]

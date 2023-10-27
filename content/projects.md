@@ -1,5 +1,6 @@
 ---
 title: "A few projects I've been a part of"
+description: "Select list of personal projects"
 showthedate: false
 nocomments: true
 ---

@@ -1,5 +1,6 @@
 ---
 title: "Algorithms in Javagony"
+description: "Adventures of programming in Javagony"
 date: "2019-10-08"
 showthedate: true
 tags: ["programming"]

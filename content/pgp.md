@@ -1,5 +1,6 @@
 ---
 title: "Here is my public key"
+description: "Send secure email to me with this key"
 showthedate: false
 nocomments: true
 ---

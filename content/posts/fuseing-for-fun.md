@@ -1,5 +1,6 @@
 ---
 title: "FUSEing for Fun"
+description: "An experimental Filesystem in USErspace (FUSE) with Discord attachments"
 date: "2022-03-26"
 showthedate: true
 tags: ["programming"]

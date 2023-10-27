@@ -1,5 +1,6 @@
 ---
 title: "Problems with proxying images"
+description: "The future of serving images lies in the edge"
 date: "2022-08-27"
 showthedate: true
 tags: [ "programming" ]

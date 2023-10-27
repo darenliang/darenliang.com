@@ -1,5 +1,6 @@
 ---
 title: "About me"
+description: "Hi there!"
 showthedate: false
 nocomments: true
 ---

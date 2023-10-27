@@ -9,7 +9,7 @@ home = ["HTML", "RSS"]
 
 [params]
 author = "Daren Liang"
-description = "Daren Liang's personal website"
+description = "Software Engineer at Citi. Studied computer science at University of Toronto."
 subtitle = ""
 enableTemporal = false
 giscusRepo = "darenliang/darenliang.com"

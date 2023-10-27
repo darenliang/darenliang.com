@@ -1,5 +1,6 @@
 ---
-title: "The Gambler's Game"
+title: "The Gambler's Ruin"
+description: "A neat probability problem about the Gambler's Ruin"
 date: "2022-01-26"
 showthedate: true
 tags: ["probability"]
