@@ -1,5 +1,5 @@
 ---
-title: "Problems with proxying images"
+title: "Problems with Proxying Images"
 description: "The future of serving images lies in the edge"
 date: "2022-08-27"
 showthedate: true
