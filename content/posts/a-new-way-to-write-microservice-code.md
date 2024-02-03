@@ -1,6 +1,6 @@
 ---
 title: "A New Way to Write Microservice Code"
-description: "What if each function is it's own microservice?"
+description: "What if each function is its own microservice?"
 date: "2024-01-28"
 showthedate: true
 tags: [ "programming" ]
