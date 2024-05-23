@@ -48,7 +48,7 @@ curl -X POST https://is_even.microservices.com
      -H 'Content-Type: application/json'
      -d '{"x": 5}'
 
-# {"result": false}
+# false
 ```
 
 Calling microservices isn't limited to just user code. You can even make
@@ -98,7 +98,7 @@ def slow_function():
 
 ### Is it even possible to implement said `@microservice` decorator?
 
-Theoretically, yes.
+Yes it is!
 
 Under the hood, the `@microservice` decorator function can handle the retry
 policy during function invocation and scaling policy during the function
@@ -107,21 +107,97 @@ definition.
 If you aren't familiar with Python decorators, Here is a great
 [primer on Python decorators](https://realpython.com/primer-on-python-decorators/).
 
+For simplicity's sake, let's not consider retry and scale policies and run the
+individual microservices within the same server API. Here is an example
+implementation of what the `@microservice` decorator could look like:
+
 ```python
-SETUP_MICROSERVICES = True  # False if you want to only call the microservices
+import inspect
 
-def microservice(retry=None, scale=None):
+import httpx
+from fastapi import FastAPI
+
+app = FastAPI()
+
+ENDPOINT = "http://127.0.0.1:8000"
+LOCAL_MODE = __name__ == "__main__"
+
+
+def microservice():
     def decorator(func):
-        if SETUP_MICROSERVICES:
-            setup_microservice(func, scale=scale)
+        if LOCAL_MODE:
+            return func
 
+        # Add to FastAPI server
+        app.get(f"/{func.__name__}")(func)
+
+        # Make GET request to call server route
         def wrapper(*args, **kwargs):
-            return call_microservice(func, args=args, kwargs=kwargs, retry=retry)
-        
+            return httpx.get(
+               f"{ENDPOINT}/{func.__name__}",
+               params=inspect.signature(func).bind(*args, **kwargs).arguments
+            ).json()
+
         return wrapper
-    
+
     return decorator
+
+
+@microservice()
+def fib(n: int) -> int:
+    if n <= 1:
+        return 1
+    return fib(n - 1) + fib(n - 2)
+
+
+if __name__ == "__main__":
+    print(fib(5))
 ```
+
+If we run directly from commandline we get the result of `fib(5)` which is
+computed locally:
+
+```bash
+$ python microservice.py
+8
+```
+
+We could make a curl request to call `fib(5)` through HTTP:
+
+```bash
+$ fastapi dev microservice.py
+$ curl -X GET http://127.0.0.1:8000/fib?n=5
+8
+```
+
+This is what the FastAPI logs look like when `fib(5)` is called:
+
+```bash
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [39256] using WatchFiles
+INFO:     Started server process [9884]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:61858 - "GET /fib?n=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61859 - "GET /fib?n=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61857 - "GET /fib?n=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61860 - "GET /fib?n=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61856 - "GET /fib?n=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61862 - "GET /fib?n=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61863 - "GET /fib?n=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61861 - "GET /fib?n=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61855 - "GET /fib?n=4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61866 - "GET /fib?n=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61867 - "GET /fib?n=0 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61865 - "GET /fib?n=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61868 - "GET /fib?n=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61864 - "GET /fib?n=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61854 - "GET /fib?n=5 HTTP/1.1" 200 OK
+```
+
+We even get automatic documentation of our "microserviced" function:
+
+![FastAPI Docs](/img/microservices/fastapi.png)
 
 ### Why bother with this?
 
@@ -134,6 +210,6 @@ I can think of many benefits to this new approach to writing microservice code:
    microservices incorrectly
 4. Code is far easier to test
 
-If someone has an implementation of the `@microservice` decorator, I would
-absolutely love to know more about it, and I'll update this blog post to
-include links to the implementation.
+If someone has an alternative implementation of the `@microservice` decorator,
+I would absolutely love to know more about it, and I'll update this blog post
+to include links to the implementation.
