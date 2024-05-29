@@ -21,39 +21,39 @@ class Rewriter {
     }
 }
 
-function localeTemp(temp, country) {
+function isImperial(country) {
     switch (country) {
         case "United States of America":
         case "Palau":
         case "Cayman Islands":
         case "Liberia":
-            return `${((temp * 9 / 5) + 32).toFixed(0)}°F`;
+            return true;
         default:
-            return `${temp}°C`;
+            return false;
     }
 }
 
-function localeSpeed(speed, country) {
-    switch (country) {
-        case "United States of America":
-        case "Palau":
-        case "Cayman Islands":
-        case "Liberia":
-            return `${(speed / 1.60934).toFixed(0)} mph`;
-        default:
-            return `${speed} km/h`;
+function localeTemp(temp, isImperial) {
+    if (isImperial) {
+        return `${((temp * 9 / 5) + 32).toFixed(0)}°F`;
+    } else {
+        return `${temp}°C`;
     }
 }
 
-function localePrecipitation(precipitation, country) {
-    switch (country) {
-        case "United States of America":
-        case "Palau":
-        case "Cayman Islands":
-        case "Liberia":
-            return `${(precipitation / 2.54).toFixed(1)} in`;
-        default:
-            return `${precipitation} mm`;
+function localeSpeed(speed, isImperial) {
+    if (isImperial) {
+        return `${(speed / 1.60934).toFixed(0)} mph`;
+    } else {
+        return `${speed} km/h`;
+    }
+}
+
+function localePrecipitation(precipitation, isImperial) {
+    if (isImperial) {
+        return `${(precipitation / 2.54).toFixed(1)} in`;
+    } else {
+        return `${precipitation} mm`;
     }
 }
 
@@ -157,11 +157,11 @@ async function generateContent(request) {
 
     content += "<table class=\"weather-table\">";
     content += `<tr><td><b>Weather</b></td><td><b>Wind</b></td></tr>`;
-    content += `<tr><td>${weatherCodeEmoji(json.current.weather_code, isDay(json.current.is_day))} ${titleCase(json.current.weather_descriptions[0])}</td><td>${json.current.wind_dir} ${localeSpeed(json.current.wind_speed, json.location.country)}</td></tr>`;
+    content += `<tr><td>${weatherCodeEmoji(json.current.weather_code, isDay(json.current.is_day))} ${titleCase(json.current.weather_descriptions[0])}</td><td>${json.current.wind_dir} <span title="${localeSpeed(json.current.wind_speed, !isImperial(json.location.country))}">${localeSpeed(json.current.wind_speed, isImperial(json.location.country))}</span></td></tr>`;
     content += `<tr><td><b>Temperature</b></td><td><b>Humidity</b></td></tr>`;
-    content += `<tr><td>${localeTemp(json.current.temperature, json.location.country)}</td><td>${json.current.humidity}%</td></tr>`;
+    content += `<tr><td><span title="${localeTemp(json.current.temperature, !isImperial(json.location.country))}">${localeTemp(json.current.temperature, isImperial(json.location.country))}</span></td><td>${json.current.humidity}%</td></tr>`;
     content += `<tr><td><b>Feels Like</b></td><td><b>Precipitation</b></td></tr>`;
-    content += `<tr><td>${localeTemp(json.current.feelslike, json.location.country)}</td><td>${localePrecipitation(json.current.precip, json.location.country)}</td></tr>`;
+    content += `<tr><td><span title="${localeTemp(json.current.feelslike, !isImperial(json.location.country))}">${localeTemp(json.current.feelslike, isImperial(json.location.country))}</span></td><td><span title="${localePrecipitation(json.current.precip, !isImperial(json.location.country))}">${localePrecipitation(json.current.precip, isImperial(json.location.country))}</span></td></tr>`;
     content += "</table><br>";
 
     content += "<table class=\"weather-table\">";
@@ -176,9 +176,9 @@ async function generateContent(request) {
 
         const forecast = json.forecast[key];
         emojiRow += `<td><span title="${titleCase(forecast.hourly[0].weather_descriptions[0])}">${weatherCodeEmoji(forecast.hourly[0].weather_code)}</span></td>`;
-        maxTempRow += `<td><span title="Maximum temperature">${localeTemp(forecast.maxtemp, json.location.country)}</span></td>`;
-        avgTempRow += `<td><span title="Average temperature">${localeTemp(forecast.avgtemp, json.location.country)}</span></td>`;
-        minTempRow += `<td><span title="Minimum temperature">${localeTemp(forecast.mintemp, json.location.country)}</span></td>`;
+        maxTempRow += `<td><span title="${localeTemp(forecast.maxtemp, !isImperial(json.location.country))}">${localeTemp(forecast.maxtemp, isImperial(json.location.country))}</span></td>`;
+        avgTempRow += `<td><span title="${localeTemp(forecast.avgtemp, !isImperial(json.location.country))}">${localeTemp(forecast.avgtemp, isImperial(json.location.country))}</span></td>`;
+        minTempRow += `<td><span title="${localeTemp(forecast.mintemp, !isImperial(json.location.country))}">${localeTemp(forecast.mintemp, isImperial(json.location.country))}</span></td>`;
     }
 
     content += `<tr>${dayRow}</tr><tr>${emojiRow}</tr><tr>${maxTempRow}</tr><tr>${avgTempRow}</tr><tr>${minTempRow}</tr></table>`;
