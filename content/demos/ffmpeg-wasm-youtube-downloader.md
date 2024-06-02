@@ -1,7 +1,7 @@
 ---
 title: "FFmpeg Wasm YouTube Downloader"
 description: "Download and convert a YouTube video right in your browser"
-date: "0003-01-01"
+date: "0005-01-01"
 showthedate: false
 nocomments: true
 ---
@@ -37,7 +37,7 @@ input[type="radio"]{
 <br>
 <textarea id="log" style="height: 200px; width: 99%; resize: vertical; font-size: 10px;" readonly></textarea>
 
-The comments section is disabled because [cross-origin isolation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy#certain_features_depend_on_cross-origin_isolation) is enabled and the iframe cannot be loaded.
+The comments section is disabled because [cross-origin isolation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy#certain_features_depend_on_cross-origin_isolation) is enabled and the iframe cannot be loaded. If you have questions about this demo, please direct them to [daren@darenliang.com](mailto:daren@darenliang.com).
 
 {{< script "/js/ytdl-ffmpeg-demo-controller.min.js" >}}
 {{< script "/js/ytdl-ffmpeg-demo.min.js" >}}
