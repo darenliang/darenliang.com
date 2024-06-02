@@ -16,7 +16,6 @@ API and does a few things better than ZeroMQ.
 * Websocket transport support
 * POSIX-compliant sockets API
 * True zero-copy messaging
-* ... and much more
 
 A common messaging pattern is Dealer-Router which can be easily implemented
 using ZeroMQ's DEALER and ROUTER sockets. Unfortunately, NNG does not have such
