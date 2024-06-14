@@ -129,7 +129,7 @@ def microservice():
             return func
 
         # Add to FastAPI server
-        app.get(f"/{func.__name__}")(func)
+        app.get(func.__name__)(func)
 
         # Make GET request to call server route
         def wrapper(*args, **kwargs):
