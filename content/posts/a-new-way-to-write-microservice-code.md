@@ -129,13 +129,14 @@ def microservice():
             return func
 
         # Add to FastAPI server
-        app.get(func.__name__)(func)
+        app.get(f"/{func.__name__}")(func)
 
         # Make GET request to call server route
         def wrapper(*args, **kwargs):
+            signature = inspect.signature(func)
+            bound_args = signature.bind(*args, **kwargs)
             return httpx.get(
-               f"{ENDPOINT}/{func.__name__}",
-               params=inspect.signature(func).bind(*args, **kwargs).arguments
+                f"{ENDPOINT}/{func.__name__}", params=bound_args.arguments
             ).json()
 
         return wrapper
