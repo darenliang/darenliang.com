@@ -15,7 +15,6 @@ This demo is confirmed to work on modern Firefox/Chromium-based browsers.
 There are four options in this demo:
 
 * **Get formats**: Manually select formats to merge. If video is selected, the output will be a video. If only audio is selected, the output will be an audio file.
-* **Get fast video**: Get a high quality video file with audio. No encoding is done.
 * **Get best video**: Encode the highest quality video file with audio. The best video and audio files are merged into a single file.
 * **Get best audio**: Encode the highest quality audio file.
 
@@ -29,7 +28,6 @@ input[type="radio"]{
 <label>YouTube video URL: <input type="text" id="url" style="width: 100%"></label>
 <br>
 <button onclick="getFormats()">Get formats</button>
-<button onclick="getFastVideo()">Get fast video</button>
 <button onclick="getBestVideo()">Get best video</button>
 <button onclick="getBestAudio()">Get best audio</button>
 <form id="formats" action="javascript:void(0);"></form>

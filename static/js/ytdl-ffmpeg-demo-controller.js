@@ -75,7 +75,7 @@
     }
     result += "<p>Audio Formats</p>";
     for (const [i, audio] of audioList.entries()) {
-      result += `<input type="radio" id="audio-${i}" name="audio" value="${i}"><label for="audio-${i}">${audio.audioBitrate} Kbps - ${audio.mimeType}</label><br>`;
+      result += `<input type="radio" id="audio-${i}" name="audio" value="${i}"><label for="audio-${i}">${audio.bitrate} Kbps - ${audio.mimeType}</label><br>`;
     }
     result += '<br><button onclick="getMedia()">Convert</button>';
     formatsForm.innerHTML = result;
