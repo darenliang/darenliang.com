@@ -9,10 +9,17 @@ async function fetchAndStream(request) {
         return new Response("400 Bad Request", {status: 400});
     }
 
-    const response = await fetch(decodeURIComponent(params.get("url")), {
+    const requestInit = {
+        method: request.method,
         headers: request.headers,
         redirect: "follow"
-    });
+    };
+
+    if (request.method !== "GET" && request.method !== "HEAD") {
+        requestInit.body = request.body;
+    }
+
+    const response = await fetch(decodeURIComponent(params.get("url")), requestInit);
 
     const {readable, writable} = new TransformStream();
     response.body.pipeTo(writable);
