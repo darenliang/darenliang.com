@@ -30,10 +30,9 @@ const getInfo = async (url) => {
   const headers = {
     "X-YouTube-Client-Name": "5",
     "X-YouTube-Client-Version": "19.09.3",
-    Origin: "https://www.youtube.com",
     "User-Agent":
       "com.google.ios.youtube/19.09.3 (iPhone14,3; U; CPU iOS 15_6 like Mac OS X)",
-    "content-type": "application/json",
+    "Content-Type": "application/json",
   };
 
   const b = {
@@ -140,7 +139,7 @@ const getFastVideoBuffer = async (url) => {
   const info = await getInfo(url);
 
   console.log("[info] choosing formats");
-  const videoInfo = ytdl.chooseFormat(info.formats, {
+  const videoInfo = ytdl.chooseFormat(info.streamingData.adaptiveFormats, {
     quality: "highest",
     filter: (format) => format.container === "mp4",
   });
@@ -156,10 +155,10 @@ const getBestVideoBuffer = async (url) => {
   const info = await getInfo(url);
 
   console.log("[info] choosing formats");
-  const videoInfo = ytdl.chooseFormat(info.formats, {
+  const videoInfo = ytdl.chooseFormat(info.streamingData.adaptiveFormats, {
     quality: "highestvideo",
   });
-  const audioInfo = ytdl.chooseFormat(info.formats, {
+  const audioInfo = ytdl.chooseFormat(info.streamingData.adaptiveFormats, {
     quality: "highestaudio",
     filter: "audioonly",
   });
@@ -171,7 +170,7 @@ const getBestAudioBuffer = async (url) => {
   const info = await getInfo(url);
 
   console.log("[info] choosing format");
-  const audioInfo = ytdl.chooseFormat(info.formats, {
+  const audioInfo = ytdl.chooseFormat(info.streamingData.adaptiveFormats, {
     quality: "highestaudio",
     filter: "audioonly",
   });

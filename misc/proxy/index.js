@@ -14,13 +14,12 @@ async function fetchAndStream(request) {
         response.headers.append("Access-Control-Allow-Origin", "https://www.darenliang.com");
         response.headers.append("Access-Control-Allow-Headers", "*");
         response.headers.append("Access-Control-Allow-Methods", "*");
-        response.status = 200;
+        response.status = 204;
         return response
     }
 
     const requestInit = {
         method: request.method,
-        headers: request.headers,
         redirect: "follow"
     };
 
