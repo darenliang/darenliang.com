@@ -21,25 +21,10 @@ const proxy = (url) => {
   return "https://proxy.darenliang.com/?url=" + encodeURIComponent(url);
 };
 
-const ytdlOptions = {
-  requestOptions: {
-    maxRetries: 5,
-    backoff: { inc: 2000, max: 2000 },
-    transform: (parsed) => {
-      const originURL = parsed.protocol + "//" + parsed.hostname + parsed.path;
-      parsed.host = "proxy.darenliang.com";
-      parsed.hostname = "proxy.darenliang.com";
-      parsed.path = "/?url=" + encodeURIComponent(originURL);
-      parsed.protocol = "https:";
-      return parsed;
-    },
-  },
-};
-
 const getInfo = async (url) => {
   const re =
     /(https?:\/\/)?(((m|www)\.)?(youtube(-nocookie)?|youtube.googleapis)\.com.*(v\/|v=|vi=|vi\/|e\/|embed\/|shorts\/|user\/.*\/u\/\d+\/)|youtu\.be\/)([_0-9a-z-]+)/i;
-  const videoId = url.match(re)[7];
+  const videoId = url.match(re)[8];
   const apiKey = "AIzaSyB-63vPrdThhKuerbB2N_l7Kwwcxj6yUAc";
 
   const headers = {
@@ -74,10 +59,9 @@ const getInfo = async (url) => {
 
   console.log("[info] getting info");
   return fetch(
-    "https://proxy.darenliang.com?url=" +
-      encodeURIComponent(
-        `https://www.youtube.com/youtubei/v1/player?key=${apiKey}&prettyPrint=false`
-      ),
+    proxy(
+      `https://www.youtube.com/youtubei/v1/player?key=${apiKey}&prettyPrint=false`
+    ),
     {
       method: "POST",
       body: JSON.stringify(b),
