@@ -39,7 +39,7 @@ const ytdlOptions = {
 const getInfo = async (url) => {
   const re =
     /(https?:\/\/)?(((m|www)\.)?(youtube(-nocookie)?|youtube.googleapis)\.com.*(v\/|v=|vi=|vi\/|e\/|embed\/|shorts\/|user\/.*\/u\/\d+\/)|youtu\.be\/)([_0-9a-z-]+)/i;
-  const id = url.match(re)[7];
+  const videoId = url.match(re)[7];
   const apiKey = "AIzaSyB-63vPrdThhKuerbB2N_l7Kwwcxj6yUAc";
 
   const headers = {
@@ -64,7 +64,7 @@ const getInfo = async (url) => {
         utcOffsetMinutes: 0,
       },
     },
-    id,
+    videoId,
     playbackContext: {
       contentPlaybackContext: { html5Preference: "HTML5_PREF_WANTS" },
     },
@@ -76,7 +76,7 @@ const getInfo = async (url) => {
   return fetch(
     "https://proxy.darenliang.com?url=" +
       encodeURIComponent(
-        `https://www.youtube.com/youtubei/v1/player?key${apiKey}&prettyPrint=false`
+        `https://www.youtube.com/youtubei/v1/player?key=${apiKey}&prettyPrint=false`
       ),
     {
       method: "POST",

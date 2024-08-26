@@ -8,6 +8,15 @@ async function fetchAndStream(request) {
     if (!params.has("url")) {
         return new Response("400 Bad Request", {status: 400});
     }
+    
+    if (request.method === "OPTIONS") {
+        const response = new Response();
+        response.headers.append("Access-Control-Allow-Origin", "https://www.darenliang.com");
+        response.headers.append("Access-Control-Allow-Headers", "*");
+        response.headers.append("Access-Control-Allow-Methods", "*");
+        response.status = 200;
+        return response
+    }
 
     const requestInit = {
         method: request.method,
