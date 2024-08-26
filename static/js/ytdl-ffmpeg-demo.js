@@ -58,7 +58,7 @@ const getInfo = async (url) => {
   };
 
   console.log("[info] getting info");
-  return fetch(
+  const data = await fetch(
     proxy(
       `https://www.youtube.com/youtubei/v1/player?key=${apiKey}&prettyPrint=false`
     ),
@@ -68,6 +68,11 @@ const getInfo = async (url) => {
       headers,
     }
   ).then((r) => r.json());
+
+  // patch formats
+  data.streamingData.adaptiveFormats = augmentFormats(data.streamingData.adaptiveFormats)
+
+  return data
 };
 
 const augmentFormats = (formats) => {
@@ -170,7 +175,7 @@ const getFastVideoBuffer = async (url) => {
   const info = await getInfo(url);
 
   console.log("[info] choosing formats");
-  const formats = augmentFormats(info.streamingData.adaptiveFormats);
+  const formats = info.streamingData.adaptiveFormats;
   const videoInfo = ytdl.chooseFormat(formats, {
     quality: "highest",
     filter: (format) => format.container === "mp4",
@@ -187,7 +192,7 @@ const getBestVideoBuffer = async (url) => {
   const info = await getInfo(url);
 
   console.log("[info] choosing formats");
-  const formats = augmentFormats(info.streamingData.adaptiveFormats);
+  const formats = info.streamingData.adaptiveFormats;
   const videoInfo = ytdl.chooseFormat(formats, {
     quality: "highestvideo",
   });
@@ -203,7 +208,7 @@ const getBestAudioBuffer = async (url) => {
   const info = await getInfo(url);
 
   console.log("[info] choosing format");
-  const formats = augmentFormats(info.streamingData.adaptiveFormats);
+  const formats = info.streamingData.adaptiveFormats;
   const audioInfo = ytdl.chooseFormat(formats, {
     quality: "highestaudio",
     filter: "audioonly",
