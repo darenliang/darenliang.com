@@ -47,7 +47,7 @@
             formatsRunning = false;
             return;
         }
-        const formats = info.formats;
+        const formats = info.streamingData.adaptiveFormats;
 
         videoList = [];
         audioList = [];

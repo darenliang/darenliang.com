@@ -69,6 +69,36 @@ const getInfo = async (url) => {
   ).then((r) => r.json());
 };
 
+const augmentFormats = (formats) => {
+  const fn = (format) => {
+    const [type, codecsPart] = format.mimeType.split(";");
+    const container = type.split("/")[1].trim(); // 'mp4'
+    const codecs = codecsPart.match(/codecs="(.+)"/)[1]; // 'mp4a.40.2'
+    const hasVideo =
+      codecs.includes("avc1") ||
+      codecs.includes("vp8") ||
+      codecs.includes("vp9");
+    const hasAudio =
+      codecs.includes("mp4a") ||
+      codecs.includes("opus") ||
+      codecs.includes("vorbis");
+    return {
+      ...format,
+      container,
+      hasVideo,
+      hasAudio,
+      codecs,
+      videoCodec: hasVideo ? codecs : undefined,
+      audioCodec: hasAudio ? codecs : undefined,
+      isLive: false,
+      isHLS: false,
+      isDashMPD: false,
+    };
+  };
+
+  return formats.map((format) => fn(format));
+};
+
 const getAudioBuffer = async (audioInfo) => {
   cleanMemory();
 
@@ -139,7 +169,8 @@ const getFastVideoBuffer = async (url) => {
   const info = await getInfo(url);
 
   console.log("[info] choosing formats");
-  const videoInfo = ytdl.chooseFormat(info.streamingData.adaptiveFormats, {
+  const formats = augmentFormats(info.streamingData.adaptiveFormats);
+  const videoInfo = ytdl.chooseFormat(formats, {
     quality: "highest",
     filter: (format) => format.container === "mp4",
   });
@@ -155,10 +186,11 @@ const getBestVideoBuffer = async (url) => {
   const info = await getInfo(url);
 
   console.log("[info] choosing formats");
-  const videoInfo = ytdl.chooseFormat(info.streamingData.adaptiveFormats, {
+  const formats = augmentFormats(info.streamingData.adaptiveFormats);
+  const videoInfo = ytdl.chooseFormat(formats, {
     quality: "highestvideo",
   });
-  const audioInfo = ytdl.chooseFormat(info.streamingData.adaptiveFormats, {
+  const audioInfo = ytdl.chooseFormat(formats, {
     quality: "highestaudio",
     filter: "audioonly",
   });
@@ -170,7 +202,8 @@ const getBestAudioBuffer = async (url) => {
   const info = await getInfo(url);
 
   console.log("[info] choosing format");
-  const audioInfo = ytdl.chooseFormat(info.streamingData.adaptiveFormats, {
+  const formats = augmentFormats(info.streamingData.adaptiveFormats);
+  const audioInfo = ytdl.chooseFormat(formats, {
     quality: "highestaudio",
     filter: "audioonly",
   });
