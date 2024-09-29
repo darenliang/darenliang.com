@@ -6,8 +6,8 @@ showthedate: true
 tags: [ "probability" ]
 ---
 
-A colleague asked me an interesting probability question at work. If you roll
-a die continuously, are you more likely to roll two 5's or a 5 followed by a 6?
+A colleague asked me an interesting probability problem. If you roll a die
+continuously, are you more likely to roll two 5's or a 5 followed by a 6?
 
 The state machine diagram for rolling two 5's:
 
@@ -19,7 +19,8 @@ The state machine diagram for rolling a 5 followed by a 6:
 
 <p>
     Looking at the two state machine diagrams you can see that the second has a
-    lower expected number of rolls to reach state \( q_2 \). However, can we compute how
+    lower expected number of rolls to reach state \( q_2 \) since \( q_1 \)
+    contains an additional transition into itself. However, can we compute how
     many fewer rolls are required?
 </p>
 
