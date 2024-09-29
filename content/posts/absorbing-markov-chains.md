@@ -24,7 +24,64 @@ The state machine diagram for rolling a 5 immediately followed by a 6:
     many fewer rolls are required?
 </p>
 
-### Absorbing Markov chains[^1]
+### Solution
+
+<details>
+<summary>Reveal the Solution</summary>
+<p>
+Let \( t_n \) be the expected number of rolls required starting with state \( q_n \).
+</p>
+We can model rolling two consecutive 5's with the following equations:
+<p>
+    \begin{aligned}
+    t_0 &= 1 + \frac{5}{6} t_0 + \frac{1}{6} t_1 \\
+    t_1 &= 1 + \frac{5}{6} t_0
+    \end{aligned}
+</p>
+<p>
+Solving for \( t_0 \):
+</p>
+<p>
+    \begin{aligned}
+    t_0 &= 1 + \frac{5}{6} t_0 + \frac{1}{6} t_1 \\
+        &= 1 + \frac{5}{6} t_0 + \frac{1}{6} \left( 1 + \frac{5}{6} t_0 \right) \\
+        &= \frac{7}{6} + \frac{35}{36} t_0 \\
+        &= 42 \text{ rolls}
+    \end{aligned}
+</p>
+Likewise, we can model rolling a 5 immediately followed by a 6 with the following equations:
+<p>
+    \begin{aligned}
+    t_0 &= 1 + \frac{5}{6} t_0 + \frac{1}{6} t_1 \\
+    t_1 &= 1 + \frac{4}{6} t_0 + \frac{1}{6} t_1
+    \end{aligned}
+</p>
+<p>
+Let's simplify \( t_1 \) first:
+</p>
+<p>
+    \begin{aligned}
+    t_1 &= 1 + \frac{4}{6} t_0 + \frac{1}{6} t_1 \\
+        &= \frac{6}{5} + \frac{4}{5} t_0
+    \end{aligned}
+</p>
+<p>
+Solving for \( t_0 \):
+</p>
+<p>
+    \begin{aligned}
+    t_0 &= 1 + \frac{5}{6} t_0 + \frac{1}{6} t_1 \\
+        &= 1 + \frac{5}{6} t_0 + \frac{1}{6} \left( \frac{6}{5} + \frac{4}{5} t_0 \right) \\
+        &= \frac{6}{5} + \frac{29}{30} t_0 \\
+        &= 36 \text{ rolls}
+    \end{aligned}
+</p>
+
+<p>
+Hence it takes 6 fewer rolls to roll a 5 immediately followed by a 6 compared to rolling two consecutive 5's.
+</p>
+
+### General solution with [absorbing Markov chains](https://en.wikipedia.org/wiki/Absorbing_Markov_chain)
 
 <p>
     To calculate the expected number of rolls we can first calculate the
@@ -96,11 +153,6 @@ For rolling a 5 immediately followed by a 6:
                 \end{bmatrix} \Rightarrow 30 + 6 = 36 \text{ rolls}
     \end{aligned}
 </p>
-
-<p>
-Hence it takes 6 fewer rolls to roll a 5 immediately followed by a 6 compared to rolling two consecutive 5's.
-</p>
-
-[^1]: https://en.wikipedia.org/wiki/Absorbing_Markov_chain
+</details>
 
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
