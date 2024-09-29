@@ -7,13 +7,13 @@ tags: [ "probability" ]
 ---
 
 A colleague asked me an interesting probability problem. If you roll a die
-continuously, are you more likely to roll two 5's or a 5 followed by a 6?
+continuously, are you more likely to roll two consecutive 5's or a 5 immediately followed by a 6?
 
-The state machine diagram for rolling two 5's:
+The state machine diagram for rolling two consecutive 5's:
 
 <img alt="DFA 1" width="400" src="/img/markov/dfa1.svg" />
 
-The state machine diagram for rolling a 5 followed by a 6:
+The state machine diagram for rolling a 5 immediately followed by a 6:
 
 <img alt="DFA 2" width="400" src="/img/markov/dfa2.svg" />
 
@@ -55,7 +55,7 @@ it is the sum of the expected number of visits from \( q_0 \) to transient
 states \( q_0 \) and \( q_1 \).
 </p>
 
-For rolling two 5's:
+For rolling two consecutive 5's:
 
 <p>
     \begin{aligned}
@@ -76,7 +76,7 @@ For rolling two 5's:
     \end{aligned}
 </p>
 
-For rolling a 5 followed by a 6:
+For rolling a 5 immediately followed by a 6:
 
 <p>
     \begin{aligned}
@@ -98,7 +98,7 @@ For rolling a 5 followed by a 6:
 </p>
 
 <p>
-Hence it takes 6 fewer rolls to roll a 5 followed by a 6 compared to rolling two 5's.
+Hence it takes 6 fewer rolls to roll a 5 immediately followed by a 6 compared to rolling two consecutive 5's.
 </p>
 
 [^1]: https://en.wikipedia.org/wiki/Absorbing_Markov_chain
