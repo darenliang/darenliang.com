@@ -6,8 +6,46 @@ showthedate: true
 tags: [ "probability" ]
 ---
 
-A colleague asked me an interesting probability problem. If you roll a die
+A colleague asked me an interesting probability problem involving dice. If you roll a die
 continuously, are you more likely to roll two consecutive 5's or a 5 immediately followed by a 6?
+On average how many rolls are required to roll two consecutive 5's?
+How about rolling 5 immediately followed by a 6?
+
+
+<script>
+function randomInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function roll(pattern) {
+  let rolls = "";
+  while (rolls.substring(rolls.length-2) !== pattern) {
+    rolls += randomInteger(1, 6);
+    console.log(rolls.substring(rolls.length-1));
+  }
+  document.getElementById("rolls").innerHTML = `${rolls.substring(0, rolls.length-2)}<b>${rolls.substring(rolls.length-2)}</b>`;
+  document.getElementById("msg").innerText = `It took ${rolls.length} rolls to get the first occurrence.`
+}
+
+function roll55() { roll("55"); }
+
+function roll56() { roll("56"); }
+</script>
+<div class="boxed">
+<h3>Interactive Example</h3>
+<div style="margin: 10px 0">
+    <button onclick="roll55()">Roll 5,5</button> <button onclick="roll56()">Roll 5,6</button>
+</div>
+<div style="margin: 10px 0">
+<p id="rolls" style="word-break: break-all"><br></p>
+<p id="msg"><br></p>
+</div>
+</div>
+
+### Solution
+
+<details>
+<summary>Reveal the Solution</summary>
 
 The state machine diagram for rolling two consecutive 5's:
 
@@ -23,11 +61,6 @@ The state machine diagram for rolling a 5 immediately followed by a 6:
     contains an additional transition into itself. However, can we compute how
     many fewer rolls are required?
 </p>
-
-### Solution
-
-<details>
-<summary>Reveal the Solution</summary>
 <p>
 Let \( t_n \) be the expected number of rolls required starting with state \( q_n \).
 </p>
