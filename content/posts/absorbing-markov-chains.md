@@ -11,26 +11,6 @@ continuously, are you more likely to roll two consecutive 5's or a 5 immediately
 On average how many rolls are required to roll two consecutive 5's?
 How about rolling 5 immediately followed by a 6?
 
-
-<script>
-function randomInteger(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function roll(pattern) {
-  let rolls = "";
-  while (rolls.substring(rolls.length-2) !== pattern) {
-    rolls += randomInteger(1, 6);
-    console.log(rolls.substring(rolls.length-1));
-  }
-  document.getElementById("rolls").innerHTML = `${rolls.substring(0, rolls.length-2)}<b>${rolls.substring(rolls.length-2)}</b>`;
-  document.getElementById("msg").innerText = `It took ${rolls.length} rolls to get the first occurrence.`
-}
-
-function roll55() { roll("55"); }
-
-function roll56() { roll("56"); }
-</script>
 <div class="boxed">
 <h3>Interactive Example</h3>
 <div style="margin: 10px 0">
@@ -188,4 +168,23 @@ For rolling a 5 immediately followed by a 6:
 </p>
 </details>
 
+<script>
+function randomInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function roll(pattern) {
+  let rolls = "";
+  while (rolls.substring(rolls.length-2) !== pattern) {
+    rolls += randomInteger(1, 6);
+    console.log(rolls.substring(rolls.length-1));
+  }
+  document.getElementById("rolls").innerHTML = `${rolls.substring(0, rolls.length-2)}<b>${rolls.substring(rolls.length-2)}</b>`;
+  document.getElementById("msg").innerText = `It took ${rolls.length} rolls to get the first occurrence.`
+}
+
+function roll55() { roll("55"); }
+
+function roll56() { roll("56"); }
+</script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
