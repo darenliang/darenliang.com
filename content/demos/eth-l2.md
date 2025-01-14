@@ -17,7 +17,7 @@ Note that some networks might be excluded, you can comment below to have them ad
 
     function pushData(arr, entry) {
         arr.push(entry);
-        if (arr.length > 100) {
+        if (arr.length > 20) {
             arr.shift();
         }
     }
@@ -64,15 +64,6 @@ Note that some networks might be excluded, you can comment below to have them ad
     ];
 
     const data = {};
-    data["Σ"] = {
-        "Chain": "Σ",
-        "Stack": "-",
-        "Block Number": "-",
-        "TPS": [],
-        "Mgas/s": [],
-        "Block Time (s)": [],
-        "Timestamp (s)": "-",
-    };
     for (const [url, name, stack] of streams) {
         data[name] = {
             "Chain": name,
@@ -131,24 +122,6 @@ Note that some networks might be excluded, you can comment below to have them ad
                 "Timestamp (s)": timestamp,
             };
 
-            let sigma_tps = 0;
-            let sigma_mgas_s = 0;
-            for (const key in data) {
-                if (key !== "Σ") {
-                    sigma_tps += data[key]["TPS"] === "-" ? 0 : data[key]["TPS"];
-                    sigma_mgas_s += data[key]["Mgas/s"] === "-" ? 0 : data[key]["Mgas/s"];
-                }
-            }
-            data["Σ"] = {
-                "Chain": "Σ",
-                "Stack": "-",
-                "Block Number": "-",
-                "TPS": sigma_tps,
-                "Mgas/s": sigma_mgas_s,
-                "Block Time (s)": [],
-                "Timestamp (s)": "-",
-            };
-
             SpreadGrid(grid, {
                 data: data,
                 columns: [{
@@ -172,27 +145,33 @@ Note that some networks might be excluded, you can comment below to have them ad
                     },
                     {
                         column: { id: 'Block Number' },
-                        style: { textAlign: 'right' } 
+                        style: { textAlign: 'right' },
+                        value: ({ value }) => value === "-" ? -1: value,
+                        text: ({ value }) => value === -1 ? "-": value
                     },
                    {
                         column: { id: 'TPS' },
                         style: { textAlign: 'right' },
-                        text: ({ row, value }) => (value.length === 0) || (getBlocktime(data[row.id]["Block Time (s)"]) === 0) ? "-": (getAvg(value) / getBlocktime(data[row.id]["Block Time (s)"])).toFixed(2)
+                        value: ({ row, value }) => (value.length === 0) || (getBlocktime(data[row.id]["Block Time (s)"]) === 0) ? -1: getAvg(value) / getBlocktime(data[row.id]["Block Time (s)"]),
+                        text: ({ value }) => value === -1 ? "-": value.toFixed(2)
                     },
                     {
                         column: { id: 'Block Time (s)' },
                         style: { textAlign: 'right' },
-                        text: ({ value }) => value.length < 2 ? "-": getBlocktime(value).toFixed(2)
+                        value: ({ value }) => value.length < 2 ? -1: getBlocktime(value),
+                        text: ({ value }) => value === -1 ? "-": value.toFixed(2)
                     },
                     {
                         column: { id: 'Timestamp (s)' },
                         style: { textAlign: 'right' },
-                        text: ({ value }) => value === "-" ? "-": Math.round(value / 1000)
+                        value: ({ value }) => value === "-" ? -1: value,
+                        text: ({ value }) => value === -1 ? "-": value
                     },
                     {
                         column: { id: 'Mgas/s' },
                         style: { textAlign: 'right' },
-                        text: ({ row, value }) => (value.length === 0) || (getBlocktime(data[row.id]["Block Time (s)"]) === 0) ? "-": (getAvg(value) / getBlocktime(data[row.id]["Block Time (s)"])).toFixed(2)
+                        value: ({ row, value }) => (value.length === 0) || (getBlocktime(data[row.id]["Block Time (s)"]) === 0) ? -1: getAvg(value) / getBlocktime(data[row.id]["Block Time (s)"]),
+                        text: ({ value }) => value === -1 ? "-": value.toFixed(2)
                     }
                 ]
             });
