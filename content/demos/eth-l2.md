@@ -15,19 +15,23 @@ Note that some networks might be excluded, you can comment below to have them ad
 <script type="module">
     let _last_timestamp = 0;
 
-    function pushBlocktime(blocktime, timestamp) {
-        blocktime.push(timestamp);
-        if (blocktime.length > 100) {
-            blocktime.shift();
+    function pushData(arr, entry) {
+        arr.push(entry);
+        if (arr.length > 100) {
+            arr.shift();
         }
     }
 
-    function getBlocktime(blocktime) {
-          if (blocktime.length < 2) {
+    function getBlocktime(arr) {
+          if (arr.length < 2) {
             return 0;
           }
-        const blocktime_diff = blocktime[blocktime.length - 1] - blocktime[0];
-        return blocktime_diff / (blocktime.length - 1);
+        const blocktime_diff = arr[arr.length - 1] - arr[0];
+        return blocktime_diff / (arr.length - 1);
+    }
+
+    function getAvg(arr) {
+        return arr.reduce((a, b) => a + b, 0) / arr.length;
     }
 
     const grid = document.getElementById('grid');
@@ -64,8 +68,8 @@ Note that some networks might be excluded, you can comment below to have them ad
         "Chain": "Σ",
         "Stack": "-",
         "Block Number": "-",
-        "TPS": "-",
-        "Mgas/s": "-",
+        "TPS": [],
+        "Mgas/s": [],
         "Block Time (s)": [],
         "Timestamp (s)": "-",
     };
@@ -74,8 +78,8 @@ Note that some networks might be excluded, you can comment below to have them ad
             "Chain": name,
             "Stack": stack,
             "Block Number": "-",
-            "TPS": "-",
-            "Mgas/s": "-",
+            "TPS": [],
+            "Mgas/s": [],
             "Block Time (s)": [],
             "Timestamp (s)": "-",
         };
@@ -95,9 +99,8 @@ Note that some networks might be excluded, you can comment below to have them ad
         ws.onmessage = (event) => {
             const message = JSON.parse(event.data);
             if (message.method !== "eth_subscription") {
-                let block_time = getBlocktime(data[name]["Block Time (s)"]);
-                if ((message.id === 2) && (block_time > 0) && ("result" in message) && ("transactions" in message.result)) {
-                    data[name]["TPS"] = message.result.transactions.length / block_time;
+                if ((message.id === 2) && ("result" in message) && ("transactions" in message.result)) {
+                    pushData(data[name]["TPS"], message.result.transactions.length);
                 }
                 return;
             }
@@ -113,20 +116,17 @@ Note that some networks might be excluded, you can comment below to have them ad
             }, 1000);
 
             let timestamp = parseInt(result.timestamp, 16);
-            pushBlocktime(data[name]["Block Time (s)"], timestamp);
+            pushData(data[name]["Block Time (s)"], timestamp);
+            pushData(data[name]["Mgas/s"], parseInt(result.gasUsed, 16) / 1000000);
+
             let block_number = parseInt(result.number, 16);
-            let mgas_s = "-";
-            let block_time = getBlocktime(data[name]["Block Time (s)"]);
-            if (block_time > 0) {
-                mgas_s = (parseInt(result.gasUsed, 16) / 1000000) / block_time;
-            }
 
             data[name] = {
                 "Chain": name,
                 "Stack": stack,
                 "Block Number": block_number,
                 "TPS": data[name]["TPS"],
-                "Mgas/s": mgas_s,
+                "Mgas/s": data[name]["Mgas/s"],
                 "Block Time (s)": data[name]["Block Time (s)"],
                 "Timestamp (s)": timestamp,
             };
@@ -177,7 +177,7 @@ Note that some networks might be excluded, you can comment below to have them ad
                    {
                         column: { id: 'TPS' },
                         style: { textAlign: 'right' },
-                        text: ({ value }) => value === "-" ? "-": value.toFixed(2)
+                        text: ({ row, value }) => (value.length === 0) || (getBlocktime(data[row.id]["Block Time (s)"]) === 0) ? "-": (getAvg(value) / getBlocktime(data[row.id]["Block Time (s)"])).toFixed(2)
                     },
                     {
                         column: { id: 'Block Time (s)' },
@@ -192,7 +192,7 @@ Note that some networks might be excluded, you can comment below to have them ad
                     {
                         column: { id: 'Mgas/s' },
                         style: { textAlign: 'right' },
-                        text: ({ value }) => value === "-" ? "-": value.toFixed(2)
+                        text: ({ row, value }) => (value.length === 0) || (getBlocktime(data[row.id]["Block Time (s)"]) === 0) ? "-": (getAvg(value) / getBlocktime(data[row.id]["Block Time (s)"])).toFixed(2)
                     }
                 ]
             });
