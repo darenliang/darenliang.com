@@ -61,7 +61,7 @@ const streams = [
     ["wss://ink.drpc.org", "Ink", "Optimism"],
     ["wss://gnosis.drpc.org", "Gnosis", "-"],
     [
-        "wss://light-soft-film.zkevm-mainnet.quiknode.pro/594b6c1cb1bc9dd9c35ce37c4140e9b81e73b7e3",
+        "wss://polygon-zkevm-mainnet.blastapi.io/f532a60e-286a-44b9-8455-e1aebc8bc21d",
         "Polygon zkEVM",
         "Polygon",
     ],
