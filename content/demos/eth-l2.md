@@ -7,8 +7,10 @@ showthedate: false
 
 Real-time information provided by public RPC APIs.
 
-Note that some networks might be excluded, you can comment below to have them
-added.
+* Yellow indicates that the chain has yet to report two blocks.
+* Red indicates that the chain has not reported blocks for a while.
+
+Many more chains are missing, you can comment below to have them added.
 
 <div id="grid"></div>
 <script src="https://unpkg.com/js-spread-grid@latest/dist/index.js"></script>
@@ -32,7 +34,7 @@ function getBlocktime(block_numbers, block_times) {
   const number_diff =
     block_numbers[block_numbers.length - 1] - block_numbers[0];
   const time_diff = block_times[block_times.length - 1] - block_times[0];
-  return time_diff / number_diff;
+  return (time_diff / number_diff);
 }
 
 const grid = document.getElementById("grid");
@@ -288,16 +290,7 @@ for (const [name, stream] of Object.entries(streams)) {
       );
     }, 1000);
 
-    let skipped = false;
-
     const block_number = parseInt(result.number, 16);
-    if (data[name].block_numbers.length !== 0) {
-      const last_block_number =
-        data[name].block_numbers[data[name].block_numbers.length - 1];
-      if (block_number - last_block_number > 1) {
-        skipped = true;
-      }
-    }
     pushData(data[name].block_numbers, block_number);
 
     const timestamp = parseInt(result.timestamp, 16);
@@ -312,7 +305,7 @@ for (const [name, stream] of Object.entries(streams)) {
       data[name].block_numbers,
       data[name].block_times,
     );
-    if (block_time !== -1) {
+    if (block_time > 0) {
       if (data[name].transactions.length !== 0) {
         display_data[name]["TPS"] =
           getAvg(data[name].transactions) / block_time;
@@ -359,12 +352,34 @@ for (const [name, stream] of Object.entries(streams)) {
 
     const formatting = [
       {
-        row: {
-          id: "Ethereum",
+        rows: {},
+        style: ({ row }) => {
+          if (row.id === "Σ") {
+            return {};
+          }
+          const block_time = getBlocktime(
+            data[row.id].block_numbers,
+            data[row.id].block_times,
+          );
+          if (block_time === -1) {
+            return {};
+          }
+          const current_time = Math.round(Date.now() / 1000);
+          const last_block_time =
+            data[row.id].block_times[data[row.id].block_times.length - 1];
+          if (current_time - last_block_time > block_time * 10) {
+            return { background: "#f6d6d6" };
+          }
         },
-        style: ({ value, row, data }) => ({
-          background: "#d6f6d6",
-        }),
+      },
+      {
+        rows: {},
+        style: ({ row }) => {
+          if (display_data[row.id]["TPS"] !== -1) {
+            return {};
+          }
+          return { background: "#f6f6d6" };
+        },
       },
       {
         font: "16px Space Mono",
@@ -400,17 +415,6 @@ for (const [name, stream] of Object.entries(streams)) {
         text: ({ value }) => (value === -1 ? "-" : value.toFixed(2)),
       },
     ];
-
-    if (skipped) {
-      formatting.push({
-        row: {
-          id: name,
-        },
-        style: ({ value, row, data }) => ({
-          background: "#f6d6d6",
-        }),
-      });
-    }
 
     SpreadGrid(grid, {
       data: display_data,
