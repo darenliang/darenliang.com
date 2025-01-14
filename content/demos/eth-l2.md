@@ -367,7 +367,7 @@ for (const [name, stream] of Object.entries(streams)) {
           const current_time = Math.round(Date.now() / 1000);
           const last_block_time =
             data[row.id].block_times[data[row.id].block_times.length - 1];
-          if (current_time - last_block_time > block_time * 10) {
+          if (current_time - last_block_time > block_time + 20) {
             return { background: "#f6d6d6" };
           }
         },
