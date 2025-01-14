@@ -13,6 +13,23 @@ Note that some networks might be excluded, you can comment below to have them ad
 <script src="https://unpkg.com/js-spread-grid@latest/dist/index.js"></script>
 
 <script type="module">
+    let _last_timestamp = 0;
+
+    function pushBlocktime(blocktime, timestamp) {
+        blocktime.push(timestamp);
+        if (blocktime.length > 100) {
+            blocktime.shift();
+        }
+    }
+
+    function getBlocktime(blocktime) {
+          if (blocktime.length < 2) {
+            return 0;
+          }
+        const blocktime_diff = blocktime[blocktime.length - 1] - blocktime[0];
+        return blocktime_diff / (blocktime.length - 1);
+    }
+
     const grid = document.getElementById('grid');
 
     const streams = [
@@ -22,6 +39,7 @@ Note that some networks might be excluded, you can comment below to have them ad
         ["wss://polygon.drpc.org", "Polygon POS", "Polygon"],
         ["wss://optimism.drpc.org", "OP Mainnet", "Optimism"],
         ["wss://mainnet.era.zksync.io/ws", "zkSync Era", "-"],
+        ["wss://immutable.gateway.tenderly.co", "Immutable", "-"],
         ["wss://blast.drpc.org", "Blast", "Optimism"],
         ["wss://linea.drpc.org", "Linea", "-"],
         ["wss://scroll.drpc.org", "Scroll", "-"],
@@ -29,7 +47,6 @@ Note that some networks might be excluded, you can comment below to have them ad
         ["wss://worldchain.drpc.org", "World Chain", "Optimism"],
         ["wss://zircuit-mainnet.drpc.org", "Zircuit", "Optimism"],
         ["wss://mode.drpc.org", "Mode", "Optimism"],
-        ["wss://taiko.drpc.org", "Taiko", "-"],
         ["wss://bob.drpc.org", "Build On Bitcoin", "Optimism"],
         ["wss://rpc.redstonechain.com", "Redstone", "Optimism"],
         ["wss://fraxtal.drpc.org", "Fraxtal", "Optimism"],
@@ -38,18 +55,28 @@ Note that some networks might be excluded, you can comment below to have them ad
         ["wss://rpc.zora.energy", "Zora", "Optimism"],
         ["wss://ink.drpc.org", "Ink", "Optimism"],
         ["wss://gnosis.drpc.org", "Gnosis", "-"],
-        ["wss://api.blockeden.xyz/polygon_zkevm/67nCBdZQSH9z3YqDDjdm", "Polygon zkEVM", "Polygon"],
+        ["wss://light-soft-film.zkevm-mainnet.quiknode.pro/594b6c1cb1bc9dd9c35ce37c4140e9b81e73b7e3", "Polygon zkEVM", "Polygon"],
         ["wss://arbitrum-nova.publicnode.com", "Arbitrum Nova", "Arbitrum"],
     ];
 
     const data = {};
+    data["Σ"] = {
+        "Chain": "Σ",
+        "Stack": "-",
+        "Block Number": "-",
+        "TPS": "-",
+        "Mgas/s": "-",
+        "Block Time (s)": [],
+        "Timestamp (s)": "-",
+    };
     for (const [url, name, stack] of streams) {
         data[name] = {
             "Chain": name,
             "Stack": stack,
             "Block Number": "-",
+            "TPS": "-",
             "Mgas/s": "-",
-            "Block Time (s)": "-",
+            "Block Time (s)": [],
             "Timestamp (s)": "-",
         };
     }
@@ -68,27 +95,60 @@ Note that some networks might be excluded, you can comment below to have them ad
         ws.onmessage = (event) => {
             const message = JSON.parse(event.data);
             if (message.method !== "eth_subscription") {
+                let block_time = getBlocktime(data[name]["Block Time (s)"]);
+                if ((message.id === 2) && (block_time > 0) && ("result" in message) && ("transactions" in message.result)) {
+                    data[name]["TPS"] = message.result.transactions.length / block_time;
+                }
                 return;
             }
-            const result = message.params.result;
 
-            let timestamp = Date.now();
-            let last_timestamp = 0;
+            const result = message.params.result;
+            setTimeout(() => {
+                ws.send(JSON.stringify({
+                    "jsonrpc": "2.0",
+                    "id": 2,
+                    "method": "eth_getBlockByNumber",
+                    "params": [result.number, false]
+                }));
+            }, 1000);
+
+            let timestamp = parseInt(result.timestamp, 16);
+            pushBlocktime(data[name]["Block Time (s)"], timestamp);
+            let block_number = parseInt(result.number, 16);
             let mgas_s = "-";
-            let block_time = "-";
-            if (data[name]["Timestamp (s)"] !== "-") {
-                last_timestamp = data[name]["Timestamp (s)"];
-                mgas_s = (parseInt(result.gasUsed, 16) / 1000000) / ((timestamp - last_timestamp) / 1000);
-                block_time = (timestamp - last_timestamp) / 1000;
+            let block_time = getBlocktime(data[name]["Block Time (s)"]);
+            if (block_time > 0) {
+                mgas_s = (parseInt(result.gasUsed, 16) / 1000000) / block_time;
             }
+
             data[name] = {
                 "Chain": name,
                 "Stack": stack,
-                "Block Number": parseInt(result.number, 16),
+                "Block Number": block_number,
+                "TPS": data[name]["TPS"],
                 "Mgas/s": mgas_s,
-                "Block Time (s)": block_time,
+                "Block Time (s)": data[name]["Block Time (s)"],
                 "Timestamp (s)": timestamp,
             };
+
+            let sigma_tps = 0;
+            let sigma_mgas_s = 0;
+            for (const key in data) {
+                if (key !== "Σ") {
+                    sigma_tps += data[key]["TPS"] === "-" ? 0 : data[key]["TPS"];
+                    sigma_mgas_s += data[key]["Mgas/s"] === "-" ? 0 : data[key]["Mgas/s"];
+                }
+            }
+            data["Σ"] = {
+                "Chain": "Σ",
+                "Stack": "-",
+                "Block Number": "-",
+                "TPS": sigma_tps,
+                "Mgas/s": sigma_mgas_s,
+                "Block Time (s)": [],
+                "Timestamp (s)": "-",
+            };
+
             SpreadGrid(grid, {
                 data: data,
                 columns: [{
@@ -114,20 +174,25 @@ Note that some networks might be excluded, you can comment below to have them ad
                         column: { id: 'Block Number' },
                         style: { textAlign: 'right' } 
                     },
+                   {
+                        column: { id: 'TPS' },
+                        style: { textAlign: 'right' },
+                        text: ({ value }) => value === "-" ? "-": value.toFixed(2)
+                    },
                     {
                         column: { id: 'Block Time (s)' },
                         style: { textAlign: 'right' },
-                        value: ({ value }) => value === "-" ? "-": value.toFixed(2)
+                        text: ({ value }) => value.length < 2 ? "-": getBlocktime(value).toFixed(2)
                     },
                     {
                         column: { id: 'Timestamp (s)' },
                         style: { textAlign: 'right' },
-                        value: ({ value }) => value === "-" ? "-": Math.round(value / 1000)
+                        text: ({ value }) => value === "-" ? "-": Math.round(value / 1000)
                     },
                     {
                         column: { id: 'Mgas/s' },
                         style: { textAlign: 'right' },
-                        value: ({ value }) => value === "-" ? "-": value.toFixed(2)
+                        text: ({ value }) => value === "-" ? "-": value.toFixed(2)
                     }
                 ]
             });
