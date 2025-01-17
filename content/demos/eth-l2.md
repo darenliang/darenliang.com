@@ -348,7 +348,7 @@ for (const [name, stream] of Object.entries(streams)) {
     display_data["Σ"]["Mgas/s"] = sigma_mgas;
     display_data["Σ"]["KB/s"] = sigma_kbs;
     display_data["Σ"]["Block Time"] = 1 / sigma_block_time;
-    display_data["Σ"]["Timestamp"] = Math.round(Date.now() / 1000);
+    display_data["Σ"]["Timestamp"] = Date.now() / 1000;
 
     const formatting = [
       {
@@ -400,9 +400,26 @@ for (const [name, stream] of Object.entries(streams)) {
         text: ({ value }) => (value === -1 ? "-" : value.toFixed(2)),
       },
       {
+        column: { id: "Block Time" },
+        draw: ({ ctx, value, column, row }) => {
+          if ((value === -1) || (row.id === "Σ")) {
+            return;
+          }
+          const lag = (
+            display_data["Σ"]["Timestamp"] - display_data[row.id]["Timestamp"]
+          );
+          const lag_percent = Math.min(1, lag / value);
+          const width = column.width - 4;
+          const height = row.height - 4;
+          const barWidth = width * lag_percent;
+          ctx.fillStyle = '#d6e6f6';
+          ctx.fillRect(2, 2, barWidth, height);
+        }
+      },
+      {
         column: { id: "Timestamp" },
         style: { textAlign: "right" },
-        text: ({ value }) => (value === -1 ? "-" : value),
+        text: ({ value }) => (value === -1 ? "-" : value.toFixed(0)),
       },
       {
         column: { id: "Mgas/s" },
@@ -422,6 +439,16 @@ for (const [name, stream] of Object.entries(streams)) {
         {
           type: "DATA-BLOCK",
           width: "fit",
+        },
+      ],
+      rows: [
+        {
+          type: "HEADER",
+          height: 20,
+        },
+        {
+          type: "DATA-BLOCK",
+          height: 20,
         },
       ],
       formatting: formatting,
