@@ -408,7 +408,7 @@ for (const [name, stream] of Object.entries(streams)) {
           const lag = (
             display_data["Σ"]["Timestamp"] - display_data[row.id]["Timestamp"]
           );
-          const lag_percent = Math.min(1, lag / value);
+          const lag_percent = Math.max(0, Math.min(1, lag / value));
           const width = column.width - 4;
           const height = row.height - 4;
           const barWidth = width * lag_percent;
