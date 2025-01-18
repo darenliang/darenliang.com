@@ -1,7 +1,7 @@
 ---
 title: "Imglabs.io Image Proxy Demo"
 description: "Cache and transform images on the network edge with Imglabs.io"
-date: "0003-01-01"
+date: "0005-01-01"
 showthedate: false
 nocomments: true
 ---

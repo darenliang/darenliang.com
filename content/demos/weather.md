@@ -1,7 +1,7 @@
 ---
 title: "This Is Your Weather Forecast"
 description: "Get your weather forecast without ads and in a simple format"
-date: "0003-01-01"
+date: "0004-01-01"
 showthedate: false
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "In-browser SQL using DuckDB"
 description: "Run SQL queries in the browser using DuckDB WASM"
-date: "0007-01-01"
+date: "0008-01-01"
 showthedate: false
 ---
 
