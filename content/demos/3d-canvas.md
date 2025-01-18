@@ -261,6 +261,7 @@ Press the arrow keys ⬆️ ⬇️ ⬅️ ➡️ or drag to rotate the shape!
     const touch = e.touches[0];
     touchStartX = touch.clientX;
     touchStartY = touch.clientY;
+    e.preventDefault();
   });
 
   canvas.addEventListener('touchmove', (e) => {
@@ -276,5 +277,6 @@ Press the arrow keys ⬆️ ⬇️ ⬅️ ➡️ or drag to rotate the shape!
 
     touchStartX = touchEndX;
     touchStartY = touchEndY;
+    e.preventDefault();
   });
 </script>
