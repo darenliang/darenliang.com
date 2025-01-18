@@ -10,7 +10,7 @@ of [pygame3Dtest](https://github.com/darenliang/pygame3Dtest),
 which is a simple pygame demo I wrote to show how to draw 3D shapes using the
 pygame API.
 
-Press the arrow keys ⬆️ ⬇️ ⬅️ ➡️ to rotate the shape!
+Press the arrow keys ⬆️ ⬇️ ⬅️ ➡️ or drag to rotate the shape!
 
 <div class="controls">
   <button id="scrollToggleBtn">Disable Arrow Key Scroll</button>
@@ -252,4 +252,29 @@ Press the arrow keys ⬆️ ⬇️ ⬅️ ➡️ to rotate the shape!
       e.preventDefault();
     }
   }, { passive: false });
+
+  // Swipe support
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  canvas.addEventListener('touchstart', (e) => {
+    const touch = e.touches[0];
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+  });
+
+  canvas.addEventListener('touchmove', (e) => {
+    const touch = e.touches[0];
+    const touchEndX = touch.clientX;
+    const touchEndY = touch.clientY;
+
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+
+    angleY += deltaX * 0.01;
+    angleX += deltaY * 0.01;
+
+    touchStartX = touchEndX;
+    touchStartY = touchEndY;
+  });
 </script>
