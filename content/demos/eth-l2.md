@@ -41,46 +41,34 @@ const grid = document.getElementById("grid");
 
 const streams = {
   Ethereum: {
-    rpc: "wss://ethereum-rpc.publicnode.com",
+    rpc: "wss://eth.drpc.org",
     stack: "-",
     url: "https://ethereum.org",
     explorer: "https://etherscan.io/block/",
   },
   Base: {
-    rpc: "wss://base-rpc.publicnode.com",
+    rpc: "wss://base.drpc.org",
     stack: "Optimism",
     url: "https://www.base.org",
     explorer: "https://basescan.org/block/",
   },
   "Arbitrum One": {
-    rpc: "wss://arbitrum-one-rpc.publicnode.com",
+    rpc: "wss://arbitrum.drpc.org",
     stack: "Arbitrum",
     url: "https://arbitrum.io/rollup",
     explorer: "https://arbiscan.io/block/",
   },
-  "Polygon POS": {
-    rpc: "wss://polygon-bor-rpc.publicnode.com",
-    stack: "Polygon",
-    url: "https://polygon.technology/polygon-pos",
-    explorer: "https://polygonscan.com/block/",
-  },
   "OP Mainnet": {
-    rpc: "wss://optimism-rpc.publicnode.com",
+    rpc: "wss://optimism.drpc.org",
     stack: "Optimism",
     url: "https://optimism.io",
     explorer: "https://optimistic.etherscan.io/block/",
   },
-  Xai: {
-    rpc: "wss://xai-mainnet.rpc.quicknode.com",
-    stack: "Arbitrum",
-    url: "https://xai.games",
-    explorer: "https://xaiscan.io/block/",
-  },
-  Taiko: {
-    rpc: "wss://taiko-rpc.publicnode.com",
-    stack: "-",
-    url: "https://taiko.xyz",
-    explorer: "https://taikoscan.io/block/",
+  "Polygon POS": {
+    rpc: "wss://polygon.drpc.org",
+    stack: "Polygon",
+    url: "https://polygon.technology/polygon-pos",
+    explorer: "https://polygonscan.com/block/",
   },
   "zkSync Era": {
     rpc: "wss://mainnet.era.zksync.io/ws",
@@ -88,41 +76,17 @@ const streams = {
     url: "https://zksync.io",
     explorer: "https://explorer.zksync.io/batch/",
   },
-  Immutable: {
-    rpc: "wss://immutable.gateway.tenderly.co",
-    stack: "-",
-    url: "https://www.immutable.com/",
-    explorer: "https://explorer.immutable.com/block/",
-  },
   Blast: {
     rpc: "wss://rpc.blast.io",
     stack: "Optimism",
     url: "https://blast.io",
     explorer: "https://blastscan.io/block/",
   },
-  WINR: {
-    rpc: "wss://rpc-ws.winr.games",
-    stack: "Arbitrum",
-    url: "https://winr.games",
-    explorer: "https://explorer.winr.games/batches/",
-  },
   Linea: {
-    rpc: "wss://linea-rpc.publicnode.com",
+    rpc: "wss://linea.drpc.org",
     stack: "-",
     url: "https://linea.build",
     explorer: "https://lineascan.build/block/",
-  },
-  Scroll: {
-    rpc: "wss://scroll-rpc.publicnode.com",
-    stack: "-",
-    url: "https://scroll.io",
-    explorer: "https://scrollscan.com/block/",
-  },
-  Metis: {
-    rpc: "wss://metis-rpc.publicnode.com",
-    stack: "-",
-    url: "https://metis.io",
-    explorer: "https://explorer.metis.io/batch/",
   },
   "World Chain": {
     rpc: "wss://worldchain.drpc.org",
@@ -130,17 +94,17 @@ const streams = {
     url: "https://world.org/world-chain",
     explorer: "https://worldscan.org/block/",
   },
+  Scroll: {
+    rpc: "wss://scroll.drpc.org",
+    stack: "-",
+    url: "https://scroll.io",
+    explorer: "https://scrollscan.com/block/",
+  },
   Zircuit: {
     rpc: "wss://zircuit-mainnet.drpc.org",
     stack: "Optimism",
     url: "https://www.zircuit.com",
     explorer: "https://explorer.zircuit.com/blocks/",
-  },
-  Mode: {
-    rpc: "wss://mainnet.mode.network",
-    stack: "Optimism",
-    url: "https://mode.network",
-    explorer: "https://explorer.mode.network/block/",
   },
   "Build On Bitcoin": {
     rpc: "wss://bob.drpc.org",
@@ -148,11 +112,17 @@ const streams = {
     url: "https://www.gobob.xyz",
     explorer: "https://3xpl.com/bob/block/",
   },
-  Redstone: {
-    rpc: "wss://rpc.redstonechain.com",
+  Mode: {
+    rpc: "wss://mainnet.mode.network",
     stack: "Optimism",
-    url: "https://redstone.xyz",
-    explorer: "https://explorer.redstone.xyz/block/",
+    url: "https://mode.network",
+    explorer: "https://explorer.mode.network/block/",
+  },
+  Taiko: {
+    rpc: "wss://taiko.drpc.org",
+    stack: "-",
+    url: "https://taiko.xyz",
+    explorer: "https://taikoscan.io/block/",
   },
   Fraxtal: {
     rpc: "wss://fraxtal.drpc.org",
@@ -160,17 +130,35 @@ const streams = {
     url: "https://frax.com",
     explorer: "https://fraxscan.com/block/",
   },
+  Metis: {
+    rpc: "wss://metis-mainnet.blastapi.io/f532a60e-286a-44b9-8455-e1aebc8bc21d",
+    stack: "-",
+    url: "https://metis.io",
+    explorer: "https://explorer.metis.io/batch/",
+  },
   Lisk: {
     rpc: "wss://ws.api.lisk.com",
     stack: "Optimism",
     url: "https://lisk.com",
     explorer: "https://blockscout.lisk.com/block/",
   },
-  Cyber: {
-    rpc: "wss://rpc.cyber.co",
+  Ink: {
+    rpc: "wss://ws-gel.inkonchain.com",
     stack: "Optimism",
-    url: "https://cyber.co",
-    explorer: "https://cyberscan.co/block/",
+    url: "https://inkonchain.com",
+    explorer: "https://explorer.inkonchain.com/block/",
+  },
+  Soneium: {
+    rpc: "wss://rpc.soneium.org",
+    stack: "Optimism",
+    url: "https://soneium.org",
+    explorer: "https://soneium.blockscout.com/block/",
+  },
+  Morph: {
+    rpc: "wss://rpc-quicknode.morphl2.io",
+    stack: "Optimism",
+    url: "https://www.morphl2.io",
+    explorer: "https://explorer.morphl2.io/block/",
   },
   Zora: {
     rpc: "wss://rpc.zora.energy",
@@ -178,11 +166,29 @@ const streams = {
     url: "https://zora.energy",
     explorer: "https://explorer.zora.energy/block/",
   },
-  Ink: {
-    rpc: "wss://ws-gel.inkonchain.com",
+  Mint: {
+    rpc: "wss://rpc.mintchain.io",
     stack: "Optimism",
-    url: "https://inkonchain.com",
-    explorer: "https://explorer.inkonchain.com/block/",
+    url: "https://mintchain.io",
+    explorer: "https://explorer.mintchain.io/block/",
+  },
+  Redstone: {
+    rpc: "wss://rpc.redstonechain.com",
+    stack: "Optimism",
+    url: "https://redstone.xyz",
+    explorer: "https://explorer.redstone.xyz/block/",
+  },
+  Xai: {
+    rpc: "wss://xai-mainnet.rpc.quicknode.com",
+    stack: "Arbitrum",
+    url: "https://xai.games",
+    explorer: "https://xaiscan.io/block/",
+  },
+  Cyber: {
+    rpc: "wss://rpc.cyber.co",
+    stack: "Optimism",
+    url: "https://cyber.co",
+    explorer: "https://cyberscan.co/block/",
   },
   Gnosis: {
     rpc: "wss://rpc.gnosischain.com/wss",
@@ -196,6 +202,12 @@ const streams = {
     url: "https://apechain.com",
     explorer: "https://apescan.io/block/",
   },
+  "Immutable zkEVM": {
+    rpc: "wss://stylish-hardworking-dinghy.imx-mainnet.quiknode.pro/0166596fe26132eb6c819355aad99d72299e8d79",
+    stack: "-",
+    url: "https://www.immutable.com/",
+    explorer: "https://explorer.immutable.com/block/",
+  },
   "Polygon zkEVM": {
     rpc: "wss://polygon-zkevm-mainnet.blastapi.io/f532a60e-286a-44b9-8455-e1aebc8bc21d",
     stack: "Polygon",
@@ -203,7 +215,7 @@ const streams = {
     explorer: "https://zkevm.polygonscan.com/block/",
   },
   "Arbitrum Nova": {
-    rpc: "wss://arbitrum-nova.publicnode.com",
+    rpc: "wss://arbitrum-nova.blastapi.io/f532a60e-286a-44b9-8455-e1aebc8bc21d",
     stack: "Arbitrum",
     url: "https://arbitrum.io/anytrust",
     explorer: "https://nova.arbiscan.io/block/",
