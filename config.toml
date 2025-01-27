@@ -11,7 +11,7 @@ home = ["HTML", "RSS"]
 author = "Daren Liang"
 description = "Software Engineer at Citi. Studied computer science at University of Toronto."
 subtitle = ""
-enableTemporal = false
+enableTemporal = true
 giscusRepo = "darenliang/darenliang.com"
 giscusRepoId = "MDEwOlJlcG9zaXRvcnkyMTEzNjc4MDI="
 noJS = "Welcome to the anti-JS club!"
