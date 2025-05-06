@@ -1,7 +1,7 @@
 ---
 title: "Real-time Ethereum Rollups Info"
 description: "Get real-time information about Ethereum rollups"
-date: "0007-01-01"
+date: "0008-01-01"
 showthedate: false
 ---
 
@@ -153,6 +153,12 @@ const streams = {
     stack: "Optimism",
     url: "https://soneium.org",
     explorer: "https://soneium.blockscout.com/block/",
+  },
+  Unichain: {
+    rpc: "wss://unichain.drpc.org",
+    stack: "Optimism",
+    url: "https://www.unichain.org",
+    explorer: "https://uniscan.xyz/block/",
   },
   Morph: {
     rpc: "wss://rpc-quicknode.morphl2.io",
