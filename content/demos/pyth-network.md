@@ -130,9 +130,9 @@ const streams = {
     name: "Stacks",
     symbol: "STX",
   },
-  "06ade621dbc31ed0fc9255caaab984a468abe84164fb2ccc76f02a4636d97e31": {
-    name: "EOS",
-    symbol: "EOS",
+  "2cffc28ec4268805dbcb315bb122616059a1c200dda3d56f06ac150db8dfc370": {
+    name: "Vaulta",
+    symbol: "A",
   },
   "7a5bc1d2b56ad029048cd63964b3ad2776eadf812edc1a43a31406cb54bff592": {
     name: "Injective",
