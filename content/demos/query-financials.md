@@ -33,7 +33,7 @@ Period: <select id="period"><option value="volvo">N/A</option></select>
   - CostOfRevenue
   - SellingGeneralAndAdministrativeExpense
   - ResearchAndDevelopmentExpense
-  + NonoperatingIncomeExpense
+  + COALESCE(NonoperatingIncomeExpense, OtherNonoperatingIncomeExpense)
   - IncomeTaxExpenseBenefit
 ) / Revenues`; execute()">What is NVIDIA's net profit margin?</a></li>
     <li><a href="javascript:void(0);" onclick="document.getElementById('ticker').value = 'MSTR'; document.getElementById('query').value = 'PaymentsToAcquireIntangibleAssets'; execute()">How much is Strategy spending to acquire Bitcoin?</a></li>
