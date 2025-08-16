@@ -1,5 +1,5 @@
 ---
-title: "Query Financial Data"
+title: "Query Financial Statements"
 description: "Run SQL queries on financial data in the browser using DuckDB WASM"
 date: "0010-01-01"
 showthedate: false
@@ -14,7 +14,8 @@ all [10-Qs since January 2009](https://www.sec.gov/data-research/sec-markets-dat
 ## Get financials for a period
 
 <div>
-Ticker: <input type="text" id="ticker" />
+Ticker: <input type="text" list="tickerList" id="ticker" />
+<datalist id="tickerList"></datalist>
 <button onclick="searchPeriods()">Search Periods</button>
 Period: <select id="period"><option value="volvo">N/A</option></select>
 <button onclick="queryFinancials()">Get Financials</button>
@@ -85,19 +86,31 @@ async function fetchFilenames() {
 const filenames = await fetchFilenames();
 
 async function init() {
-  for (const filename of filenames) {
-    document.getElementById("loader").textContent = `Loading dataset: ${filename}`;
-    const resp = await fetch(`${data_url}/${filename}`);
-    if (!resp.ok) {
-      alert(`Failed to fetch dataset: ${filename}`);
-      throw new Error(`Failed to fetch dataset: ${filename}`);
-    }
-    await db.registerFileBuffer(`/parquet/${filename}`, new Uint8Array(await resp.arrayBuffer()));
+  try {
+      for (const filename of filenames) {
+        document.getElementById("loader").textContent = `Loading dataset: ${filename}`;
+        const resp = await fetch(`${data_url}/${filename}`);
+        if (!resp.ok) {
+          alert(`Failed to fetch dataset: ${filename}`);
+          throw new Error(`Failed to fetch dataset: ${filename}`);
+        }
+        await db.registerFileBuffer(`/parquet/${filename}`, new Uint8Array(await resp.arrayBuffer()));
+      }
+      await c.query(`CREATE VIEW data AS
+      SELECT *
+      FROM read_parquet('/parquet/*.parquet')`);
+      const tickerList = document.getElementById("tickerList");
+      const result = await c.query('SELECT DISTINCT ticker FROM data ORDER BY ticker');
+      result.toArray().forEach((row) => {
+        const option = document.createElement("option");
+        option.innerHTML = row.toJSON()["ticker"];
+        tickerList.appendChild(option);
+      });
+      document.getElementById("loader").textContent = "Loaded dataset";
+  } catch (e) {
+    document.getElementById("loader").textContent = "Failed to load dataset";
+    window.alert(e);
   }
-  await c.query(`CREATE VIEW data AS
-  SELECT *
-  FROM read_parquet('/parquet/*.parquet')`);
-  document.getElementById("loader").textContent = "Loaded dataset";
 }
 
 await init();
@@ -143,9 +156,20 @@ async function queryFinancials() {
         QUALIFY ROW_NUMBER() OVER (PARTITION BY tag ORDER BY rqtr DESC) = 1
       ORDER BY tag
     `);
+    const data = result.toArray().map((row) => row.toJSON());
+    if (data.length === 0) {
+      throw new Error(`No financial data found for ticker: ${ticker} on period: ${period}`);
+    }
     SpreadGrid(document.getElementById("grid"), {
       data: result.toArray().map((row) => row.toJSON()),
-      columns: [{ type: "DATA-BLOCK", width: "fit" }]
+      columns: [{ type: "DATA-BLOCK", width: "fit" }],
+      formatting: [
+          {font: "10px Space Mono"},
+          {
+            column: {id: "value"},
+            style: ({ value }) => ({textAlign: "right"})
+          }
+      ]
     });
     document.getElementById("grid").style["max-height"] = "50vh";
   } catch (e) {
@@ -169,6 +193,9 @@ async function execute() {
       WHERE metric_value IS NOT NULL
       ORDER BY ddate
     `);
+    if (result.toArray().length === 0) {
+      throw new Error(`No data found for ticker: ${ticker} with query: ${query}`);
+    }
     Plotly.newPlot("graph", [{
       x: result.toArray().map((row) => {
         const ddate = row.toJSON()["ddate"].toString();
@@ -176,7 +203,12 @@ async function execute() {
       }),
       y: result.toArray().map((row) => row.toJSON()["metric_value"]),
       type: "scatter"
-    }]);
+    }], {
+      font: {
+        family: "Space Mono",
+        size: 16,
+      },
+    });
   } catch (e) {
     Plotly.purge("graph");
     window.alert(e);
