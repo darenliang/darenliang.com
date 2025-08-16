@@ -44,7 +44,7 @@ Period: <select id="period"><option value="volvo">N/A</option></select>
   - InterestExpense
 ) / COALESCE(RevenueFromContractWithCustomerExcludingAssessedTax, Revenues)`; execute()">What is Costco's net profit margin?</a></li>
     <li><a href="javascript:void(0);" onclick="document.getElementById('ticker').value = 'MSTR'; document.getElementById('query').value = 'PaymentsToAcquireIntangibleAssets'; execute()">How much is Strategy spending to acquire Bitcoin?</a></li>
-    <li><a href="javascript:void(0);" onclick="document.getElementById('ticker').value = 'AAPL'; document.getElementById('query').value = 'WeightedAverageNumberOfSharesOutstandingBasic'; execute()">When has Apple performed a stock split and stock buybacks?</a></li>
+    <li><a href="javascript:void(0);" onclick="document.getElementById('ticker').value = 'AAPL'; document.getElementById('query').value = 'WeightedAverageNumberOfSharesOutstandingBasic'; execute()">When has Apple performed stock splits and stock buybacks?</a></li>
 </ul>
 
 <textarea id="query" rows="8" style="width: 100%; font-family: 'Space mono';" onkeypress="handle(event)"></textarea>
