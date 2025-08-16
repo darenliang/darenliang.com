@@ -36,6 +36,13 @@ Period: <select id="period"><option value="volvo">N/A</option></select>
   + COALESCE(NonoperatingIncomeExpense, OtherNonoperatingIncomeExpense)
   - IncomeTaxExpenseBenefit
 ) / Revenues`; execute()">What is NVIDIA's net profit margin?</a></li>
+    <li><a href="javascript:void(0);" onclick="document.getElementById('ticker').value = 'NVDA'; document.getElementById('query').value = `(   COALESCE(RevenueFromContractWithCustomerExcludingAssessedTax, Revenues)
+  - CostOfGoodsAndServicesSold
+  - SellingGeneralAndAdministrativeExpense
+  - IncomeTaxExpenseBenefit
+  + InterestAndOtherIncome
+  - InterestExpense
+) / COALESCE(RevenueFromContractWithCustomerExcludingAssessedTax, Revenues)`; execute()">What is Costco's net profit margin?</a></li>
     <li><a href="javascript:void(0);" onclick="document.getElementById('ticker').value = 'MSTR'; document.getElementById('query').value = 'PaymentsToAcquireIntangibleAssets'; execute()">How much is Strategy spending to acquire Bitcoin?</a></li>
     <li><a href="javascript:void(0);" onclick="document.getElementById('ticker').value = 'AAPL'; document.getElementById('query').value = 'WeightedAverageNumberOfSharesOutstandingBasic'; execute()">When has Apple performed a stock split and stock buybacks?</a></li>
 </ul>
