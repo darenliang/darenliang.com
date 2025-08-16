@@ -36,7 +36,7 @@ Period: <select id="period"><option value="volvo">N/A</option></select>
   + COALESCE(NonoperatingIncomeExpense, OtherNonoperatingIncomeExpense)
   - IncomeTaxExpenseBenefit
 ) / Revenues`; execute()">What is NVIDIA's net profit margin?</a></li>
-    <li><a href="javascript:void(0);" onclick="document.getElementById('ticker').value = 'NVDA'; document.getElementById('query').value = `(   COALESCE(RevenueFromContractWithCustomerExcludingAssessedTax, Revenues)
+    <li><a href="javascript:void(0);" onclick="document.getElementById('ticker').value = 'COST'; document.getElementById('query').value = `(   COALESCE(RevenueFromContractWithCustomerExcludingAssessedTax, Revenues)
   - CostOfGoodsAndServicesSold
   - SellingGeneralAndAdministrativeExpense
   - IncomeTaxExpenseBenefit
