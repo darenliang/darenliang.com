@@ -44,6 +44,7 @@ Period: <select id="period"><option value="volvo">N/A</option></select>
   + InterestAndOtherIncome
   - InterestExpense
 ) / COALESCE(RevenueFromContractWithCustomerExcludingAssessedTax, Revenues)`; execute()">What is Costco's net profit margin?</a></li>
+    <li><a href="javascript:void(0);" onclick="document.getElementById('ticker').value = 'INTC'; document.getElementById('query').value = 'NetIncomeLoss'; execute()">When was Intel's fall from grace?</a></li>
     <li><a href="javascript:void(0);" onclick="document.getElementById('ticker').value = 'MSTR'; document.getElementById('query').value = 'PaymentsToAcquireIntangibleAssets'; execute()">How much is Strategy spending to acquire Bitcoin?</a></li>
     <li><a href="javascript:void(0);" onclick="document.getElementById('ticker').value = 'AAPL'; document.getElementById('query').value = 'WeightedAverageNumberOfSharesOutstandingBasic'; execute()">When has Apple performed stock splits and stock buybacks?</a></li>
 </ul>
@@ -202,7 +203,7 @@ async function execute() {
         return `${ddate.slice(0, 4)}-${ddate.slice(4, 6)}-${ddate.slice(6, 8)} 00:00:00`;
       }),
       y: result.toArray().map((row) => row.toJSON()["metric_value"]),
-      type: "scatter"
+      mode: "lines"
     }], {
       font: {
         family: "Space Mono",
