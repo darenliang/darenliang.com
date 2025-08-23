@@ -57,7 +57,7 @@ Plotly.newPlot("graph", [{
   }),
   y: trump.history.map((row) => row.p),
   mode: "lines",
-  name: "Donald Trump",
+  name: "Trump",
   line: {
     color: "rgb(232, 27, 35)"
   }
@@ -68,7 +68,7 @@ Plotly.newPlot("graph", [{
   }),
   y: harris.history.map((row) => row.p),
   mode: "lines",
-  name: "Kamala Harris",
+  name: "Harris",
   line: {
     color: "rgb(0, 174, 243)"
   }
@@ -78,7 +78,7 @@ Plotly.newPlot("graph", [{
   },
   font: {
     family: "Space Mono",
-    size: 16
+    size: 12
   },
   yaxis: {
     tickformat: ".0%"
