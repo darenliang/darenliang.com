@@ -1,11 +1,12 @@
 ---
-title: "Event Oracle powered by Qdrant"
-description: "Event oracle demo which sources event data from Polymarket and uses Qdrant as a vector database for search."
+title: "Real World Event Oracle"
+description: "Real world event oracle demo which sources event data from Polymarket and uses Qdrant as a vector database for search."
 date: "0011-01-01"
 showthedate: false
 ---
 
-Ask a question about current or past events!
+Ask a question about current or past events! This demo is powered
+by [Polymarket](https://polymarket.com/) and [Qdrant](https://qdrant.tech/).
 
 <p>Example questions:</p>
 <ul>
@@ -32,8 +33,10 @@ on the embeddings and uses them to generate a summary response.
 There might be a few additional extensions that might worth exploring:
 
 - Add more alternative data sources for alpha research
-- Use a time series database like kdb+ to store historical data to build correlation matrices and find similar events that vector search might miss
-- Integrate traditional financial data sources like exchange market data to employ statistical arbitrage strategies
+- Use a time series database like kdb+ to store historical data to build
+  correlation matrices and find similar events that vector search might miss
+- Integrate traditional financial data sources like exchange market data to
+  employ statistical arbitrage strategies
 
 </details>
 
