@@ -75,4 +75,4 @@ guessSyntax = false
 style = "dracula"
 
 [pagination]
-  pagerSize = 20
+pagerSize = 20
