@@ -13,6 +13,7 @@ Ask a question about current or past events!
     <li><a href="javascript:void(0);" onclick="document.getElementById('query').value = 'Will the Fed cut rates in 2025?'; execute()">Will the Fed cut rates in 2025?</a></li>
     <li><a href="javascript:void(0);" onclick="document.getElementById('query').value = 'Which company has the best AI model in 2025?'; execute()">Who currently has the best AI model in 2025?</a></li>
     <li><a href="javascript:void(0);" onclick="document.getElementById('query').value = 'Who will win the New York City Mayoral Election in 2025?'; execute()">Who will win the New York City Mayoral Election in 2025?</a></li>
+    <li><a href="javascript:void(0);" onclick="document.getElementById('query').value = 'Who will be Time\'s Person of the Year in 2025?'; execute()">Who will be Time's Person of the Year in 2025?</a></li>
 </ul>
 
 <textarea id="query" rows="4" style="width: 100%; font-family: 'Space mono';" onkeypress="handle(event)"></textarea>
