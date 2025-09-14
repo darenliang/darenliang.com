@@ -1,6 +1,6 @@
 ---
 title: "Solving Dice Problems with Markov Chains"
-description: "Is it more likely to roll two 5's or a 5 followed by a 6?"
+description: "Explore absorbing Markov chains through an engaging dice probability problem. Compare the likelihood of rolling two 5's versus a 5 followed by a 6 with mathematical analysis."
 date: "2024-09-28"
 showthedate: true
 tags: [ "probability" ]
@@ -167,6 +167,15 @@ For rolling a 5 immediately followed by a 6:
     \end{aligned}
 </p>
 </details>
+
+---
+
+## Related Posts
+
+Explore more probability problems and mathematical analysis:
+
+- **[The Gambler's Ruin](/posts/the-gamblers-ruin/)** - A fascinating probability problem with interactive simulations and mathematical solutions  
+- **[The Basketball Tryout](/posts/the-basketball-tryout/)** - Another challenging probability problem with practical applications
 
 <script>
 function randomInteger(min, max) {

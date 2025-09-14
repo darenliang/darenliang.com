@@ -26,87 +26,111 @@
     functionPlot(plot);
 
     const redrawPlot = () => {
-        plot.data = [];
-        const brokeLines = [];
-        for (let i = 0; i < tries; i++) {
-            const line = {
-                points: [[0, 2]],
-                fnType: "points",
-                graphType: "polyline",
-                color: "steelblue"
-            };
-            let broke = false;
-            for (let j = 0; j < width / 2; j++) {
-                const [x, y] = line.points[line.points.length - 1];
-                if (y === 0) {
-                    broke = true;
-                    break;
+        try {
+            plot.data = [];
+            const brokeLines = [];
+            for (let i = 0; i < tries; i++) {
+                const line = {
+                    points: [[0, 2]],
+                    fnType: "points",
+                    graphType: "polyline",
+                    color: "steelblue"
+                };
+                let broke = false;
+                for (let j = 0; j < width / 2; j++) {
+                    const [x, y] = line.points[line.points.length - 1];
+                    if (y === 0) {
+                        broke = true;
+                        break;
+                    }
+                    switch (Math.floor(Math.random() * 4)) {
+                        case 0:
+                            line.points.push([x + 1, y - 1]);
+                            break;
+                        default:
+                            line.points.push([x + 1, y + 1]);
+                            break;
+                    }
                 }
-                switch (Math.floor(Math.random() * 4)) {
-                    case 0:
-                        line.points.push([x + 1, y - 1]);
-                        break;
-                    default:
-                        line.points.push([x + 1, y + 1]);
-                        break;
+                if (broke) {
+                    line.color = "red";
+                    brokeLines.push(line);
+                } else {
+                    plot.data.push(line);
                 }
             }
-            if (broke) {
-                line.color = "red";
-                brokeLines.push(line);
-            } else {
+            for (const line of brokeLines) {
                 plot.data.push(line);
             }
+            functionPlot(plot);
+        } catch (error) {
+            console.error('Error redrawing plot:', error);
+            // Fallback: display error message to user
+            const plotElement = document.querySelector('#plot');
+            if (plotElement) {
+                plotElement.innerHTML = '<p style="color: red; text-align: center;">Error loading plot. Please refresh the page.</p>';
+            }
         }
-        for (const line of brokeLines) {
-            plot.data.push(line);
-        }
-        functionPlot(plot);
     };
     redrawPlot();
 
-    const plays1 = parseInt(document.getElementById("plays1").value);
-    const samples1 = parseInt(document.getElementById("samples1").value);
     const result1 = document.getElementById("result1");
     const error1 = document.getElementById("error1");
 
     const simulate1 = _ => {
+        const plays1 = parseInt(document.getElementById("plays1").value);
+        const samples1 = parseInt(document.getElementById("samples1").value);
+        
         if (isNaN(plays1) || isNaN(samples1)) {
-            alert("Inputs should be numbers.");
+            result1.innerHTML = "❌ Error: Inputs must be valid numbers.";
+            error1.innerHTML = "";
             return;
         }
 
         if (plays1 <= 0 || samples1 <= 0) {
-            alert("Inputs should be positive.");
+            result1.innerHTML = "❌ Error: Inputs must be positive numbers.";
+            error1.innerHTML = "";
             return;
         }
 
-        let brokeCount = 0;
-        for (let i = 0; i < samples1; i++) {
-            let dollars = 2;
-            for (let j = 0; j < plays1; j++) {
-                // Broke
-                if (dollars === 0) {
-                    brokeCount++;
-                    break;
-                }
-                // Cannot go broke
-                if (dollars > plays1 - j) {
-                    break;
-                }
-                switch (Math.floor(Math.random() * 4)) {
-                    case 0:
-                        dollars--;
-                        break;
-                    default:
-                        dollars++;
-                        break;
-                }
-            }
+        if (plays1 > 10000 || samples1 > 1000000) {
+            result1.innerHTML = "❌ Error: Values too large. Max plays: 10,000, Max samples: 1,000,000";
+            error1.innerHTML = "";
+            return;
         }
 
-        result1.innerHTML = `Probability of going broke: ${(100 * brokeCount / samples1).toFixed(4)}%`;
-        error1.innerHTML = `Error: ${(100 * (brokeCount / samples1 - 1 / 9)).toFixed(4)}%`;
+        try {
+            let brokeCount = 0;
+            for (let i = 0; i < samples1; i++) {
+                let dollars = 2;
+                for (let j = 0; j < plays1; j++) {
+                    // Broke
+                    if (dollars === 0) {
+                        brokeCount++;
+                        break;
+                    }
+                    // Cannot go broke
+                    if (dollars > plays1 - j) {
+                        break;
+                    }
+                    switch (Math.floor(Math.random() * 4)) {
+                        case 0:
+                            dollars--;
+                            break;
+                        default:
+                            dollars++;
+                            break;
+                    }
+                }
+            }
+
+            result1.innerHTML = `Probability of going broke: ${(100 * brokeCount / samples1).toFixed(4)}%`;
+            error1.innerHTML = `Error: ${(100 * (brokeCount / samples1 - 1 / 9)).toFixed(4)}%`;
+        } catch (error) {
+            console.error('Simulation error:', error);
+            result1.innerHTML = "❌ Error occurred during simulation. Please check your inputs.";
+            error1.innerHTML = "";
+        }
     };
 
     /**

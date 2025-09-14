@@ -1,6 +1,6 @@
 ---
 title: "The Basketball Tryout"
-description: "A neat probability problem related to basketball"
+description: "Solve an intriguing basketball probability problem involving tryouts and conditional probability. Learn how to approach complex probability scenarios with mathematical rigor."
 date: "2022-05-13"
 showthedate: true
 tags: ["probability"]

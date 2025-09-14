@@ -1,6 +1,6 @@
 ---
 title: "Algorithms in Javagony"
-description: "Adventures of programming in Javagony"
+description: "Discover Javagony - a challenging Java programming constraint that eliminates common control structures. Learn creative programming techniques using only try-catch statements and recursion."
 date: "2019-10-08"
 showthedate: true
 tags: ["programming"]

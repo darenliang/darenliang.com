@@ -1,6 +1,6 @@
 ---
 title: "The Gambler's Ruin"
-description: "A neat probability problem about the Gambler's Ruin"
+description: "Explore the fascinating Gambler's Ruin probability problem with interactive simulations and mathematical solutions. Learn why favorable odds don't guarantee infinite winning."
 date: "2022-01-26"
 showthedate: true
 tags: ["probability"]
@@ -180,7 +180,15 @@ p \left( 2 \right) = p \left( 1 \right)^2 = \left( \frac{1}{3} \right) ^ 2 = \fr
 We can conclude that the exact odds of going broke is \( \frac{1}{9} \). Looks like the casino will quickly run out of business.
 </p>
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+---
+
+## Related Posts
+
+Explore more probability and mathematical concepts:
+
+- **[Absorbing Markov Chains](/posts/absorbing-markov-chains/)** - Another fascinating probability problem using Markov chain analysis
+- **[The Basketball Tryout](/posts/the-basketball-tryout/)** - A challenging conditional probability problem with practical applications
+
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script src="https://unpkg.com/function-plot/dist/function-plot.js"></script>
 {{< script "/js/gamblers.min.js" >}}

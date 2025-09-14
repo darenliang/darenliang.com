@@ -1,6 +1,6 @@
 ---
 title: "FFmpeg Wasm YouTube Downloader"
-description: "Download and convert a YouTube video right in your browser"
+description: "Browser-based YouTube video downloader using FFmpeg WebAssembly - currently offline due to API changes. See source code for technical implementation details."
 date: "0006-01-01"
 showthedate: false
 nocomments: true

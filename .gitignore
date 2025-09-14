@@ -7,3 +7,7 @@ public/
 # ytdl-ffmpeg-demo
 misc/ytdl-ffmpeg-demo/ytdl-ffmpeg-demo.js
 misc/ytdl-ffmpeg-demo/ytdl-ffmpeg-demo.min.js
+
+# Temporary files
+hugo_extended_*.tar.gz
+hugo

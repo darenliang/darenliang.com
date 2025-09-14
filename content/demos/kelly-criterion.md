@@ -1,6 +1,6 @@
 ---
 title: "Kelly Criterion"
-description: "Compute the Kelly Criterion right in your browser"
+description: "Interactive Kelly Criterion calculator for optimal bet sizing. Calculate the mathematically optimal fraction of your bankroll to wager based on win probability and payout odds."
 date: "0001-01-01"
 showthedate: false
 ---
@@ -36,6 +36,5 @@ where:
 
 [^1]: https://en.wikipedia.org/wiki/Kelly_criterion
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 {{< script "/js/kelly.min.js" >}}

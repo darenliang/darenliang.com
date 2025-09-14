@@ -426,3 +426,9 @@ addEventListener("fetch", event => {
 ```
 
 </details>
+
+---
+
+## Related
+
+**Try the live demo:** [CS:GO Crosshair Preview](/demos/csgo-crosshair-preview/) - Use the crosshair generator powered by this serverless function to create and preview your custom crosshairs in real-time.

@@ -10,6 +10,11 @@
     image.onload = () => {
         latency.innerText = `Loaded image in: ${Math.round(performance.now() - startTime)} ms`;
     };
+    
+    image.onerror = () => {
+        latency.innerText = "❌ Failed to load crosshair image";
+        image.style.display = "none";
+    };
 
     const commandMap = new Map([
         ["cl_crosshairthickness", undefined],
@@ -83,16 +88,31 @@
 
     let currentCopyTimeout = null;
     const copyLink = () => {
+        if (!navigator.clipboard) {
+            copy.innerText = "Copy not supported";
+            setTimeout(() => {
+                copy.innerText = "Copy";
+            }, 2000);
+            return;
+        }
+        
         navigator.clipboard.writeText(image.src)
             .then(() => {
-                copy.innerText = "Copied";
+                copy.innerText = "Copied!";
 
                 if (currentCopyTimeout !== null) {
-                    return;
+                    clearTimeout(currentCopyTimeout);
                 }
                 currentCopyTimeout = setTimeout(() => {
                     copy.innerHTML = "Copy";
                     currentCopyTimeout = null;
+                }, 2000);
+            })
+            .catch(err => {
+                console.error('Failed to copy:', err);
+                copy.innerText = "Copy failed";
+                setTimeout(() => {
+                    copy.innerText = "Copy";
                 }, 2000);
             });
     };
