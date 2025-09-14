@@ -3,7 +3,7 @@ title: "Examining Parlays in Prediction Markets"
 description: "This blog post explores the ways to value a parlay using its component bets, and argue that the odds of such parlays on various prediction markets such as Polymarket are overvalued on the more likely/expensive contract."
 date: "2025-08-11"
 showthedate: true
-tags: [ "perspectives", "probability" ]
+tags: [ "probability" ]
 ---
 
 It's been a while since I last wrote on this blog. 😅
