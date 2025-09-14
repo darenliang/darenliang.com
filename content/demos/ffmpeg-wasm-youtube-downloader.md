@@ -6,11 +6,13 @@ showthedate: false
 nocomments: true
 ---
 
+> **Note**: The demo currently doesn't work due to recent changes to YouTube's
+> API. If you have any ideas on how to fix it in a browser setting, please open
+> an issue on [GitHub](https://github.com/darenliang/darenliang.com)
+
 This is a simple browser-based app (using [ffmpeg.wasm](https://github.com/ffmpegwasm/ffmpeg.wasm)
 and [node-ytdl-core](https://github.com/fent/node-ytdl-core)) that allows you to download YouTube videos without the
 need to use [youtube-dl](https://youtube-dl.org/) locally.
-
-This demo is confirmed to work on modern Firefox/Chromium-based browsers.
 
 There are four options in this demo:
 
