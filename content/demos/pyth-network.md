@@ -114,9 +114,9 @@ const streams = {
     name: "Cosmos",
     symbol: "ATOM",
   },
-  "9375299e31c0deb9c6bc378e6329aab44cb48ec655552a70d4b9050346a30378": {
-    name: "Maker",
-    symbol: "MKR",
+  "a483243eed64ca27a1f6e26385b7d1e0d07e9fe264bb6903efb3efc4689d3fe7": {
+    name: "Sky",
+    symbol: "SKY",
   },
   "72b021217ca3fe68922a19aaf990109cb9d84e9ad004b4d2025ad6f529314419": {
     name: "Bonk",

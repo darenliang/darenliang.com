@@ -3,7 +3,6 @@ theme = "smol"
 title = "Daren Liang"
 enableEmoji = true
 enableRobotsTXT = true
-paginate = 20
 
 [outputs]
 home = ["HTML", "RSS"]
@@ -74,3 +73,6 @@ unsafe = true
 codeFences = true
 guessSyntax = false
 style = "dracula"
+
+[pagination]
+pagerSize = 20
