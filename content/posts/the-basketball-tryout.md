@@ -28,7 +28,7 @@ Torchiana's [Probability Math Puzzles](https://github.com/atorch/probability_puz
 
 <div id="plot" style="text-align: center; height: 500px;"></div>
 
-<p align="center">Blue :blue_square: represents four shots and orange :orange_square: represents six shots.</p>
+Blue :blue_square: represents four shots and orange :orange_square: represents six shots.
 
 I highly encourage you to try this question out before looking at the solution. It is possible to solve this problem
 entirely by hand, but you may opt to solve this problem using an equation solver or graphing calculator.
