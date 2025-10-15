@@ -7,7 +7,7 @@ nocomments: true
 
 Hi there!
 
-I am Daren Liang, a graduate of the [University of Toronto](https://www.utoronto.ca/about-u-of-t) and currently a risk software engineer at [Citi](https://www.citigroup.com) based in NYC.
+I am Daren Liang, a graduate of the [University of Toronto](https://www.utoronto.ca/about-u-of-t) and currently a software engineer in risk management at [Citi](https://www.citigroup.com) based in NYC.
 
 In my free time, I work on [Imglabs.io](https://www.imglabs.io/), a cloud-based image proxy service, and other [programming projects](/projects). You can find me on
 GitHub [@darenliang](https://github.com/darenliang "darenliang's GitHub").
