@@ -21,6 +21,15 @@ nocomments: true
 <hr/>
 <br/>
 
+<p align="center" style="font-size: 100px; margin: 60px">🃏</p>
+<h2 style="text-align: center">The Gang</h2>
+<p style="text-align: center">Cooperative Poker Game by John Cooper and Kory Heath</p>
+<div style="text-align:center"><a href="https://thegang.beats.moe/">Website</a></div>
+
+<br/>
+<hr/>
+<br/>
+
 <p align="center"><img alt="MikuBot" style="border-radius: 8px;" src="/img/MikuBotIconSmall.png" /></p>
 <h2 style="text-align: center">MikuBot</h2>
 <p style="text-align: center">Modular anime Discord bot built for weebs</p>
