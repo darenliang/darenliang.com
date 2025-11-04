@@ -121,7 +121,7 @@ to resolve contracts, which is a decentralized optimistic oracle. I might write
 a post on how UMA works in the future and how Polymarket is looking to fix its
 shortcomings, but for now, let's dive into valuing parlay contracts!
 
-## Valuing Parlays: An Random Example
+## Valuing Parlays: A Random Example
 
 A parlay is a type of bet that combines multiple individual bets into one
 single wager. In a prediction market, a parlay contract is a contract that pays
