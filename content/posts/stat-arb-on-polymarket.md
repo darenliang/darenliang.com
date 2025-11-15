@@ -325,6 +325,9 @@ the components, and when one of the contracts in the parlay is expensive, they
 attribute it a pseudo-risk-free rate to park their funds for the month. Be
 careful which positions you take, especially positions you believe can't lose.
 
+I highly recommend Nate Silver's book [*On the Edge: The Art of Risking 
+Everything*](https://www.goodreads.com/en/book/show/204236707-on-the-edge) as it dives in the world of gambling and risk taking.
+
 **Update on August 22, 2025**: The parlay contract has since been resolved to
 "No" as Donald Trump releases additional Epstein files before the end of
 August.
