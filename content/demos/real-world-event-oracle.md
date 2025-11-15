@@ -13,7 +13,7 @@ by [Polymarket](https://polymarket.com/) and [Qdrant](https://qdrant.tech/).
     <li><a href="javascript:void(0);" onclick="document.getElementById('query').value = 'Will Gavin Newsom win the 2028 US Presidential Election?'; execute()">Will Gavin Newsom win the 2028 US Presidential Election?</a></li>
     <li><a href="javascript:void(0);" onclick="document.getElementById('query').value = 'Will the Fed cut rates in 2025?'; execute()">Will the Fed cut rates in 2025?</a></li>
     <li><a href="javascript:void(0);" onclick="document.getElementById('query').value = 'Which company has the best AI model in 2025?'; execute()">Who currently has the best AI model in 2025?</a></li>
-    <li><a href="javascript:void(0);" onclick="document.getElementById('query').value = 'Who will win the New York City Mayoral Election in 2025?'; execute()">Who will win the New York City Mayoral Election in 2025?</a></li>
+    <li><a href="javascript:void(0);" onclick="document.getElementById('query').value = 'Which company will become the largest end of 2026?'; execute()">Which company will become the largest end of 2026?</a></li>
     <li><a href="javascript:void(0);" onclick="document.getElementById('query').value = 'Who will be Time\'s Person of the Year in 2025?'; execute()">Who will be Time's Person of the Year in 2025?</a></li>
     <li><a href="javascript:void(0);" onclick="document.getElementById('query').value = 'What is the US economy outlook in 2025?'; execute()">What is the US economy outlook in 2025?</a></li>
     <li><a href="javascript:void(0);" onclick="document.getElementById('query').value = 'Which AI companies will Apple acquire?'; execute()">Which AI companies will Apple acquire?</a></li>
