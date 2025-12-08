@@ -1,5 +1,5 @@
 ---
-title: "Real World Event Oracle"
+title: "PolymarketGPT: Event Oracle"
 description: "Real world event oracle demo which sources event data from Polymarket and uses Qdrant as a vector database for search."
 date: "0011-01-01"
 showthedate: false
@@ -49,13 +49,17 @@ There might be a few additional extensions that might worth exploring:
 async function execute(think = false) {
     const query = document.getElementById('query').value;
     document.getElementById('results').innerHTML = `<div class="skeleton skeleton-line" style="--lines: 4; --c-p: 0px; --c-w: 100%; --bg: #161b22;"></div>`;
-    const response = await fetch(`https://oracle.darenliang.com/summary?query=${encodeURIComponent(query)}&think=${think}`);
-    if (response.ok) {
-        const data = await response.json();
-        const converter = new showdown.Converter();
-        document.getElementById('results').innerHTML = `<h3>Response</h3>${converter.makeHtml(data.summary)}`;
-    } else {
-        document.getElementById('results').innerHTML = '<h3>Response</h3><p>Error fetching summary.</p>';
+    try {
+      const response = await fetch(`https://oracle.darenliang.com/summary?query=${encodeURIComponent(query)}&think=${think}`);
+      if (response.ok) {
+          const data = await response.json();
+          const converter = new showdown.Converter();
+          document.getElementById('results').innerHTML = `<h3>Response</h3>${converter.makeHtml(data.summary)}`;
+      } else {
+          document.getElementById('results').innerHTML = '<h3>Response</h3><p>Error fetching summary.</p>';
+      }
+    } catch (e) {
+        document.getElementById('results').innerHTML = `<h3>Response</h3><p>Error fetching summary.</p>`;
     }
 }
 
