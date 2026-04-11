@@ -1,12 +1,12 @@
 ---
 title: "Examining Parlays in Prediction Markets"
-description: "This blog post explores the ways to value a parlay using its component bets, and argue that the odds of such parlays on various prediction markets such as Polymarket are overvalued on the more likely/expensive contract."
+description: "This post shows how to value a parlay from its component bets and argues that parlay odds on markets like Polymarket can overstate outcomes when one component is already highly priced."
 date: "2025-08-11"
 showthedate: true
 tags: [ "probability" ]
 ---
 
-It's been a while since I last wrote on this blog. 😅
+It's been a while since my last post.
 
 I'd like to share a quick post on something I've been noticing on prediction
 markets like [Polymarket](https://polymarket.com/) regarding parlay contracts.
@@ -18,12 +18,12 @@ For those who don't know, here's a quick primer on how prediction markets work:
 ### A Prediction Market is an "Information Market"
 
 A prediction market, similar to an option market, is a platform where
-participants can buy and sell contracts that pay out based on the outcome of
+participants buy and sell contracts that pay out based on the outcome of
 future events. Rather than paying out based on the price of an underlying
-asset, like a stock option, these contracts pay out based on a specific events,
-such as the outcome of an election or a sports game. Ignoring the financial
-incentives, prediction markets can be seen as a way to aggregate information
-from a diverse group of participants to make predictions about future events.
+asset, like a stock option, these contracts pay out based on specific events,
+such as the outcome of an election or a sports game. Beyond financial
+incentives, prediction markets aggregate information from many participants to
+produce a consensus probability for future events.
 
 ["Wisdom of the crowd"](https://en.wikipedia.org/wiki/Wisdom_of_the_crowd)
 expresses the notion that the collective opinion of a diverse group of people
@@ -86,12 +86,11 @@ Plotly.newPlot("graph", [{
 });
 </script>
 
-There might be other factors that might distort the price of a contract, such
-as a high risk-free rate preventing long term contracts from being priced close
-to $1. However, as the expiration date is not very far out, and the "Yes" and
-"No" contract prices don't deviate too much, we can assume that the
-probability implied by the contract price is a good estimate of the actual
-probability of the event occurring.
+Other factors may distort a contract's price, for example a high risk-free rate
+that prevents long-term contracts from trading near $1. However, because the
+expiration date is near and the "Yes" and "No" prices do not differ greatly,
+we can treat the contract price as a reasonable estimate of the market's
+implied probability.
 
 ### Liquidity
 
@@ -117,16 +116,16 @@ resolution.
 
 How the market operator determines the outcome can be a point of contention,
 but let's not dive into that here. Polymarket currently uses the UMA protocol
-to resolve contracts, which is a decentralized optimistic oracle. I might write
-a post on how UMA works in the future and how Polymarket is looking to fix its
-shortcomings, but for now, let's dive into valuing parlay contracts!
+to resolve contracts, which is a decentralized optimistic oracle. I may write a
+future post explaining UMA and Polymarket's shortcomings, but for now let's
+dive into valuing parlay contracts.
 
 ## Valuing Parlays: A Random Example
 
-A parlay is a type of bet that combines multiple individual bets into one
-single wager. In a prediction market, a parlay contract is a contract that pays
-out if all the individual bets in the parlay win. For example, a parlay
-contract might ask, "Will Team A win the game AND will Team B win the game?".
+A parlay combines multiple individual bets into a single wager. In a
+prediction market, a parlay contract pays out only if every individual bet in
+the parlay wins. For example, a parlay contract might ask, "Will Team A win
+the game AND will Team B win the game?"
 
 Assuming the individual bets are independent, the probability of winning a
 parlay is the product of the probabilities of winning each individual bet.
@@ -142,8 +141,8 @@ the probability of winning the parlay.
 > mentioned in the example below. The examples are purely for illustrative
 > purposes.**
 
-Let's consider this Polymarket contract and its description, all prices are of
-August 11, 2025:
+Let's consider this Polymarket contract and its description; all prices are as
+of August 11, 2025:
 
 <style>
 table {
@@ -177,9 +176,8 @@ We can find the component bets (or very similar bets) on Polymarket:
 | [Will Trump release more Epstein files by August 31?](https://polymarket.com/event/will-trump-release-more-epstein-files-by-august-31) | $0.080 | $0.930 |
 | [Will Trump pardon Ghislaine Maxwell by August 31?](https://polymarket.com/event/will-trump-pardon-ghislaine-maxwell-by-august-31)     | $0.017 | $0.986 |
 
-Let's assume independence (a very bad assumption, you'll see why), we can
-calculate the implied probability of the parlay
-contract as follows:
+Assuming independence (a poor assumption—you'll see why), we can calculate
+the parlay's implied probability as follows:
 
 <script src="https://bossanova.uk/jspreadsheet/v5/jspreadsheet.js"></script>
 <script src="https://jsuites.net/v5/jsuites.js"></script>
@@ -231,15 +229,15 @@ and the parlay implied probability for "No" is
 
 > **This spreadsheet is editable! Feel free to play around with the values.**
 
-You might notice that the implied probability of 20% for the "No" contract is
-much higher than the market probability of 10% for the "No" contract. We're
-missing something very important here: **the correlation between the events**.
+You might notice that the implied "No" probability (20%) is much higher than
+the market "No" probability (10%). We're missing something important here:
+**the correlation between the events**.
 
 ### Handling Correlated Events
 
-Since the event contracts 3 and 4 are correlated, as a conservative
-measure, we can assume that the probability of both events happening is the
-probability of the more expensive contract.
+Since events 3 and 4 are correlated, a conservative assumption is that the
+probability of both occurring equals the probability of the more likely
+(higher‑priced) component.
 
 <div id="spreadsheet2"></div>
 
@@ -272,11 +270,10 @@ not be as similar as we think**.
 ### Handling Inexact Component Bets
 
 We used the "Israel x Hamas ceasefire by August 31?" contract as a proxy for
-"Israel withdraws its ground forces from Gaza" however, the odds for both
-contracts can differ significantly. In general, a withdrawal implies a
-ceasefire, but a ceasefire does not necessarily imply a withdrawal. So we can
-assume that the probability of a withdrawal is less than or equal to the
-probability of a ceasefire.
+"Israel withdraws its ground forces from Gaza"; however, the odds can differ
+significantly. In general, a withdrawal implies a ceasefire, but a ceasefire
+does not necessarily imply a withdrawal, so the probability of a withdrawal is
+likely lower than the probability of a ceasefire.
 
 We don't have a good way to estimate the probability of a withdrawal, but we
 can use the contract prices we have right now to figure what probability would
@@ -306,8 +303,8 @@ jspreadsheet(document.getElementById('spreadsheet3'), {
 });
 </script>
 
-We can see the theoretical contract price for "Yes" would have to be near zero
-for the parlay contract to be correctly priced.
+The theoretical "Yes" price would need to be near zero for the parlay to
+match the market price.
 
 If we see other contracts such
 as [Israel withdraws from Gaza in 2025?](https://polymarket.com/event/israel-withdraws-from-gaza-in-2025)
@@ -316,14 +313,14 @@ assume that the real probability of a withdrawal by August 31 is much higher.
 
 ### Conclusion
 
-In conclusion, the parlay contract seems to be underpriced on the "No" side.
-That being said, this contract has low liquidity, so buying the "No" contract
-can easily push the price up significantly.
+In conclusion, the parlay contract appears underpriced on the "No" side.
+That said, this market has low liquidity, so buying the "No" contract can
+quickly push the price up.
 
-To try to explain the underpricing, I believe people aren't properly valuing
-the components, and when one of the contracts in the parlay is expensive, they
-attribute it a pseudo-risk-free rate to park their funds for the month. Be
-careful which positions you take, especially positions you believe can't lose.
+To explain the underpricing, people may be misvaluing component contracts; when
+one component is highly priced, traders may treat it as a pseudo‑risk‑free
+place to hold funds for the month. Be careful which positions you take,
+especially ones you believe cannot lose.
 
 I highly recommend Nate Silver's book [*On the Edge: The Art of Risking
 Everything*](https://www.goodreads.com/en/book/show/204236707-on-the-edge) as
