@@ -20,7 +20,7 @@ by [Polymarket](https://polymarket.com/) and [Qdrant](https://qdrant.tech/).
 </ul>
 
 <textarea id="query" rows="4" style="width: 100%; font-family: 'Space mono';" onkeypress="handle(event)"></textarea>
-<p><button onclick="execute()">Fast</button> <button onclick="execute(true)">Think</button> (Ctrl/Cmd+Enter)</p>
+<p><button onclick="execute()">Fast</button> (Ctrl/Cmd+Enter)</p>
 
 <div id="results"></div>
 <br/>
