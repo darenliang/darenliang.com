@@ -6,12 +6,12 @@ showthedate: true
 tags: [ "probability" ]
 ---
 
-I was browsing through some prediction markets and
+I was browsing through some prediction markets, and
 an [Elon Musk net worth market](https://polymarket.com/event/elon-musk-net-worth-on-june-30-138/will-elon-musks-net-worth-be-at-least-800b-on-june-30)
-caught my eye. The market was trading between 30-50c, which implies a 30-50%
-probability of Elon Musk's net worth reaching 800 billion dollars or more by
+caught my eye. The market was trading between 30-50c, implying a 30-50%
+probability that Elon Musk's net worth will reach 800 billion dollars or more by
 June 30, 2026. Intuitively, this seems very low. For context, Forbes estimates
-Elon Musk's net worth at 835.7b and Bloomberg estimates it at 740b as of May
+Elon Musk's net worth at 835.7b, and Bloomberg estimates it at 740b as of May
 29, 2026.
 
 The market uses Bloomberg's valuation for resolution, and with the SpaceX IPO
@@ -53,7 +53,7 @@ Plotly.newPlot("graph", [{
 
 ## How Bloomberg Values Private Companies
 
-Before we can hedge, we need to understand how Bloomberg's comes up with their
+Before we can hedge, we need to understand how Bloomberg comes up with its
 valuation numbers, since that's the resolution source.
 
 Both Forbes and Bloomberg mark publicly traded stocks at market price. They
@@ -150,7 +150,7 @@ Clauses in the market rules which seems to satisfy our hedging needs:
 > exchange for any trading day during the specified period, multiplied by the
 > company's total outstanding common shares at the relevant time.
 
-Fortunately we have the exact bet we want with a 1350b strike only trading at
+Fortunately, we have the exact bet we want with a 1350b strike only trading at
 14c at the time.
 
 <div id="graph2"></div>
@@ -242,7 +242,7 @@ valuation remains 1350b:
     \[ \frac{800 - (1350 \times 0.44) - 5.1 - 5.9 + 3.5}{0.152} = 1306 \text{ billion} \]
 </p>
 
-However, this is unrealistic since at a 1350b SpaceX valuation the valuation
+However, this is unrealistic since at a 1350b SpaceX valuation, the valuation
 hedge is worth nearly 100c. More realistically, you would need to peg SpaceX's
 valuation at ~1450b:
 
@@ -285,7 +285,7 @@ Plotly.newPlot("graph6", [{
 
 ## Composing the trade
 
-Buying equal number of shares of
+Buying an equal number of shares of
 
 * "YES" Musk net worth 800b+ on June 30
 * "YES" SpaceX valuation hits 1350b by June 30
@@ -421,7 +421,7 @@ When the total cost <100c (you might add a buffer, say <90c), it makes
 sense to make the trade. Currently, you can see that the total cost is above
 100c, why is that so?
 
-The hedges are most likely embed some volatility premium. To
+The hedges are likely to embed some volatility premium. To
 ensure trading costs stay low, it might make sense to keep the hedging bets and
 trade in and out of the net worth bet.
 
