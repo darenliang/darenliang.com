@@ -9,7 +9,7 @@ tags: [ "probability" ]
 [Will A Nation That Has Never Won the World Cup Win in 2026?](https://polymarket.com/event/will-a-nation-that-has-never-won-the-world-cup-win-in-2026-20260605003149811)
 presents an arbitrage trade.
 
-Spain, France, England, Brazil, Argentina, Germany, and Italy are the 7 nations
+Spain, France, England, Brazil, Argentina, Germany, and Uruguay are the 7 nations
 that have won the World Cup and are participating in this year's World Cup.
 
 What if we bet YES on "Will A Nation That Has Never Won the World Cup Win in
