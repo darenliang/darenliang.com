@@ -9,7 +9,7 @@ Hi there!
 
 I am Daren Liang, a graduate of the [University of Toronto](https://www.utoronto.ca/about-u-of-t) and currently a software engineer in risk management at [Citi](https://www.citigroup.com) based in NYC.
 
-I run a multi-strategy prediction market fund focusing on elections, economics, geopolitics and low-capacity quantitative trading strategies.
+I run a multi-strategy prediction market fund focused on elections, economics, geopolitics, and low-capacity quantitative strategies.
 You can reach out to me via email if you want to collaborate and discuss ideas. Please no limited partners inquiries; I am not currently looking for investors.
 
 I also work on [Imglabs.io](https://www.imglabs.io/), a cloud-based image proxy service, and other [programming projects](/projects). You can find me on
