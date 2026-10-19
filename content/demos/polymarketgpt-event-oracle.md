@@ -1,7 +1,7 @@
 ---
-title: "PolymarketGPT: Event Oracle"
+title: "[ARCHIVE] PolymarketGPT: Event Oracle"
 description: "Real world event oracle demo which sources event data from Polymarket and uses Qdrant as a vector database for search."
-date: "0011-01-01"
+date: "0000-01-01"
 showthedate: false
 ---
 
