@@ -215,7 +215,7 @@ Plotly.newPlot("graph3", funds.map((fund, i) => ({
 
 ASMF is the undisputed winner for currency exposure, with large net positions
 in various currencies. KMLM also looks really good, and DBMF has significant
-exposure but they look somewhat unbalanced with a large net short exposure to
+exposure, but they look somewhat unbalanced with a large net short exposure to
 the Euro.
 
 <div id="graph4"></div>
@@ -270,7 +270,7 @@ Plotly.newPlot("graph4", funds.map((fund, i) => ({
 
 ## Commodity Exposure by Sector
 
-All ETFs mantain positive net exposure to energy which is mostly all that
+All ETFs maintain positive net exposure to energy which is mostly all that
 matters in this current regime with the situation in the Middle East. But CTA
 stands out for having a gigantic net long exposure to energy. I personally
 believe it is a matter of personal taste whether to favor such large net
