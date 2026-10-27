@@ -15,7 +15,7 @@ you want to be microservices. That way, you get the microservice architecture
 Sounds a bit like the new hit buzzword "Infrastructure as code" that everyone
 is using.
 
-### Selling the idea
+## Selling the idea
 
 The concept is simple. You can decorate functions that you want to be
 highly available, highly durable, highly reliable, highly resilient,
@@ -70,7 +70,7 @@ def factorial(x: int) -> int:
     return x * factorial(x - 1)
 ```
 
-### Configurable retry policies
+## Configurable retry policies
 
 By default, calling microserviced functions will automatically retry if there
 is an error, but we can also define our own custom retry policies similar to
@@ -84,7 +84,7 @@ def buggy_function():
     return
 ```
 
-### Configurable scaling policies
+## Configurable scaling policies
 
 By default, each microserviced function will only be run by one instance, but
 we can also define our own custom scaling policies:
@@ -96,7 +96,7 @@ def slow_function():
     return
 ```
 
-### Is it even possible to implement said `@microservice` decorator?
+## Is it even possible to implement said `@microservice` decorator?
 
 Yes it is!
 
@@ -200,7 +200,7 @@ We even get automatic documentation of our "microserviced" function:
 
 ![FastAPI Docs](/img/microservices/fastapi.png)
 
-### Why bother with this?
+## Why bother with this?
 
 I can think of many benefits to this new approach to writing microservice code:
 

@@ -24,6 +24,7 @@ short), sourced from fund holdings and N-CSR filings. Hover over the bars for
 exact values, and click a fund in the legend to isolate it.
 
 <script src="https://cdn.plot.ly/plotly-3.1.0.min.js" charset="utf-8"></script>
+<script src="/js/chart-theme.js"></script>
 
 <script>
 const funds = ["DBMF","CTA","KMLM","FFUT","IMF","FMF","WTMF","ISMF","ASMF","HFMF"];
@@ -74,7 +75,7 @@ Plotly.newPlot("graph", funds.map((fund, i) => ({
   hovertemplate: `<b>${fund}</b><br>%{y}: %{x:.1f}% of NAV<extra></extra>`
 })), {
   font: {
-    family: "Space Mono",
+    family: "Commit Mono",
     size: 12
   },
   barmode: "group",
@@ -134,7 +135,7 @@ Plotly.newPlot("graph2", funds.map((fund, i) => ({
   hovertemplate: `<b>${fund}</b><br>%{x}: %{y:.1f}% of NAV<extra></extra>`
 })), {
   font: {
-    family: "Space Mono",
+    family: "Commit Mono",
     size: 12
   },
   barmode: "group",
@@ -191,7 +192,7 @@ Plotly.newPlot("graph3", funds.map((fund, i) => ({
   hovertemplate: `<b>${fund}</b><br>%{y}: %{x:.1f}% of NAV<extra></extra>`
 })), {
   font: {
-    family: "Space Mono",
+    family: "Commit Mono",
     size: 12
   },
   barmode: "group",
@@ -249,7 +250,7 @@ Plotly.newPlot("graph4", funds.map((fund, i) => ({
   hovertemplate: `<b>${fund}</b><br>%{y}: %{x:.1f}% of NAV<extra></extra>`
 })), {
   font: {
-    family: "Space Mono",
+    family: "Commit Mono",
     size: 12
   },
   barmode: "group",
@@ -308,7 +309,7 @@ Plotly.newPlot("graph5", funds.map((fund, i) => ({
   hovertemplate: `<b>${fund}</b><br>%{y}: %{x:.1f}% of NAV<extra></extra>`
 })), {
   font: {
-    family: "Space Mono",
+    family: "Commit Mono",
     size: 12
   },
   barmode: "group",
@@ -365,7 +366,7 @@ Plotly.newPlot("graph6", funds.map((fund, i) => ({
   hovertemplate: `<b>${fund}</b><br>%{y}: %{x:.1f}% of NAV<extra></extra>`
 })), {
   font: {
-    family: "Space Mono",
+    family: "Commit Mono",
     size: 12
   },
   barmode: "group",

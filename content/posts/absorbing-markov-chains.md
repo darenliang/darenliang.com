@@ -22,7 +22,7 @@ How about rolling 5 immediately followed by a 6?
 </div>
 </div>
 
-### Solution
+## Solution
 
 <details>
 <summary>Reveal the Solution</summary>
@@ -94,7 +94,7 @@ Solving for \( t_0 \):
 Hence it takes 6 fewer rolls to roll a 5 immediately followed by a 6 compared to rolling two consecutive 5's.
 </p>
 
-### General solution with [absorbing Markov chains](https://en.wikipedia.org/wiki/Absorbing_Markov_chain)
+## General solution with [absorbing Markov chains](https://en.wikipedia.org/wiki/Absorbing_Markov_chain)
 
 <p>
     To calculate the expected number of rolls we can first calculate the

@@ -314,7 +314,7 @@ Wikipedia's
 **Note that this implementation is not to be used in production! I am not responsible for any liabilities caused by
 following code.**
 
-```js {linenos=table}
+```js
 /**
  * The following JavaScript implementation of Shamir's Secret Sharing is
  * released into the Public Domain under the terms of CC0 and OWFa:
@@ -348,14 +348,16 @@ const generateRandomBigInt = (lowBigInt, highBigInt) => {
     multiplier = multiplier.slice(0, differenceLength);
     const divisor = "1" + "0".repeat(differenceLength);
 
-    const randomDifference = (difference * BigInt(multiplier)) / BigInt(divisor);
+    const randomDifference =
+        (difference * BigInt(multiplier)) / BigInt(divisor);
 
     return lowBigInt + randomDifference;
 };
 
 /**
  * BigInt floor divide
- * Note: This is needed because BigInt divides are truncated instead of floored.
+ * Note: This is needed because BigInt divides are truncated instead of
+ * floored.
  */
 const bigIntfloorDivide = (a, b) => {
     if (b === 0n) {
@@ -549,7 +551,6 @@ This article is made possible by the following great resources and JS libraries:
 * [MathJax](https://www.mathjax.org/) for math notation
 * Mauricio Poppe's [Function Plot](https://mauriciopoppe.github.io/function-plot/) for graph plots
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script src="https://unpkg.com/function-plot/dist/function-plot.js"></script>
 {{< script "/js/shamir.min.js" >}}

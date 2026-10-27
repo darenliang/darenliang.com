@@ -33,12 +33,12 @@ limiting the number of images that can be proxied, it limits the total monthly
 visits. If your website exceeds the monthly limit, you have to pay for more
 expensive plans that increase very steeply.
 
-### Can we do better?
+## Can we do better?
 
 Yes! Why not combine the freedom of self-hosted solutions with the ease of
 cloud-based solutions?
 
-### Introducing [Imglabs.io](https://imglabs.io)
+## Introducing [Imglabs.io](https://imglabs.io)
 
 > **Disclaimer: I'm one of the co-founders of Imglabs.io**
 
@@ -54,7 +54,7 @@ images to users all around the globe.
 It is written as a highly optimized serverless function that aims to pass the
 cost savings to users using the service.
 
-### Why Imglabs.io?
+## Why Imglabs.io?
 
 Here are some of the benefits of using Imglabs.io:
 

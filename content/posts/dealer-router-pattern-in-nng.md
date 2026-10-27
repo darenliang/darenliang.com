@@ -23,7 +23,7 @@ sockets and implementing the pattern is not
 [trivial](https://github.com/nanomsg/nng/issues/781). Fortunately, using NNG's
 raw mode sockets we can emulate Dealer-Router.
 
-### How to implement Dealer-Router in NNG
+## How to implement Dealer-Router in NNG
 
 Let's first import [pynng](https://github.com/codypiersall/pynng):
 
@@ -94,7 +94,7 @@ msg = dealer.recv_msg()
 assert msg.bytes == b"three"
 ```
 
-### Message Polling
+## Message Polling
 
 To poll messages from the router, we can use
 Python's [select](https://docs.python.org/3/library/select.html#select.select)
@@ -116,7 +116,7 @@ msg = dealer.recv_msg(block=False)
 assert msg.bytes == b"pong"
 ```
 
-### Tracking Dealer Identities
+## Tracking Dealer Identities
 
 The first 4-bytes of the header is known as the identity (also known as the
 peer ID) and uniquely identifies a dealer.

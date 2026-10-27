@@ -99,7 +99,7 @@ yourself: [CS:GO Crosshair Preview](/demos/csgo-crosshair-preview/)
 <details>
 <summary>Source code for anyone who is curious</summary>
 
-```js {linenos=table}
+```js
 /**
  * Import pngjs library
  * https://github.com/lukeapage/pngjs
@@ -222,15 +222,25 @@ async function handleRequest(event) {
     /**
      * Basic
      */
-    const cl_crosshairthickness = parseNum(searchParams.get("cl_crosshairthickness"), 0.5, 5, 0.5, 2);
-    const cl_crosshairgap = parseNum(searchParams.get("cl_crosshairgap"), -2, 5, 0, 1);
-    const cl_crosshairsize = parseNum(searchParams.get("cl_crosshairsize"), 1, 10, 5, 1);
+    const cl_crosshairthickness = parseNum(
+        searchParams.get("cl_crosshairthickness"), 0.5, 5, 0.5, 2
+    );
+    const cl_crosshairgap = parseNum(
+        searchParams.get("cl_crosshairgap"), -2, 5, 0, 1
+    );
+    const cl_crosshairsize = parseNum(
+        searchParams.get("cl_crosshairsize"), 1, 10, 5, 1
+    );
 
     /**
      * Outlines
      */
-    const cl_crosshair_drawoutline = parseBool(searchParams.get("cl_crosshair_drawoutline"), 0);
-    const cl_crosshair_outlinethickness = parseNum(searchParams.get("cl_crosshair_outlinethickness"), 1, 3, 1, 1);
+    const cl_crosshair_drawoutline = parseBool(
+        searchParams.get("cl_crosshair_drawoutline"), 0
+    );
+    const cl_crosshair_outlinethickness = parseNum(
+        searchParams.get("cl_crosshair_outlinethickness"), 1, 3, 1, 1
+    );
 
     /**
      * Dot
@@ -240,17 +250,30 @@ async function handleRequest(event) {
     /**
      * Color
      */
-    const cl_crosshaircolor = parseNum(searchParams.get("cl_crosshaircolor"), 0, 5, 1, 1);
-    const cl_crosshaircolor_r = parseNum(searchParams.get("cl_crosshaircolor_r"), 0, 255, 50, 1);
-    const cl_crosshaircolor_g = parseNum(searchParams.get("cl_crosshaircolor_g"), 0, 255, 250, 1);
-    const cl_crosshaircolor_b = parseNum(searchParams.get("cl_crosshaircolor_b"), 0, 255, 50, 1);
+    const cl_crosshaircolor = parseNum(
+        searchParams.get("cl_crosshaircolor"), 0, 5, 1, 1
+    );
+    const cl_crosshaircolor_r = parseNum(
+        searchParams.get("cl_crosshaircolor_r"), 0, 255, 50, 1
+    );
+    const cl_crosshaircolor_g = parseNum(
+        searchParams.get("cl_crosshaircolor_g"), 0, 255, 250, 1
+    );
+    const cl_crosshaircolor_b = parseNum(
+        searchParams.get("cl_crosshaircolor_b"), 0, 255, 50, 1
+    );
 
     /**
      * Alpha
      */
-    const cl_crosshairusealpha = parseBool(searchParams.get("cl_crosshairusealpha"), 1);
-    const cl_crosshairalpha = parseNum(searchParams.get("cl_crosshairalpha"), 0, 255, 200, 1);
-    const crosshairalpha = cl_crosshairusealpha === 1 ? cl_crosshairalpha : 255;
+    const cl_crosshairusealpha = parseBool(
+        searchParams.get("cl_crosshairusealpha"), 1
+    );
+    const cl_crosshairalpha = parseNum(
+        searchParams.get("cl_crosshairalpha"), 0, 255, 200, 1
+    );
+    const crosshairalpha =
+        cl_crosshairusealpha === 1 ? cl_crosshairalpha : 255;
 
     /**
      * Create crosshair color
@@ -291,7 +314,8 @@ async function handleRequest(event) {
          * Custom
          */
         case 5:
-            crosshaircolor = [cl_crosshaircolor_r, cl_crosshaircolor_g, cl_crosshaircolor_b, crosshairalpha];
+            crosshaircolor = [cl_crosshaircolor_r, cl_crosshaircolor_g,
+                              cl_crosshaircolor_b, crosshairalpha];
             break;
     }
 
@@ -338,10 +362,18 @@ async function handleRequest(event) {
     const leftBase = dot[0][0] - 4 - cl_crosshairgap;
     const rightBase = dot[1][0] + 4 + cl_crosshairgap;
     const crosshair = [
-        [[dot[0][0], topBase - cl_crosshairsize * 2], [dot[1][0], topBase]],       // top
-        [[dot[0][0], bottomBase], [dot[1][0], bottomBase + cl_crosshairsize * 2]], // bottom
-        [[leftBase - cl_crosshairsize * 2, dot[0][1]], [leftBase, dot[1][1]]],     // left
-        [[rightBase, dot[0][1]], [rightBase + cl_crosshairsize * 2, dot[1][1]]],   // right
+        // top
+        [[dot[0][0], topBase - cl_crosshairsize * 2],
+         [dot[1][0], topBase]],
+        // bottom
+        [[dot[0][0], bottomBase],
+         [dot[1][0], bottomBase + cl_crosshairsize * 2]],
+        // left
+        [[leftBase - cl_crosshairsize * 2, dot[0][1]],
+         [leftBase, dot[1][1]]],
+        // right
+        [[rightBase, dot[0][1]],
+         [rightBase + cl_crosshairsize * 2, dot[1][1]]],
     ];
 
     /**

@@ -45,6 +45,7 @@ at $0.70, it implies a 70% probability that the event will occur since with
 a probability of 70%, the expected payout is $0.70 (i.e., 70% of $1).
 
 <script src="https://cdn.plot.ly/plotly-3.1.0.min.js" charset="utf-8"></script>
+<script src="/js/chart-theme.js"></script>
 <div id="graph"></div>
 
 <script>
@@ -77,7 +78,7 @@ Plotly.newPlot("graph", [{
     text: "Presidential Election Winner 2024 Polymarket Odds"
   },
   font: {
-    family: "Space Mono",
+    family: "Commit Mono",
     size: 12
   },
   yaxis: {
@@ -197,7 +198,7 @@ jspreadsheet(document.getElementById('spreadsheet1'), {
     worksheets: [
         {
             columns: [
-                {title: "Event", width: 500},
+                {title: "Event", width: 440},
                 {title: "\"Yes\"", mask: "0.000"},
                 {title: "\"No\"", mask: "0.000"}
             ],
@@ -246,7 +247,7 @@ jspreadsheet(document.getElementById('spreadsheet2'), {
     worksheets: [
         {
             columns: [
-                {title: "Event", width: 500},
+                {title: "Event", width: 440},
                 {title: "\"Yes\"", mask: "0.000"},
                 {title: "\"No\"", mask: "0.000"}
             ],
@@ -286,7 +287,7 @@ jspreadsheet(document.getElementById('spreadsheet3'), {
     worksheets: [
         {
             columns: [
-                {title: "Event", width: 500},
+                {title: "Event", width: 440},
                 {title: "\"Yes\"", mask: "0.000"},
                 {title: "\"No\"", mask: "0.000"}
             ],

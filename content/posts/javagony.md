@@ -8,7 +8,7 @@ tags: ["programming"]
 
 <script async src="https://buttons.github.io/buttons.js"></script>
 
-### The Javagony
+## The Javagony
 
 First coined by [flawr](https://chat.stackexchange.com/users/122082/flawr),
 Javagony is Java with a few statements made not available.
@@ -31,7 +31,7 @@ clever tricks that utilize many of Java's obscure features.
 
 Here is an example of counting to n in Javagony:
 
-```java {linenos=table}
+```java
 public class Loops {
     private static final int[] ints = {1, 0};
     private static int temp;

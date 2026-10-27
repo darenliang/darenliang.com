@@ -66,7 +66,7 @@ However in practice, you might experience some slippage and/or adverse
 selection while you try to hedge out your position when your initial limit
 orders get filled.
 
-### What you can do to mitigate risk
+## What you can do to mitigate risk
 
 1. Set a limit order at the 0.310 price for the "Never Won" market.
 2. If the order is filled, quickly buy the cheapest NO contract for a country
@@ -86,9 +86,10 @@ Instead of buying the YES contracts for the 7 previous winners directly, using
 NegRisk conversion to indirectly buy YES contracts reduces the chances of
 getting picked off.
 
-### Historical data
+## Historical data
 
 <script src="https://cdn.plot.ly/plotly-3.1.0.min.js" charset="utf-8"></script>
+<script src="/js/chart-theme.js"></script>
 
 <div id="graph4"></div>
 <br>
@@ -180,13 +181,13 @@ Plotly.newPlot("graph4", [...countries.map(({ data, name, color }) => ({
   y: total.history.map((row) => row.p),
   mode: "lines",
   name: "Total",
-  line: { color: "rgb(0, 0, 0)", width: 3 }
+  line: { color: "rgb(128, 128, 128)", width: 3 }
 }], {
   title: {
     text: "Trade Cost"
   },
   font: {
-    family: "Space Mono",
+    family: "Commit Mono",
     size: 12
   },
   yaxis: {
@@ -218,13 +219,13 @@ Plotly.newPlot("graph5", [{
   y: total.history.map((row) => row.p - 1),
   mode: "lines",
   name: "Spread",
-  line: { color: "rgb(0, 0, 0)", width: 2 }
+  line: { color: "rgb(128, 128, 128)", width: 2 }
 }], {
   title: {
     text: "Trade Spread"
   },
   font: {
-    family: "Space Mono",
+    family: "Commit Mono",
     size: 12
   },
   yaxis: {

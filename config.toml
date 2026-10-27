@@ -1,6 +1,7 @@
-baseURL = "/"
+baseURL = "https://darenliang.com/"
 theme = "smol"
 title = "Daren Liang"
+locale = "en-us"
 enableEmoji = true
 enableRobotsTXT = true
 
@@ -72,7 +73,8 @@ unsafe = true
 [markup.highlight]
 codeFences = true
 guessSyntax = false
-style = "dracula"
+noClasses = false
+style = "github"
 
 [pagination]
 pagerSize = 20

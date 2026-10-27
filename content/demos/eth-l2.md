@@ -16,6 +16,30 @@ Many more chains are missing, you can comment below to have them added.
 <script src="https://unpkg.com/js-spread-grid@latest/dist/index.js"></script>
 
 <script type="module">
+const darkModeMq = window.matchMedia("(prefers-color-scheme: dark)");
+const themeColors = () =>
+  darkModeMq.matches
+    ? {
+        background: "#1C1C1C",
+        foreground: "#CCCCCC",
+        header: "#242424",
+        headerText: "#8A8A8A",
+        stale: "#4a2626",
+        missingTps: "#45411f",
+        lagBar: "#273747",
+      }
+    : {
+        background: "#FFFFFF",
+        foreground: "#1F2328",
+        header: "#F3F3F3",
+        headerText: "#57606A",
+        stale: "#f6d6d6",
+        missingTps: "#f6f6d6",
+        lagBar: "#d6e6f6",
+      };
+darkModeMq.addEventListener("change", () => window.location.reload());
+await document.fonts.load('16px "Commit Mono"');
+
 function pushData(arr, entry) {
   arr.push(entry);
   if (arr.length > 100) {
@@ -370,6 +394,19 @@ for (const [name, stream] of Object.entries(streams)) {
 
     const formatting = [
       {
+        style: () => {
+          const t = themeColors();
+          return { background: t.background, foreground: t.foreground };
+        },
+      },
+      {
+        row: { type: "HEADER" },
+        style: () => {
+          const t = themeColors();
+          return { background: t.header, foreground: t.headerText };
+        },
+      },
+      {
         rows: {},
         style: ({ row }) => {
           if (row.id === "Σ") {
@@ -386,7 +423,7 @@ for (const [name, stream] of Object.entries(streams)) {
           const last_block_time =
             data[row.id].block_times[data[row.id].block_times.length - 1];
           if (current_time - last_block_time > block_time + 20) {
-            return { background: "#f6d6d6" };
+            return { background: themeColors().stale };
           }
         },
       },
@@ -396,11 +433,11 @@ for (const [name, stream] of Object.entries(streams)) {
           if (display_data[row.id]["TPS"] !== -1) {
             return {};
           }
-          return { background: "#f6f6d6" };
+          return { background: themeColors().missingTps };
         },
       },
       {
-        font: "16px Space Mono",
+        font: "16px Commit Mono",
       },
       {
         column: { id: "Block Number" },
@@ -430,7 +467,7 @@ for (const [name, stream] of Object.entries(streams)) {
           const width = column.width - 4;
           const height = row.height - 4;
           const barWidth = width * lag_percent;
-          ctx.fillStyle = '#d6e6f6';
+          ctx.fillStyle = themeColors().lagBar;
           ctx.fillRect(2, 2, barWidth, height);
         }
       },

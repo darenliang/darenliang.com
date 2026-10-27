@@ -22,6 +22,7 @@ The question is: how mispriced is the price, and can we structure a trade that
 captures the mispricing while hedging out the residual risks?
 
 <script src="https://cdn.plot.ly/plotly-3.1.0.min.js" charset="utf-8"></script>
+<script src="/js/chart-theme.js"></script>
 <div id="graph"></div>
 
 <script>
@@ -42,7 +43,7 @@ Plotly.newPlot("graph", [{
     text: "Will Elon Musk’s net worth be at least $800b on June 30?"
   },
   font: {
-    family: "Space Mono",
+    family: "Commit Mono",
     size: 12
   },
   yaxis: {
@@ -90,11 +91,11 @@ jspreadsheet(document.getElementById('spreadsheet1'), {
     worksheets: [
         {
             columns: [
-                {title: "Asset", width: 100},
-                {title: "Bloomberg Valuation", mask: "0.0", width: 180},
-                {title: "Liquidity Discount", mask: "0.0%", width: 180},
-                {title: "Musk's Stake (Est.)", mask: "0.0%", width: 180},
-                {title: "Musk's Share", mask: "0.0", width: 180}
+                {title: "Asset", width: 80},
+                {title: "Bloomberg Valuation", mask: "0.0", width: 160},
+                {title: "Liquidity Discount", mask: "0.0%", width: 140},
+                {title: "Musk's Stake (Est.)", mask: "0.0%", width: 150},
+                {title: "Musk's Share", mask: "0.0", width: 110}
             ],
             data: [
                 ["SpaceX", 1250, 0.05, 0.44, "=B1*(1-C1)*D1"],
@@ -173,7 +174,7 @@ Plotly.newPlot("graph2", [{
     text: "Will SpaceX's valuation hit (LOW) $1.35T by June 30?"
   },
   font: {
-    family: "Space Mono",
+    family: "Commit Mono",
     size: 12
   },
   yaxis: {
@@ -215,7 +216,7 @@ Plotly.newPlot("graph3", [{
     text: "Will SpaceX not IPO by June 30?"
   },
   font: {
-    family: "Space Mono",
+    family: "Commit Mono",
     size: 12
   },
   yaxis: {
@@ -274,7 +275,7 @@ Plotly.newPlot("graph6", [{
     text: "Will Tesla, Inc. (TSLA) hit $330 in June 2026?"
   },
   font: {
-    family: "Space Mono",
+    family: "Commit Mono",
     size: 12
   },
   yaxis: {
@@ -303,10 +304,10 @@ jspreadsheet(document.getElementById('spreadsheet2'), {
     worksheets: [
         {
             columns: [
-                { title: "Scenario", width: 200 },
-                { title: "Net Worth Bet", width: 140},
-                { title: "Valuation Hedge", width: 140},
-                { title: "IPO Hedge", width: 120},
+                { title: "Scenario", width: 185 },
+                { title: "Net Worth Bet", width: 120},
+                { title: "Valuation Hedge", width: 135},
+                { title: "IPO Hedge", width: 100},
                 { title: "Net P/L", width: 100 }
             ],
             data: [
@@ -401,14 +402,14 @@ Plotly.newPlot("graph4", [{
   mode: "lines",
   name: "Total Trade Cost",
   line: {
-    color: "rgb(0, 0, 0)"
+    color: "rgb(128, 128, 128)"
   }
 }], {
     title: {
     text: "Composing the Trade"
   },
   font: {
-    family: "Space Mono",
+    family: "Commit Mono",
     size: 12
   },
   yaxis: {

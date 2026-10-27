@@ -17,7 +17,7 @@ Feel free to come up with your own SQL queries, as everything is running at your
     <li><a href="javascript:void(0);" onclick="document.getElementById('query').value = 'SELECT * FROM (\n  SELECT unnest(outputs, recursive:=True)\n  FROM read_parquet(\'s3://aws-public-blockchain/v1.0/btc/transactions/date=2024-04-20/part-00000-9c311aa4-8f1b-483d-9ef1-5d643c1d4de7-c000.snappy.parquet\')\n  WHERE is_coinbase AND block_number = 840000\n)\nWHERE address IS NOT NULL'; execute()">Which address mined block 840000 which marks the 4th bitcoin halving?</a></li>
 </ul>
 
-<textarea id="query" rows="8" style="width: 100%; font-family: 'Space mono';" onkeypress="handle(event)"></textarea>
+<textarea id="query" rows="8" style="width: 100%; font-family: 'Commit Mono';" onkeypress="handle(event)"></textarea>
 <p><button onclick="execute()">Run</button> (Ctrl/Cmd+Enter)</p>
 
 <div id="error"></div>

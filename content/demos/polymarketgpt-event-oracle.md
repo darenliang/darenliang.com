@@ -19,7 +19,7 @@ by [Polymarket](https://polymarket.com/) and [Qdrant](https://qdrant.tech/).
     <li><a href="javascript:void(0);" onclick="document.getElementById('query').value = 'Which AI companies will Apple acquire?'; execute()">Which AI companies will Apple acquire?</a></li>
 </ul>
 
-<textarea id="query" rows="4" style="width: 100%; font-family: 'Space mono';" onkeypress="handle(event)"></textarea>
+<textarea id="query" rows="4" style="width: 100%; font-family: 'Commit Mono';" onkeypress="handle(event)"></textarea>
 <p><button onclick="execute()">Go</button> (Ctrl/Cmd+Enter)</p>
 
 <div id="results"></div>

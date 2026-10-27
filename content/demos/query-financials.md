@@ -49,7 +49,7 @@ Period: <select id="period"><option value="volvo">N/A</option></select>
     <li><a href="javascript:void(0);" onclick="document.getElementById('ticker').value = 'AAPL'; document.getElementById('query').value = 'WeightedAverageNumberOfSharesOutstandingBasic'; execute()">When has Apple performed stock splits and stock buybacks?</a></li>
 </ul>
 
-<textarea id="query" rows="8" style="width: 100%; font-family: 'Space mono';" onkeypress="handle(event)"></textarea>
+<textarea id="query" rows="8" style="width: 100%; font-family: 'Commit Mono';" onkeypress="handle(event)"></textarea>
 <p><button onclick="execute()">Run</button> (Ctrl/Cmd+Enter)</p>
 
 <div id="graph"></div>
@@ -57,6 +57,40 @@ Period: <select id="period"><option value="volvo">N/A</option></select>
 <script type="module">
 import * as duckdb
   from "https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm@latest/+esm";
+
+const darkModeMq = window.matchMedia("(prefers-color-scheme: dark)");
+const themeColors = () =>
+  darkModeMq.matches
+    ? {
+        background: "#1C1C1C",
+        foreground: "#CCCCCC",
+        header: "#242424",
+        headerText: "#8A8A8A",
+      }
+    : {
+        background: "#FFFFFF",
+        foreground: "#1F2328",
+        header: "#F3F3F3",
+        headerText: "#57606A",
+      };
+darkModeMq.addEventListener("change", () => window.location.reload());
+await document.fonts.load('10px "Commit Mono"');
+
+const gridFormatting = () => [
+  {
+    style: () => {
+      const t = themeColors();
+      return { background: t.background, foreground: t.foreground };
+    },
+  },
+  {
+    row: { type: "HEADER" },
+    style: () => {
+      const t = themeColors();
+      return { background: t.header, foreground: t.headerText };
+    },
+  },
+];
 
 const JSDELIVR_BUNDLES = duckdb.getJsDelivrBundles();
 
@@ -139,7 +173,8 @@ async function searchPeriods() {
     }
   } catch (e) {
     SpreadGrid(document.getElementById("grid"), {
-      data: []
+      data: [],
+      formatting: gridFormatting()
     });
     window.alert(e);
   }
@@ -165,7 +200,8 @@ async function queryFinancials() {
       data: result.toArray().map((row) => row.toJSON()),
       columns: [{ type: "DATA-BLOCK", width: "fit" }],
       formatting: [
-          {font: "10px Space Mono"},
+          ...gridFormatting(),
+          {font: "10px Commit Mono"},
           {
             column: {id: "value"},
             style: ({ value }) => ({textAlign: "right"})
@@ -175,7 +211,8 @@ async function queryFinancials() {
     document.getElementById("grid").style["max-height"] = "50vh";
   } catch (e) {
     SpreadGrid(document.getElementById("grid"), {
-      data: []
+      data: [],
+      formatting: gridFormatting()
     });
     window.alert(e);
   }
@@ -206,7 +243,7 @@ async function execute() {
       mode: "lines"
     }], {
       font: {
-        family: "Space Mono",
+        family: "Commit Mono",
         size: 16,
       },
     });
