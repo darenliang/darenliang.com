@@ -3,6 +3,12 @@
      * Makes Plotly charts follow the site's light/dark color scheme.
      * Loaded right after the Plotly script so the wrappers are in place
      * before any chart is created; re-applies on scheme changes.
+     *
+     * Also keeps chart text from being chopped off: Plotly sizes the axis
+     * margins by measuring text, and charts drawn before the webfont loads
+     * measure a narrower fallback font, so longer labels overflow the plot
+     * once the real font swaps in. Charts are therefore drawn once the
+     * webfont is ready.
      */
 
     const mq = window.matchMedia("(prefers-color-scheme: dark)");
@@ -81,6 +87,22 @@
         });
     };
 
+    // charts are measured with this font; before it loads, text falls back to
+    // a narrower font and the axis margins end up too small. Plotly caches the
+    // measurements it takes (and a later redraw reuses them), so the only fix
+    // is to draw the charts with the real font in place.
+    const fontReady = () =>
+        !document.fonts || document.fonts.check('12px "Commit Mono"');
+
+    const whenFontReady = () => {
+        if (fontReady()) {
+            return Promise.resolve();
+        }
+        return document.fonts
+            .load('12px "Commit Mono"')
+            .then(() => {}, () => {});
+    };
+
     // theme charts at creation time
     const install = () => {
         if (!window.Plotly || Plotly.__siteTheme) {
@@ -93,13 +115,19 @@
                 return;
             }
             Plotly[name] = function (gd, data, layout, ...rest) {
-                return original.call(
-                    this,
-                    gd,
-                    data,
-                    themedLayout(layout),
-                    ...rest
-                );
+                const config = Object.assign({ responsive: true }, rest[0]);
+                const draw = () =>
+                    original.call(
+                        this,
+                        gd,
+                        data,
+                        themedLayout(layout),
+                        config,
+                        ...rest.slice(1)
+                    );
+                // defer the first draw until the webfont is ready so the
+                // labels have room instead of being chopped off
+                return whenFontReady().then(draw);
             };
         });
     };
