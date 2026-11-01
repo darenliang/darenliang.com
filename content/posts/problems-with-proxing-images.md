@@ -1,6 +1,6 @@
 ---
 title: "Problems with Proxying Images"
-description: "The future of serving images lies in the edge"
+description: "What imgproxy, imgix, ImageKit, and Optimole get wrong — and my edge-based fix"
 date: "2022-08-27"
 showthedate: true
 tags: [ "programming" ]

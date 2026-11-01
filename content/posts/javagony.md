@@ -1,6 +1,6 @@
 ---
 title: "Algorithms in Javagony"
-description: "Adventures of programming in Javagony"
+description: "Java with loops and conditionals banned — algorithms via try/catch and recursion"
 date: "2019-10-08"
 showthedate: true
 tags: ["programming"]

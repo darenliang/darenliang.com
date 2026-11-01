@@ -1,6 +1,6 @@
 ---
 title: "The Basketball Tryout"
-description: "A neat probability problem related to basketball"
+description: "At what shooting rate is taking four shots as good as six? A binomial puzzle: 0.6"
 date: "2022-05-13"
 showthedate: true
 tags: ["probability"]

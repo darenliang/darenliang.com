@@ -1,6 +1,6 @@
 ---
 title: "Examining Parlays in Prediction Markets"
-description: "This post shows how to value a parlay from its component bets and argues that parlay odds on markets like Polymarket can overstate outcomes when one component is already highly priced."
+description: "How to value a parlay from its component bets — and why one safe leg can skew the price"
 date: "2025-08-11"
 showthedate: true
 tags: [ "probability" ]

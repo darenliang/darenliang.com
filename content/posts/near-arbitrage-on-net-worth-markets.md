@@ -1,6 +1,6 @@
 ---
 title: "Near-Arbitrage on Net Worth Markets"
-description: "This post explores a hedged bet on Elon Musk's net worth reaching 800b+ on June 30, 2026."
+description: "A near-arbitrage: Musk's 800b net worth market hedged with SpaceX valuation and IPO bets"
 date: "2026-05-29"
 showthedate: true
 tags: [ "probability" ]

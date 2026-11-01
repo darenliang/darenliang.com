@@ -1,6 +1,6 @@
 ---
 title: "World Cup Prediction Markets Trade"
-description: "This post highlights an arbitrage bet on the winner of the 2026 FIFA World Cup."
+description: "A World Cup arbitrage: bet 'a nation that never won' and hedge with the 7 past champions"
 date: "2026-06-13"
 showthedate: true
 tags: [ "probability" ]

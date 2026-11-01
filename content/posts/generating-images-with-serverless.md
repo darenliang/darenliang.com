@@ -1,6 +1,6 @@
 ---
 title: "Generating Images with Serverless"
-description: "Generating images with the Cloudflare Workers Developer Platform"
+description: "Rendering CS:GO crosshair images on Cloudflare Workers within 1 MB and 10 ms limits"
 date: "2022-02-18"
 showthedate: true
 tags: ["programming"]

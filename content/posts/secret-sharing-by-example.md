@@ -1,6 +1,6 @@
 ---
 title: "Secret Sharing by Example"
-description: "Learn secret sharing schemes with interactive demos in the browser"
+description: "A hands-on intro to secret sharing, building up to Shamir's scheme with live demos"
 date: "2022-01-20"
 showthedate: true
 tags: ["cryptography"]
