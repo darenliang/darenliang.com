@@ -1,6 +1,6 @@
 ---
 title: "World Cup Prediction Markets Trade"
-description: "This post highlights an arbitrage bet on the winner of the 2026 FIFA World Cup."
+description: "Polymarket's 2026 World Cup winner markets don't quite add up — examining the trade, its cost, and its hidden risks"
 date: "2026-06-13"
 showthedate: true
 tags: [ "probability" ]

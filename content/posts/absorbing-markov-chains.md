@@ -1,6 +1,6 @@
 ---
 title: "Solving Dice Problems with Markov Chains"
-description: "Is it more likely to roll two 5's or a 5 followed by a 6?"
+description: "Two 5's or a 5 then 6: which dice pattern shows up first, and how many rolls does each take? Modeled with absorbing Markov chains"
 date: "2024-09-28"
 showthedate: true
 tags: [ "probability" ]

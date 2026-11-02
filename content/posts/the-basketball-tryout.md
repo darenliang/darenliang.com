@@ -1,6 +1,6 @@
 ---
 title: "The Basketball Tryout"
-description: "A neat probability problem related to basketball"
+description: "Four shots or six at a basketball tryout — what shooting percentage makes both options equally good? A binomial puzzle"
 date: "2022-05-13"
 showthedate: true
 tags: ["probability"]

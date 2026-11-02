@@ -1,6 +1,6 @@
 ---
 title: "FUSEing for Fun"
-description: "An experimental Filesystem in USErspace (FUSE) with Discord attachments"
+description: "dsfs: an append-only FUSE filesystem backed by Discord attachments, with log-structured writes, live sync, and automatic snapshots"
 date: "2022-03-26"
 showthedate: true
 tags: ["programming"]
