@@ -1,6 +1,6 @@
 ---
 title: "World Cup Prediction Markets Trade"
-description: "A World Cup arbitrage: bet 'a nation that never won' and hedge with the 7 past champions"
+description: "Polymarket's 2026 World Cup winner markets don't quite add up — examining the trade, its cost, and its hidden risks"
 date: "2026-06-13"
 showthedate: true
 tags: [ "probability" ]

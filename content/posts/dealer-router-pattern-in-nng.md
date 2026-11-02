@@ -1,6 +1,6 @@
 ---
 title: "Dealer Router Pattern in NNG"
-description: "Emulating ZeroMQ's DEALER/ROUTER with NNG raw-mode sockets and pynng"
+description: "Emulating ZeroMQ's DEALER/ROUTER with NNG raw-mode sockets and pynng — message headers, polling, and tracking dealer identities"
 date: "2024-01-12"
 showthedate: true
 tags: [ "programming" ]

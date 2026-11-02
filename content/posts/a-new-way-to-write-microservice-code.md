@@ -1,6 +1,6 @@
 ---
 title: "A New Way to Write Microservice Code"
-description: "What if each function were its own microservice? A working decorator in Python proves it"
+description: "What if each function were its own microservice? Building a @microservice decorator with retries, scaling, and REST"
 date: "2024-01-28"
 showthedate: true
 tags: [ "programming" ]

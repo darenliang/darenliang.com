@@ -1,6 +1,6 @@
 ---
 title: "Managed Futures ETFs Review"
-description: "What ten managed futures ETFs really hold — and why KMLM, DBMF, and CTA stand out"
+description: "A look under the hood of ten managed futures ETFs, comparing net equity, bond, currency, and commodity exposure from fund filings"
 date: "2026-10-19"
 showthedate: true
 tags: [ "finance" ]

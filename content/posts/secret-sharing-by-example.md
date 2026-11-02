@@ -1,6 +1,6 @@
 ---
 title: "Secret Sharing by Example"
-description: "A hands-on intro to secret sharing, building up to Shamir's scheme with live demos"
+description: "From a nuclear launch-code scenario to Shamir's scheme — secret sharing built up step by step with live demos in the browser"
 date: "2022-01-20"
 showthedate: true
 tags: ["cryptography"]

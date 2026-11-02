@@ -1,6 +1,6 @@
 ---
 title: "Solving Dice Problems with Markov Chains"
-description: "Two 5's in a row or a 5 then 6? Markov chains find 42 vs 36 expected rolls"
+description: "Two 5's or a 5 then 6: which dice pattern shows up first, and how many rolls does each take? Modeled with absorbing Markov chains"
 date: "2024-09-28"
 showthedate: true
 tags: [ "probability" ]

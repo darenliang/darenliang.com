@@ -1,6 +1,6 @@
 ---
 title: "The Gambler's Ruin"
-description: "3-to-1 odds and $2 to start — the surprising chance of eventually going broke: 1/9"
+description: "Gamble with 3-to-1 odds and $2 in your pocket, playing until you go broke — is ruin guaranteed? Solved by simulation and algebra"
 date: "2022-01-26"
 showthedate: true
 tags: ["probability"]

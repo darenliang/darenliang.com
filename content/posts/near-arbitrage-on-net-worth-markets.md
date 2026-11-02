@@ -1,6 +1,6 @@
 ---
 title: "Near-Arbitrage on Net Worth Markets"
-description: "A near-arbitrage: Musk's 800b net worth market hedged with SpaceX valuation and IPO bets"
+description: "A Polymarket market pricing Musk's net worth at 800b+ looks low — how mispriced is it, and can a hedged trade capture it?"
 date: "2026-05-29"
 showthedate: true
 tags: [ "probability" ]

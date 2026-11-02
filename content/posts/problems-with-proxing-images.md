@@ -1,6 +1,6 @@
 ---
 title: "Problems with Proxying Images"
-description: "What imgproxy, imgix, ImageKit, and Optimole get wrong — and my edge-based fix"
+description: "A tour of imgproxy, imgix, ImageKit, and Optimole and where each falls short — plus an edge-based image proxy built to fix it"
 date: "2022-08-27"
 showthedate: true
 tags: [ "programming" ]

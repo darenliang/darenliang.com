@@ -1,6 +1,6 @@
 ---
 title: "Algorithms in Javagony"
-description: "Java with loops and conditionals banned — algorithms via try/catch and recursion"
+description: "Java with every control flow statement banned — algorithms built from clever tricks and obscure language features"
 date: "2019-10-08"
 showthedate: true
 tags: ["programming"]

@@ -1,6 +1,6 @@
 ---
 title: "Examining Parlays in Prediction Markets"
-description: "How to value a parlay from its component bets — and why one safe leg can skew the price"
+description: "How to value a parlay from its component bets, with a live Polymarket example and the pitfalls of correlation and proxy bets"
 date: "2025-08-11"
 showthedate: true
 tags: [ "probability" ]
