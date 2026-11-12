@@ -273,10 +273,10 @@ Plotly.newPlot("graph4", funds.map((fund, i) => ({
 
 All ETFs maintain positive net exposure to energy which is mostly all that
 matters in this current regime with the situation in the Middle East. But CTA
-stands out for having a gigantic net long exposure to energy. I personally
-believe it is a matter of personal taste whether to favor such large net
-exposures or to go for a more balanced approach. I personally prefer a more
-balanced approach, but CTA is the go-to ETF for extreme commodity exposure.
+stands out for having a gigantic net long exposure to energy. I believe it is a
+matter of personal taste whether to favor such large net exposures or to go for
+a more balanced approach. I prefer a more balanced approach, but CTA is the
+go-to ETF for extreme commodity exposure.
 
 <div id="graph5"></div>
 
